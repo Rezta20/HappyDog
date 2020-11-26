@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/Login.css" />
+    <link rel="stylesheet" href="/css/Signin.css" />
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <title>NavBar</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar-ForMobie">
+      <!-- Logo -->
+      <div class="navbar-logoLanguageLoginWrapper">
+        <div class="navbar-logoWrapper">
+          <a class="logo-A" href="">
+            <img
+              class="logo"
+              src="/img/happy Dog Design-04.png"
+              alt="happyDog-logo"
+            />
+          </a>
+        </div>
+        <!-- Language Toggle -->
+        <div class="navbar-languageToggleWrapper">
+          <p>中文</p>
+          <div class="navbar-languageToggle">
+            <div class="languageToggle-background">
+              <div class="languageToogle-circle"></div>
+            </div>
+          </div>
+          <p>EN</p>
+        </div>
+        <!-- Log In  -->
+        <div class="login-wrapper">
+          <a class="login-A" href="">
+            <img class="login-img" src="/img/Login-02.png" alt="login-img" />
+            <div class="navbar-text">登入</div>
+          </a>
+        </div>
+      </div>
+      <!-- Navbar Elements -->
+      <div class="navbar-iconWrapper">
+        <div class="navbar-element">
+          <a class="navbar-A" href="">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">預約散步</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">才藝學習</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">寵食分享</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">聯絡我們</div>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Login Card  -->
+    <section>
+      <div
+        id="logInCard-Mobile"
+        class="login-CardWrapperMobile loginCardForMobile"
+      >
+        <div class="login-CardLogInBox">
+          <h2 class="loginCard-Title"><span>汪</span>，請先登入您的帳號</h2>
+          <div class="loginCard-titleBackground"></div>
+          <input
+            type="text"
+            class="mobileLogin-id loginCard-input"
+            placeholder="帳號/電子信箱"
+          />
+          <input
+            type="text"
+            class="mobileLogin-password loginCard-input"
+            placeholder="密碼"
+          />
+
+          <div class="loginCard-memberWrapper">
+            <div class="loginCard-memberWrapperSource">
+              <a href="http://www.google.com">
+                <div class="loginCard-member FaceBook">
+                  <i class="fab fa-facebook-f fa-2x loginCard-sourceImg"></i>
+                </div>
+              </a>
+            </div>
+            <div class="loginCard-memberWrapperSource">
+              <a href="">
+                <div class="loginCard-member Google">
+                  <i class="fab fa-google fa-2x loginCard-sourceImg"></i>
+                </div>
+              </a>
+            </div>
+            <div class="loginCard-memberWrapperSource">
+              <a class="Line-A" href="">
+                <div class="loginCard-member">
+                  <div class="Line">L</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <button class="loginCard-loginButton">登入</button>
+          <p class="loginCard-noAccountText">
+            沒有帳戶嗎？<span
+              class="loginCard-applySpan"
+              onclick="changeToSignin()"
+              >這裡註冊唷！</span
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Sign In Card  -->
+
+      <div
+        id="signInCard-Mobile"
+        class="login-CardWrapperMobile loginCardForMobile"
+      >
+        <div class="login-CardLogInBox signinCard-box">
+          <h2 class="loginCard-Title">請先註冊您的帳號，<span>汪</span></h2>
+          <div class="signinCard-titleBackground"></div>
+          <input
+            type="text"
+            class="mobileLogin-id loginCard-input"
+            placeholder="帳號/電子信箱"
+          />
+          <input
+            type="text"
+            class="mobileLogin-password loginCard-input"
+            placeholder="密碼"
+          />
+
+          <div class="loginCard-memberWrapper">
+            <div class="loginCard-memberWrapperSource">
+              <a href="http://www.google.com">
+                <div class="loginCard-member FaceBook">
+                  <i class="fab fa-facebook-f fa-2x loginCard-sourceImg"></i>
+                </div>
+              </a>
+            </div>
+            <div class="loginCard-memberWrapperSource">
+              <a href="">
+                <div class="loginCard-member Google">
+                  <i class="fab fa-google fa-2x loginCard-sourceImg"></i>
+                </div>
+              </a>
+            </div>
+            <div class="loginCard-memberWrapperSource">
+              <a class="Line-A" href="">
+                <div class="loginCard-member">
+                  <div class="Line">L</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <button class="signinCard-loginButton">註冊</button>
+          <p class="loginCard-noAccountText">
+            已經有帳戶？<span
+              class="loginCard-applySpan"
+              onclick="changeToLogin()"
+              >這裡登入唷！</span
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-background"></div>
+    </footer>
+    <script src="/JavaScript/Login.js"></script>
+  </body>
+</html>

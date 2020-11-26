@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #3f3a3a;
+  font-weight: 600;
+}
+
+nav {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#logInCard-Mobile {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transition: all ease-in-out 0.8s;
+  opacity: 1;
+}
+
+#signInCard-Mobile {
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  transition: all ease-in-out 0.8s;
+  opacity: 0;
+}
+
+.navbar-logoLanguageLoginWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.navbar-text {
+  color: #063f6f;
+}
+
+/* Logo */
+.logo {
+  height: 60px;
+}
+
+/* Language Toggle  */
+.navbar-languageToggleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-languageToggle {
+  margin: 0 5px;
+}
+
+.languageToogle-circle {
+  height: 22px;
+  width: 22px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.languageToggle-background {
+  background-color: #063f6f;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  height: 30px;
+  width: 55px;
+}
+
+/* Log In  */
+.login-wrapper {
+  display: flex;
+}
+
+.login-A {
+  display: flex;
+  align-items: center;
+}
+
+.login-img {
+  width: 50px;
+}
+
+/* Navbar Element  */
+.navbar-iconWrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: #d2e8fd;
+  width: 100%;
+}
+
+.navbar-element {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.navbar-element a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-element img {
+  height: 50px;
+  width: 50px;
+}
+
+/* Login Card */
+.login-CardWrapperMobile {
+  display: flex;
+  justify-content: center;
+}
+/* Login Card Log In  */
+.login-CardLogInBox {
+  height: 400px;
+  width: 80%;
+  border: solid 1px #063f6f;
+  box-shadow: 3px 2px #063f6f;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.loginCard-Title {
+  font-size: 23px;
+}
+
+.loginCard-Title > span {
+  font-size: 32px;
+}
+.loginCard-titleBackground {
+  background-color: #fdc98b;
+  margin-top: 10px;
+  height: 15px;
+  width: 100%;
+}
+
+/* Login Card Input  */
+
+.loginCard-input {
+  border-radius: 50px;
+  border-color: #063f6f;
+  text-indent: 12px;
+  height: 30px;
+  width: 180px;
+  margin: 12px 0;
+}
+
+.mobileLogin-id {
+  margin-top: 25px;
+}
+
+/* Login Card Member */
+
+.loginCard-memberWrapper {
+  display: flex;
+  margin-top: 5px;
+}
+
+.loginCard-member {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border: solid 2px #063f6f;
+  border-radius: 50%;
+  margin: 12px;
+}
+
+.Line-A {
+  text-decoration: none;
+}
+
+.Line {
+  font-size: 35px;
+  font-family: "Rubik", sans-serif;
+  font-weight: bolder;
+  color: #063f6f;
+}
+
+.loginCard-sourceImg {
+  color: #063f6f;
+}
+
+/* Login button  */
+.loginCard-loginButton {
+  width: 100px;
+  height: 30px;
+  font-size: 18px;
+  margin-top: 15px;
+  border-radius: 50px;
+  box-shadow: 1px 1px #063f6f;
+  background-color: #d2e8fd;
+}
+
+.loginCard-noAccountText {
+  margin-top: 20px;
+}
+
+.loginCard-applySpan {
+  color: #063f6f;
+}
+
+/* Sign In card  */
+.signinCard-box {
+  background-color: #d2e8fd;
+}
+
+.signinCard-titleBackground {
+  background-color: #ffffff;
+  margin-top: 10px;
+  height: 15px;
+  width: 100%;
+}
+
+.signinCard-loginButton {
+  width: 100px;
+  height: 30px;
+  font-size: 18px;
+  margin-top: 15px;
+  border-radius: 50px;
+  box-shadow: 1px 1px #063f6f;
+  background-color: #fdc98b;
+}
+
+/* Footer */
+.footer-background {
+  position: relative;
+  bottom: 0;
+  background-color: #fdc98b;
+  height: 100px;
+  width: 100%;
+}
+
+/* RWD  */
+@media screen and (max-width: 768px) {
+  .navbar-languageToggleWrapper {
+    position: absolute;
+    right: 100px;
+    top: 23px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .navbar-languageToggleWrapper {
+    position: absolute;
+    right: 90px;
+    top: 23px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navbar-languageToggleWrapper {
+    display: flex;
+    flex-direction: column;
+    top: 0px;
+  }
+}
