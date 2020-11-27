@@ -134,6 +134,7 @@ section {
   height: 400px;
   width: 80%;
   border: solid 1px #063f6f;
+  border-radius: 5%;
   box-shadow: 3px 2px #063f6f;
 
   display: flex;

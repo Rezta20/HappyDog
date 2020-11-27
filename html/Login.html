@@ -22,6 +22,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
+    <!-- Firebase CDN (Google JavaScript 函式庫) -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
     <title>NavBar</title>
   </head>
   <body>
@@ -102,11 +105,13 @@
             type="text"
             class="mobileLogin-id loginCard-input"
             placeholder="帳號/電子信箱"
+            id="loginEmail"
           />
           <input
-            type="text"
+            type="password"
             class="mobileLogin-password loginCard-input"
             placeholder="密碼"
+            id="loginPwd"
           />
 
           <div class="loginCard-memberWrapper">
@@ -155,12 +160,14 @@
           <input
             type="text"
             class="mobileLogin-id loginCard-input"
-            placeholder="帳號/電子信箱"
+            placeholder="電子信箱"
+            id="signUpemail"
           />
           <input
-            type="text"
+            type="password"
             class="mobileLogin-password loginCard-input"
             placeholder="密碼"
+            id="signUppwd"
           />
 
           <div class="loginCard-memberWrapper">
@@ -202,5 +209,35 @@
       <div class="footer-background"></div>
     </footer>
     <script src="/JavaScript/Login.js"></script>
+
+    <!-- FrieBase  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBL9Tmhwb15yAohPn_DLoAFUgVJoy76bnk",
+        authDomain: "happydog-82c2f.firebaseapp.com",
+        databaseURL: "https://happydog-82c2f.firebaseio.com",
+        projectId: "happydog-82c2f",
+        storageBucket: "happydog-82c2f.appspot.com",
+        messagingSenderId: "1070136598571",
+        appId: "1:1070136598571:web:0de4a08e0493465e984a6e",
+        measurementId: "G-N3V1TLZNZW",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>
