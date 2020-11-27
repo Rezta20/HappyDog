@@ -140,14 +140,11 @@ logInBtn.addEventListener("click", (event) => {
     .then(() => {
       var user = firebase.auth().currentUser;
 
-      user.updateProfile({
-        displayName: "",
-        photoURL: "",
-      });
-
       if (user) {
+        // 抓資料
         console.log("user is signed in");
-        console.log(user);
+        // location.href = "/html/homepage.html";
+        // console.log(user);
       } else {
         console.log("no user is signed in");
       }
@@ -162,11 +159,13 @@ logInBtn.addEventListener("click", (event) => {
 
 // Firebase Log In 監聽
 firebase.auth().onAuthStateChanged((user) => {
+  console.log("hello there");
+  console.log(user);
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-    console.log(user.uid);
-    logInCard.style.display = "none";
+    console.log(user);
+    // logInCard.style.display = "none";
     // ...
   } else {
     // User is signed out
