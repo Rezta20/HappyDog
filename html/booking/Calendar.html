@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Css Link  -->
+    <link rel="stylesheet" href="/css/Calender.css" />
+    <!-- Full Calendar Link  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Full Calender  -->
+    <button class="monthBtn">month</button>
+    <div id="calendar"></div>
+
+    <!-- Description  -->
+    <div class="bookingDescriptionMonthViewWrapper">
+      <p class="viewDescription monthViewDescription">❇ 請點選日期預約</p>
+    </div>
+
+    <div class="bookingDescriptionWeekViewWrapper">
+      <p class="viewDescription">❇ 預約制以一週為單位</p>
+      <p class="viewDescription">❇ 請點選單日或是拖曳選取多日</p>
+      <p class="viewDescription">❇ 預約時間皆為固定如有其他問題歡迎來電洽詢</p>
+    </div>
+
+    <!-- Time Table  -->
+    <div class="timeTable">
+      <div class="timeTitleWrapper">
+        <div class="timeTitle">Morning</div>
+        <div class="timeTitle">Afternoon</div>
+        <div class="timeTitle">Evening</div>
+      </div>
+      <div class="timeBtnWrapper">
+        <div class="timeBtnMorningWrapper">
+          <button class="timeBtn morning">08:00－09:00</button>
+          <button class="timeBtn morning">09:00－10:00</button>
+          <button class="timeBtn morning">10:00－11:00</button>
+        </div>
+
+        <div class="timeBtnAfternoonWrapper">
+          <button class="timeBtn afternoon">14:00－15:00</button>
+          <button class="timeBtn afternoon">15:00－16:00</button>
+          <button class="timeBtn afternoon">16:00－17:00</button>
+          <button class="timeBtn afternoon">17:00－18:00</button>
+        </div>
+
+        <div class="timeBtnEveningWrapper">
+          <button class="timeBtn evening">19:00－20:00</button>
+          <button class="timeBtn evening">20:00－21:00</button>
+          <button class="timeBtn evening">21:00－22:00</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sendBookingDatedataWrapper">
+      <button class="sendBookingDatedataBtn">下一頁</button>
+    </div>
+
+    <script src="/JavaScript/Calender.js"></script>
+  </body>
+</html>

@@ -42,88 +42,6 @@ section {
   opacity: 0;
 }
 
-.navbar-logoLanguageLoginWrapper {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-}
-
-.navbar-text {
-  color: #063f6f;
-}
-
-/* Logo */
-.logo {
-  height: 60px;
-}
-
-/* Language Toggle  */
-.navbar-languageToggleWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar-languageToggle {
-  margin: 0 5px;
-}
-
-.languageToogle-circle {
-  height: 22px;
-  width: 22px;
-  background-color: #fff;
-  border-radius: 50%;
-}
-
-.languageToggle-background {
-  background-color: #063f6f;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  height: 30px;
-  width: 55px;
-}
-
-/* Log In  */
-.login-wrapper {
-  display: flex;
-}
-
-.login-A {
-  display: flex;
-  align-items: center;
-}
-
-.login-img {
-  width: 50px;
-}
-
-/* Navbar Element  */
-.navbar-iconWrapper {
-  display: flex;
-  justify-content: space-around;
-  background-color: #d2e8fd;
-  width: 100%;
-}
-
-.navbar-element {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-}
-
-.navbar-element a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.navbar-element img {
-  height: 50px;
-  width: 50px;
-}
-
 /* Login Card */
 .login-CardWrapperMobile {
   display: flex;
@@ -135,7 +53,8 @@ section {
   width: 80%;
   border: solid 1px #063f6f;
   border-radius: 5%;
-  box-shadow: 3px 2px #063f6f;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
   display: flex;
   flex-direction: column;
@@ -244,38 +163,4 @@ section {
   border-radius: 50px;
   box-shadow: 1px 1px #063f6f;
   background-color: #fdc98b;
-}
-
-/* Footer */
-.footer-background {
-  position: relative;
-  bottom: 0;
-  background-color: #fdc98b;
-  height: 100px;
-  width: 100%;
-}
-
-/* RWD  */
-@media screen and (max-width: 768px) {
-  .navbar-languageToggleWrapper {
-    position: absolute;
-    right: 100px;
-    top: 23px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .navbar-languageToggleWrapper {
-    position: absolute;
-    right: 90px;
-    top: 23px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .navbar-languageToggleWrapper {
-    display: flex;
-    flex-direction: column;
-    top: 0px;
-  }
 }

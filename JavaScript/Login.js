@@ -66,6 +66,7 @@ function changeToLogin() {
 // FireStore Set up
 firebase.initializeApp({
   apiKey: "apiKey",
+  projectId: "happydog-82c2f",
   authDomain: "happydog-82c2f.firebaseapp.com",
   databaseURL: "https://happydog-82c2f.firebaseio.com/",
 });
@@ -130,7 +131,7 @@ signUpBtn.addEventListener("click", () => {
     });
 });
 
-// Firebase Sign In
+// Firebase Log In
 logInBtn.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -143,8 +144,10 @@ logInBtn.addEventListener("click", (event) => {
       if (user) {
         // 抓資料
         console.log("user is signed in");
+        console.log(user);
+        console.log(user.uid);
+        sessionStorage.setItem("user", JSON.stringify(user.uid));
         // location.href = "/html/homepage.html";
-        // console.log(user);
       } else {
         console.log("no user is signed in");
       }
@@ -158,19 +161,22 @@ logInBtn.addEventListener("click", (event) => {
 // 登出後恢復原狀
 
 // Firebase Log In 監聽
-firebase.auth().onAuthStateChanged((user) => {
-  console.log("hello there");
-  console.log(user);
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
+window.addEventListener("load", function () {
+  firebase.auth().onAuthStateChanged((user) => {
+    console.log("hello there");
     console.log(user);
-    // logInCard.style.display = "none";
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
+    if (user) {
+      console.log("sign in");
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      console.log(user);
+      // logInCard.style.display = "none";
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
 });
 
 // var btnLogOut = document.getElementById('btnLogOut');
