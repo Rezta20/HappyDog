@@ -3,54 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FireBase  -->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <!-- Google Map  -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATuxkyj-151uOTdKYdj_2IwjYEWdnj1SU&callback=initMap"
+      async
+      defer
+    ></script>
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/booking/BookingWalkingForm.css" />
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <p>主人姓名：</p>
-      <input type="text" class="ownerName" />
-    </div>
+    <div class="outsideWrapper">
+      <div class="inputWrapper">
+        <p>主人姓名：</p>
+        <input type="text" class="ownerName" />
+      </div>
 
-    <div>
-      <p>寵物名字：</p>
-      <input type="text" class="petName" />
-    </div>
+      <div class="inputWrapper">
+        <p>寵物名字：</p>
+        <input type="text" class="petName" />
+      </div>
 
-    <div>
-      <p>聯絡電話：</p>
-      <input type="text" class="contactPhone" />
-    </div>
+      <div class="inputWrapper">
+        <p>聯絡電話：</p>
+        <input type="text" class="contactPhone" />
+      </div>
 
-    <div>
-      <p>Email：</p>
-      <input type="text" class="email" />
-    </div>
+      <div class="inputWrapper">
+        <p>Email：</p>
+        <input type="text" class="email" />
+      </div>
 
-    <div>
-      <p>Line ID：</p>
-      <input type="text" class="lineId" />
-    </div>
+      <div class="inputWrapper">
+        <p>Line ID：</p>
+        <input type="text" class="lineId" />
+      </div>
 
-    <div>
-      <p>遛狗地點:</p>
-      <select name="" id="" class="location">
-        <option value="迎風狗公園">迎風狗公園</option>
-        <option value="汪汪公園">汪汪公園</option>
-        <option value="河濱公園">河濱公園</option>
-      </select>
-    </div>
+      <div class="inputWrapper">
+        <p>遛狗地點:</p>
+        <select name="遛狗地點" id="" class="locationSelect">
+          <option value="中山公園">中山公園</option>
+          <option value="榮星花園">榮星花園</option>
+          <option value="民權公園">民權公園</option>
+          <option value="民生公園">民生公園</option>
+          <option value="華山狗公園">華山狗公園</option>
+          <option value="迎風狗公園">迎風狗公園</option>
+          <option value="彩虹河濱公園">彩虹河濱公園</option>
+          <option value="花博公園新生園區">花博公園新生園區</option>
+        </select>
+      </div>
 
-    <div>
-      <p>我們應該注意的事情：</p>
-      <input type="text" class="remind" />
-    </div>
+      <!-- Google Map  -->
+      <div id="map"></div>
 
-    <div>
-      <button class="sendBookingDetailBtn">送出資料</button>
-    </div>
+      <div class="inputWrapper remindWrapper">
+        <p>我們應該注意的事情：</p>
+        <input type="text" class="remind" />
+      </div>
 
+      <div>
+        <button class="sendBookingDetailBtn">送出資料</button>
+      </div>
+    </div>
     <script src="/JavaScript/BookingWalkingForm.js"></script>
   </body>
 </html>

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #3f3a3a;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+}
+
+.outsideWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: solid 1px #3f3a3a;
+  margin: 20px;
+  padding: 30px;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin: 12px 0;
+  width: 42%;
+}
+
+.locationSelect {
+  width: 142px;
+}
+
+.remindWrapper {
+  flex-direction: column;
+}
+
+.remind {
+  height: 100px;
+  width: 237%;
+  margin-top: 12px;
+}
