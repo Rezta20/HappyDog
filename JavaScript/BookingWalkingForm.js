@@ -5,6 +5,8 @@ const pet = document.querySelector(".petName");
 const phone = document.querySelector(".contactPhone");
 const email = document.querySelector(".email");
 const lineId = document.querySelector(".lineId");
+const bookingDate = document.querySelector(".bookingDate");
+const bookingTime = document.querySelector(".bookingTime");
 const walkingLocation = document.querySelector(".locationSelect");
 const remind = document.querySelector(".remind");
 
@@ -26,10 +28,14 @@ console.log(uid);
 console.log(data);
 console.log(bookingTimeData);
 
+// Render Time & date
+bookingDate.innerText = bookingTimeData.bookingDateStr;
+bookingTime.innerText = bookingTimeData.time;
+
+// Set Data To Firestore
 sendDataBtn.addEventListener("click", sendBookingDetail);
 
 function sendBookingDetail() {
-  // Set Data To Firestore
   db.collection("bookingday")
     .doc()
     .set({
@@ -42,7 +48,6 @@ function sendBookingDetail() {
       location: walkingLocation.value,
       remind: remind.value,
       bookingDayStr: bookingTimeData.bookingDateStr,
-      bookingDayEnd: bookingTimeData.bookingDateEnd,
       bookingtime: bookingTimeData.time,
     })
     .then(function () {
@@ -162,7 +167,7 @@ function initMap() {
   ];
 
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 25.05941137358773, lng: 121.55084545392427 },
+    center: { lat: 25.05786681303123, lng: 121.53818721912334 },
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: labelStyle,
@@ -180,6 +185,7 @@ function initMap() {
       );
     }
 
+    // Click markers popup infowindow
     google.maps.event.addListener(markers[l], "click", function () {
       for (let a = 0; a < position.length; a++) {
         infowindows[a].close();
@@ -190,9 +196,11 @@ function initMap() {
           `<img src="${position[l].image}" alt="${position[l].label}街景">` +
           `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
       );
+      walkingLocation.value = position[l].label;
       infowindows[l].open(map, markers[l]);
     });
 
+    // Selector value change map ,infowindow change
     walkingLocation.addEventListener("change", function () {
       if (walkingLocation.value === position[l].label) {
         for (let a = 0; a < position.length; a++) {

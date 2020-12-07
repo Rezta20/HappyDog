@@ -13,49 +13,76 @@ const customerHistoryWrapper = document.querySelector(
   ".customerHistoryWrapper"
 );
 
-// Create Element To Put Inside Data
-
-let petName = document.createElement("div");
-petName.classList.add("petName");
-customerHistoryWrapper.appendChild(petName);
-
-let contactPhone = document.createElement("div");
-contactPhone.classList.add("contactPhone");
-customerHistoryWrapper.appendChild(contactPhone);
-
-let email = document.createElement("div");
-email.classList.add("email");
-customerHistoryWrapper.appendChild(email);
-
-let lineId = document.createElement("div");
-lineId.classList.add("lineId");
-customerHistoryWrapper.appendChild(lineId);
-
-let walkingLocation = document.createElement("div");
-walkingLocation.classList.add("walkingLocation");
-customerHistoryWrapper.appendChild(walkingLocation);
-
-let remind = document.createElement("div");
-remind.classList.add("remind");
-customerHistoryWrapper.appendChild(remind);
-
 firestoreCollection
   .where("uid", "==", uid)
   .get()
   .then(function (doc) {
     doc.forEach(function (doc) {
-      // doc.data() is never undefined for query doc snapshots
-      //   console.log(doc.id, " => ", doc.data());
-      //   memberBookingHistoryData.push(doc.data());
       console.log(doc.data());
+      // Create Element To Put Inside Data
+      // Owner
+      let ownerWrapper = document.createElement("div");
+      ownerWrapper.classList.add("ownerWrapper");
+      customerHistoryWrapper.appendChild(ownerWrapper);
 
-      //   for (let z = 0; z < memberBookingHistoryData.length; z++) {
+      let ownerTitle = document.createElement("div");
+      ownerTitle.classList.add("ownerTitle");
+      ownerWrapper.appendChild(ownerTitle);
+      ownerTitle.innerHTML = "飼主姓名:";
+
       let ownerName = document.createElement("div");
       ownerName.classList.add("ownerName");
-      customerHistoryWrapper.appendChild(ownerName);
+      ownerWrapper.appendChild(ownerName);
       ownerName.innerHTML = doc.data().owner;
 
-      // petName.innerHTML = memberBookingHistoryData[z].pet;
-      //   }
+      // Pet
+      let petWrapper = document.createElement("div");
+      petWrapper.classList.add("petWrapper");
+      customerHistoryWrapper.appendChild(petWrapper);
+
+      let petTitle = document.createElement("div");
+      petTitle.classList.add("petTitle");
+      petWrapper.appendChild(petTitle);
+      petTitle.innerHTML = "寵物姓名:";
+
+      let petName = document.createElement("div");
+      petName.classList.add("petName");
+      petWrapper.appendChild(petName);
+      petName.innerHTML = doc.data().pet;
+
+      //Contact Phone
+      let contactPhoneWrapper = document.createElement("div");
+      contactPhoneWrapper.classList.add("contactPhoneWrapper");
+      customerHistoryWrapper.appendChild(contactPhoneWrapper);
+
+      let contactPhoneTitle = document.createElement("div");
+      contactPhoneTitle.classList.add("contactPhoneTitle");
+      contactPhoneWrapper.appendChild(contactPhoneTitle);
+      contactPhoneTitle.innerHTML = "聯絡電話:";
+
+      let contactPhone = document.createElement("div");
+      contactPhone.classList.add("contactPhone");
+      contactPhoneWrapper.appendChild(contactPhone);
+      contactPhone.innerHTML = doc.data().phone;
+
+      let email = document.createElement("div");
+      email.classList.add("email");
+      customerHistoryWrapper.appendChild(email);
+      email.innerHTML = doc.data().email;
+
+      let lineId = document.createElement("div");
+      lineId.classList.add("lineId");
+      customerHistoryWrapper.appendChild(lineId);
+      lineId.innerHTML = doc.data().Line;
+
+      let walkingLocation = document.createElement("div");
+      walkingLocation.classList.add("walkingLocation");
+      customerHistoryWrapper.appendChild(walkingLocation);
+      walkingLocation.innerHTML = doc.data().location;
+
+      let remind = document.createElement("div");
+      remind.classList.add("remind");
+      customerHistoryWrapper.appendChild(remind);
+      remind.innerHTML = doc.data().remind;
     });
   });

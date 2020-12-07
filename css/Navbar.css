@@ -1,4 +1,14 @@
-.navbar-logoLanguageLoginWrapper {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #3f3a3a;
+  position: relative;
+}
+.navbar-logoLoginWrapper {
   display: flex;
   justify-content: space-between;
   padding: 5px;
@@ -13,35 +23,7 @@
   height: 60px;
 }
 
-/* Language Toggle  */
-.navbar-languageToggleWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar-languageToggle {
-  margin: 0 5px;
-}
-
-.languageToogle-circle {
-  height: 22px;
-  width: 22px;
-  background-color: #fff;
-  border-radius: 50%;
-}
-
-.languageToggle-background {
-  background-color: #063f6f;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  height: 30px;
-  width: 55px;
-}
-
-/* Log In  */
+/* Navbar Log In  */
 .login-wrapper {
   display: flex;
 }
@@ -49,6 +31,7 @@
 .login-A {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .login-img {
@@ -56,6 +39,10 @@
 }
 
 /* Navbar Element  */
+.navbar-A {
+  text-decoration: none;
+}
+
 .navbar-iconWrapper {
   display: flex;
   justify-content: space-around;
@@ -82,11 +69,11 @@
 
 /* Footer */
 .footer-background {
-  position: relative;
   bottom: 0;
   background-color: #fdc98b;
   height: 100px;
   width: 100%;
+  position: absolute;
 }
 
 /* RWD  */

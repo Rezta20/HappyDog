@@ -3,16 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/Navbar.css" />
-    <link rel="stylesheet" href="/css/Login.css" />
-
     <!-- Google Font  -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
       rel="stylesheet"
     />
+    <!-- Line Pic Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap"
@@ -23,16 +20,20 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/Css/navbar.css" />
+    <link rel="stylesheet" href="/Css/Login/Login.css" />
+
     <!-- Firebase CDN (Google JavaScript 函式庫) -->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
-    <title>NavBar</title>
+    <title>Happy Dog</title>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar-ForMobie">
       <!-- Logo -->
-      <div class="navbar-logoLanguageLoginWrapper">
+      <div class="navbar-logoLoginWrapper">
         <div class="navbar-logoWrapper">
           <a class="logo-A" href="">
             <img
@@ -42,59 +43,46 @@
             />
           </a>
         </div>
-        <!-- Language Toggle -->
-        <div class="navbar-languageToggleWrapper">
-          <p>中文</p>
-          <div class="navbar-languageToggle">
-            <div class="languageToggle-background">
-              <div class="languageToogle-circle"></div>
-            </div>
-          </div>
-          <p>EN</p>
-        </div>
-        <!-- Log In  -->
+
+        <!-- Navbar Log In  -->
         <div class="login-wrapper">
           <a class="login-A" href="">
             <img class="login-img" src="/img/Login-02.png" alt="login-img" />
             <div class="navbar-text">登入</div>
           </a>
         </div>
-        <div class="login-wrapper">
-          <a class="login-A" href="">
-            <img
-              class="login-img"
-              src="/img/LogInDogHead.png"
-              alt="login-img"
-            />
+        <!-- <div class="login-wrapper">
+          <a class="login-A toMemberpage" href="">
             <div class="navbar-text">登出</div>
           </a>
-        </div>
+        </div> -->
       </div>
+
       <!-- Navbar Elements -->
       <div class="navbar-iconWrapper">
         <div class="navbar-element">
-          <a class="navbar-A" href="">
+          <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
             <img src="/img/Navbar-Training-06.png" alt="" />
 
             <div class="navbar-text">預約散步</div>
           </a>
         </div>
         <div class="navbar-element">
-          <a class="navbar-A" href="">
+          <a class="navbar-A" href="/Html/Training/training.Html">
             <img src="/img/Navbar-Training-06.png" alt="" />
 
             <div class="navbar-text">才藝學習</div>
           </a>
         </div>
         <div class="navbar-element">
-          <a class="navbar-A" href="">
+          <a class="navbar-A" href="/Html/petFoodie.html">
             <img src="/img/Navbar-Training-06.png" alt="" />
 
             <div class="navbar-text">寵食分享</div>
           </a>
         </div>
         <div class="navbar-element">
-          <a class="navbar-A" href="">
+          <a class="navbar-A" href="/Html/Contact/Contact.html">
             <img src="/img/Navbar-Training-06.png" alt="" />
 
             <div class="navbar-text">聯絡我們</div>
@@ -103,6 +91,7 @@
       </div>
     </nav>
 
+    <!-- Content -->
     <!-- Login Card  -->
     <section>
       <div
@@ -115,7 +104,7 @@
           <input
             type="text"
             class="mobileLogin-id loginCard-input"
-            placeholder="帳號/電子信箱"
+            placeholder="電子信箱"
             id="loginEmail"
           />
           <input
@@ -127,21 +116,21 @@
 
           <div class="loginCard-memberWrapper">
             <div class="loginCard-memberWrapperSource">
-              <a href="http://www.google.com">
+              <a href="http://www.google.com" class="loginImg-A">
                 <div class="loginCard-member FaceBook">
                   <i class="fab fa-facebook-f fa-2x loginCard-sourceImg"></i>
                 </div>
               </a>
             </div>
             <div class="loginCard-memberWrapperSource">
-              <a href="">
+              <a href="" class="loginImg-A">
                 <div class="loginCard-member Google">
                   <i class="fab fa-google fa-2x loginCard-sourceImg"></i>
                 </div>
               </a>
             </div>
             <div class="loginCard-memberWrapperSource">
-              <a class="Line-A" href="">
+              <a href="" class="loginImg-A">
                 <div class="loginCard-member">
                   <div class="Line">L</div>
                 </div>
@@ -160,7 +149,6 @@
       </div>
 
       <!-- Sign In Card  -->
-
       <div
         id="signInCard-Mobile"
         class="login-CardWrapperMobile loginCardForMobile"
@@ -183,21 +171,21 @@
 
           <div class="loginCard-memberWrapper">
             <div class="loginCard-memberWrapperSource">
-              <a href="http://www.google.com">
+              <a href="http://www.google.com" class="loginImg-A">
                 <div class="loginCard-member FaceBook">
                   <i class="fab fa-facebook-f fa-2x loginCard-sourceImg"></i>
                 </div>
               </a>
             </div>
             <div class="loginCard-memberWrapperSource">
-              <a href="">
+              <a href="" class="loginImg-A">
                 <div class="loginCard-member Google">
                   <i class="fab fa-google fa-2x loginCard-sourceImg"></i>
                 </div>
               </a>
             </div>
             <div class="loginCard-memberWrapperSource">
-              <a class="Line-A" href="">
+              <a href="" class="loginImg-A">
                 <div class="loginCard-member">
                   <div class="Line">L</div>
                 </div>
@@ -215,11 +203,13 @@
         </div>
       </div>
     </section>
+
     <!-- Footer -->
     <footer>
       <div class="footer-background"></div>
     </footer>
-    <script src="/JavaScript/Login.js"></script>
+    <!-- Script  -->
+    <script src="/JavaScript/login.js"></script>
 
     <!-- FrieBase  -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->

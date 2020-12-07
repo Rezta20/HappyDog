@@ -24,45 +24,6 @@ function changeToLogin() {
   logInCard.style.opacity = "1";
 }
 
-// database.ref("/").set({ a: 123 });
-// database.ref("/r1").set({ a: 123 });
-// _root.update({ a: 789 });
-
-// database.ref("/").set("");
-// database.ref("/").push(123);
-// database.ref("/").push(456);
-// database.ref("/").push(789);
-
-// // database.ref('/c').remove();
-
-// // 讀取資料
-// database
-//   .ref("/")
-//   .once("value")
-//   .then((result) => {
-//     console.log(result.val());
-//   });
-
-// // Firebase Sign Up
-// function signUpWithEmailPasswoerd() {
-//   var email = "test@example.com";
-//   var password = "hunter2";
-//   // [START auth_signup_password]
-//   firebase
-//     .auth()
-//     .createUserWithEmailAndPassword(email, password)
-//     .then((user) => {
-//       // Signed in
-//       // ...
-//     })
-//     .catch((error) => {
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//       // ..
-//     });
-//   // [END auth_signup_password]
-// }
-
 // FireStore Set up
 firebase.initializeApp({
   apiKey: "apiKey",
@@ -77,13 +38,12 @@ const database = firebase.database();
 // Firebase Sign Up
 // 綁定註冊按鈕的點擊事件
 signUpBtn.addEventListener("click", () => {
-  // 點擊註冊按鈕時，紀錄使用者輸入的帳號密碼
   let user = {
     email: signUpemail.value,
     pwd: signUppwd.value,
   };
 
-  // 透過 auth().createUserWithEmailAndPassword 建立使用者
+  // Through auth().createUserWithEmailAndPassword build user
   firebase
     .auth()
     .createUserWithEmailAndPassword(user.email, user.pwd)
@@ -95,7 +55,7 @@ signUpBtn.addEventListener("click", () => {
         signUpPwd.value = "";
       }, 2000);
 
-      // 取得註冊當下的時間
+      // Get sign up time
       let date = new Date();
       let now = date.getTime();
 
@@ -107,13 +67,10 @@ signUpBtn.addEventListener("click", () => {
           email: user.email,
         })
         .then(() => {
-          // 儲存成功後顯示訊息
-
           console.log("User created successfully");
         });
     })
     .catch((err) => {
-      // 註冊失敗時顯示錯誤訊息
       if (
         err.message == "The email address is already in use by another account."
       ) {
@@ -147,38 +104,44 @@ logInBtn.addEventListener("click", (event) => {
         console.log(user);
         console.log(user.uid);
         sessionStorage.setItem("user", JSON.stringify(user.uid));
-        // location.href = "/html/homepage.html";
+        location.href = "/Html/homepage.html";
       } else {
         console.log("no user is signed in");
       }
     })
-    .catch((error) => {
-      console.log(error.message);
+    .catch((err) => {
+      console.log(err.message);
+      if (
+        err.message == "The email address is already in use by another account."
+      ) {
+        alert("這個信箱已辦過帳號囉！");
+      } else if (
+        err.message ==
+        "The password is invalid or the user does not have a password."
+      ) {
+        alert("密碼不正確或未輸入，請再輸入其他密碼");
+      } else if (
+        err.message == "The password must be 6 characters long or more."
+      ) {
+        alert("密碼需要為6位數或是更長");
+      } else if (err.message == "The email address is badly formatted.") {
+        alert("信箱格式請輸入XXXX@xxxxx.xxx的格式");
+      }
     });
 });
-
-// 監聽的時候 改變登入卡片的狀態
-// 登出後恢復原狀
 
 // Firebase Log In 監聽
 window.addEventListener("load", function () {
   firebase.auth().onAuthStateChanged((user) => {
-    console.log("hello there");
-    console.log(user);
     if (user) {
       console.log("sign in");
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
       console.log(user);
-      // logInCard.style.display = "none";
-      // ...
     } else {
-      // User is signed out
-      // ...
+      console.log("user is sign out");
+      console.log(user);
     }
   });
 });
-
 // var btnLogOut = document.getElementById('btnLogOut');
 // btnLogOut.onclick = function() {
 //   firebase.auth().signOut().then(function() {

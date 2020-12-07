@@ -1,0 +1,174 @@
+body {
+  min-height: 100vh;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 25px 25px 0 25px;
+  padding-bottom: 100px;
+}
+
+/* who */
+.whoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.whoImgWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+
+.whoImg {
+  width: 85%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.whoTextWrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.whoTextWrapper p {
+  width: 80%;
+  margin: 14px 0;
+  font-size: 20px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #fdc98b;
+}
+
+.whoTextTitle {
+  width: 100%;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 20px 80px;
+}
+
+/* Description */
+.descriptionWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+  margin: 20px;
+}
+
+.descriptionLeft,
+.descriptionRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.descriptionLeftTitle,
+.descriptionRightTitle {
+  margin: 10px;
+  font-size: 24px;
+}
+
+.descriptionLeft > p,
+.descriptionRight > p {
+  margin: 4px 0;
+  font-size: 18px;
+}
+
+/* Link to bookingWalkingCalendar */
+
+.linkToBookingWalkingCalendarWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  margin: 25px 0;
+}
+
+.linkToBookingWalkingCalendarWrapper img {
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.toCalendarRight {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(253, 201, 139, 0.7);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: auto;
+  width: 30%;
+}
+
+.calendarText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.calendarTextTitle {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.calendarText p {
+  font-size: 18px;
+  margin: 4px 0;
+}
+
+.calendarTextLine {
+  margin: 15px 0;
+  width: 90%;
+  border-bottom: dashed 2px #fff;
+}
+
+.toBookingCalendarBtn {
+  margin: 18px;
+  font-size: 16px;
+  padding: 5px 12px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #d2e8fd;
+  box-shadow: 1px 3px #063f6f;
+  text-decoration: none;
+}
+
+/* Location  */
+
+.locationOutsideWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-top: 15px;
+}
+
+.locationDescription {
+  margin: 30px;
+  font-size: 24px;
+}
+
+.locationMapRow {
+  display: flex;
+}
+
+.locationWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}

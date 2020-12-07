@@ -27,11 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     selectable: true,
 
-    selectAllow: function (info) {
+    selectAllow: (info) => {
       let now = new Date();
       let selected = info.start;
-      if (selected < now) return false;
-      else return true;
+      if (selected < now) {
+        return false;
+      } else if (
+        selected > now &&
+        info.start.getMonth() == info.end.getMonth() &&
+        info.start.getDate() == info.end.getDate() - 1
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
     select: function (info) {
@@ -58,6 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
         sendDataBtn.style.opacity = "1";
       }
     },
+
+    // events:
+    //   {
+    //     start:clickedDate
+    //   }
 
     height: "auto",
   });

@@ -1,8 +1,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Css Link  -->
-    <link rel="stylesheet" href="/css/booking/Calender.css" />
+    <link rel="stylesheet" href="/Css/navbar.css" />
+    <link rel="stylesheet" href="/Css/Booking/calendar.css" />
     <!-- Full Calendar Link  -->
     <link
       href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
@@ -12,9 +20,73 @@
   </head>
 
   <body>
+    <!-- Navbar -->
+    <nav class="navbar-ForMobie">
+      <!-- Logo -->
+      <div class="navbar-logoLoginWrapper">
+        <div class="navbar-logoWrapper">
+          <a class="logo-A" href="">
+            <img
+              class="logo"
+              src="/img/happy Dog Design-04.png"
+              alt="happyDog-logo"
+            />
+          </a>
+        </div>
+
+        <!-- Navbar Log In  -->
+        <div class="login-wrapper">
+          汪，您目前是登入中
+          <!-- <a class="login-A" href="">
+            <img class="login-img" src="/img/Login-02.png" alt="login-img" />
+            <div class="navbar-text">登入</div>
+          </a> -->
+        </div>
+        <!-- <div class="login-wrapper">
+            <a class="login-A toMemberpage" href="">
+              <div class="navbar-text">登出</div>
+            </a>
+          </div> -->
+      </div>
+
+      <!-- Navbar Elements -->
+      <div class="navbar-iconWrapper">
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
+            <img src="/img/dog--v2.png" alt="" />
+
+            <div class="navbar-text">預約散步</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Training/training.Html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">才藝學習</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/petFoodie.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">寵食分享</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Contact/Contact.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">聯絡我們</div>
+          </a>
+        </div>
+      </div>
+    </nav>
+
     <!-- Full Calender  -->
-    <button class="monthBtn">month</button>
-    <div id="calendar"></div>
+    <div class="calendarWrapper">
+      <button class="monthBtn">month</button>
+      <div id="calendar"></div>
+    </div>
 
     <!-- Description  -->
     <div class="bookingDescriptionMonthViewWrapper">
@@ -22,8 +94,8 @@
     </div>
 
     <div class="bookingDescriptionWeekViewWrapper">
+      <p class="viewDescription">❇ 請點選單日</p>
       <p class="viewDescription">❇ 預約制以一週為單位</p>
-      <p class="viewDescription">❇ 請點選單日或是拖曳選取多日</p>
       <p class="viewDescription">❇ 預約時間皆為固定如有其他問題歡迎來電洽詢</p>
     </div>
 
@@ -60,6 +132,11 @@
       <button class="sendBookingDatedataBtn">下一頁</button>
     </div>
 
-    <script src="/JavaScript/Calender.js"></script>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-background"></div>
+    </footer>
+    <!-- Script  -->
+    <script src="/JavaScript/calendar.js"></script>
   </body>
 </html>

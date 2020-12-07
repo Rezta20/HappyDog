@@ -6,75 +6,184 @@
     <!-- FireBase  -->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
     <!-- Google Map  -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATuxkyj-151uOTdKYdj_2IwjYEWdnj1SU&callback=initMap"
       async
       defer
     ></script>
-    <!-- FontAwesome -->
+
+    <!-- Font Awesome  -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
     <link rel="stylesheet" href="" />
     <!-- CSS -->
+    <link rel="stylesheet" href="/Css/navbar.css" />
     <link rel="stylesheet" href="/css/booking/BookingWalkingForm.css" />
-    <title>Document</title>
+    <title>Happy Dog</title>
   </head>
   <body>
-    <div class="outsideWrapper">
-      <div class="inputWrapper">
-        <p>主人姓名：</p>
-        <input type="text" class="ownerName" />
+    <!-- Navbar -->
+    <nav class="navbar-ForMobie">
+      <!-- Logo -->
+      <div class="navbar-logoLoginWrapper">
+        <div class="navbar-logoWrapper">
+          <a class="logo-A" href="">
+            <img
+              class="logo"
+              src="/img/happy Dog Design-04.png"
+              alt="happyDog-logo"
+            />
+          </a>
+        </div>
+
+        <!-- Navbar Log In  -->
+        <div class="login-wrapper">
+          汪，您目前是登入中
+          <!-- <a class="login-A" href="">
+            <img class="login-img" src="/img/Login-02.png" alt="login-img" />
+            <div class="navbar-text">登入</div>
+          </a> -->
+        </div>
+        <!-- <div class="login-wrapper">
+        <a class="login-A toMemberpage" href="">
+          <div class="navbar-text">登出</div>
+        </a>
+      </div> -->
       </div>
 
-      <div class="inputWrapper">
-        <p>寵物名字：</p>
-        <input type="text" class="petName" />
+      <!-- Navbar Elements -->
+      <div class="navbar-iconWrapper">
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/booking/bookingWalking.html">
+            <img src="/img/dog--v2.png" alt="" />
+
+            <div class="navbar-text">預約散步</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Training/training.Html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">才藝學習</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/petFoodie.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">寵食分享</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Contact/Contact.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">聯絡我們</div>
+          </a>
+        </div>
       </div>
+    </nav>
 
-      <div class="inputWrapper">
-        <p>聯絡電話：</p>
-        <input type="text" class="contactPhone" />
-      </div>
+    <div class="contentWrapper">
+      <!-- Content  -->
+      <a href="/html/Booking/calendar.html" class="back-A">
+        <div class="backWrapper">
+          <i class="far fa-arrow-alt-circle-left fa-2x"></i>
+          <div class="backContent">回上一頁</div>
+        </div>
+      </a>
 
-      <div class="inputWrapper">
-        <p>Email：</p>
-        <input type="text" class="email" />
-      </div>
+      <div class="outsideFormWrapperFlex">
+        <!-- Google Map  -->
+        <div id="map"></div>
 
-      <div class="inputWrapper">
-        <p>Line ID：</p>
-        <input type="text" class="lineId" />
-      </div>
+        <!-- Form  -->
+        <div class="outsideFormWrapper">
+          <div class="inputWrapper">
+            <p>飼主姓名：</p>
+            <input type="text" class="ownerName" placeholder="您的大名" />
+          </div>
 
-      <div class="inputWrapper">
-        <p>遛狗地點:</p>
-        <select name="遛狗地點" id="" class="locationSelect">
-          <option value="中山公園">中山公園</option>
-          <option value="榮星花園">榮星花園</option>
-          <option value="民權公園">民權公園</option>
-          <option value="民生公園">民生公園</option>
-          <option value="華山狗公園">華山狗公園</option>
-          <option value="迎風狗公園">迎風狗公園</option>
-          <option value="彩虹河濱公園">彩虹河濱公園</option>
-          <option value="花博公園新生園區">花博公園新生園區</option>
-        </select>
-      </div>
+          <div class="inputWrapper">
+            <p>寵物名字：</p>
+            <input type="text" class="petName" placeholder="您家寶貝的名字" />
+          </div>
 
-      <!-- Google Map  -->
-      <div id="map"></div>
+          <div class="inputWrapper">
+            <p>聯絡電話：</p>
+            <input
+              type="text"
+              class="contactPhone"
+              placeholder="手機號碼/市話"
+            />
+          </div>
 
-      <div class="inputWrapper remindWrapper">
-        <p>我們應該注意的事情：</p>
-        <input type="text" class="remind" />
-      </div>
+          <div class="inputWrapper">
+            <p>Email：</p>
+            <input type="text" class="email" placeholder="電子信箱" />
+          </div>
 
-      <div>
-        <button class="sendBookingDetailBtn">送出資料</button>
+          <div class="inputWrapper">
+            <p>Line ID：</p>
+            <input type="text" class="lineId" placeholder="聯絡上使用" />
+          </div>
+
+          <div class="inputWrapper">
+            <p>預約日期：</p>
+            <div class="bookingDate"></div>
+          </div>
+
+          <div class="inputWrapper">
+            <p>預約時間：</p>
+            <div class="bookingTime"></div>
+          </div>
+
+          <div class="inputWrapper">
+            <p>遛狗地點:</p>
+            <select name="遛狗地點" id="" class="locationSelect">
+              <option value="中山公園">中山公園</option>
+              <option value="榮星花園">榮星花園</option>
+              <option value="民權公園">民權公園</option>
+              <option value="民生公園">民生公園</option>
+              <option value="華山狗公園">華山狗公園</option>
+              <option value="迎風狗公園">迎風狗公園</option>
+              <option value="彩虹河濱公園">彩虹河濱公園</option>
+              <option value="花博公園新生園區">花博公園新生園區</option>
+            </select>
+          </div>
+
+          <div class="inputWrapper remindWrapper">
+            <p>我們應該注意的事情：</p>
+            <textarea
+              type="text"
+              class="remind"
+              rows="4"
+              cols="50"
+              placeholder="這會讓我們更了解您家的寶貝唷"
+            ></textarea>
+          </div>
+
+          <div class="sendBookingDetailBtnWrapper">
+            <button class="sendBookingDetailBtn">送出資料</button>
+          </div>
+        </div>
       </div>
     </div>
-    <script src="/JavaScript/BookingWalkingForm.js"></script>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-background"></div>
+    </footer>
+
+    <!-- Script -->
+    <script src="/JavaScript/bookingWalkingForm.js"></script>
   </body>
 </html>
