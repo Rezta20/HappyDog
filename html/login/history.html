@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Google Font  -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -10,10 +11,12 @@
       rel="stylesheet"
     />
 
-    <!-- Css Link  -->
+    <!-- CSS -->
     <link rel="stylesheet" href="/Css/navbar.css" />
-    <link rel="stylesheet" href="/Css/Booking/bookingThankyou.css" />
-    <title>Happy Dog</title>
+    <link rel="stylesheet" href="/css/Login/member.css" />
+
+    <!-- Firebase CDN (Google JavaScript 函式庫) -->
+    <title>Document</title>
   </head>
   <body>
     <!-- Navbar -->
@@ -32,23 +35,22 @@
 
         <!-- Navbar Log In  -->
         <div class="login-wrapper">
-          汪，您目前是登入中
-          <!-- <a class="login-A" href="">
+          <a class="login-A" href="">
             <img class="login-img" src="/img/Login-02.png" alt="login-img" />
             <div class="navbar-text">登入</div>
-          </a> -->
+          </a>
         </div>
         <!-- <div class="login-wrapper">
-            <a class="login-A toMemberpage" href="">
-              <div class="navbar-text">登出</div>
-            </a>
-          </div> -->
+    <a class="login-A toMemberpage" href="">
+      <div class="navbar-text">登出</div>
+    </a>
+  </div> -->
       </div>
 
       <!-- Navbar Elements -->
       <div class="navbar-iconWrapper">
         <div class="navbar-element">
-          <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
+          <a class="navbar-A" href="/Html/booking/bookingWalking.html">
             <img src="/img/dog--v2.png" alt="" />
 
             <div class="navbar-text">預約散步</div>
@@ -77,14 +79,44 @@
         </div>
       </div>
     </nav>
+    <!-- Content  -->
+    <!-- JavaScript active element  -->
+    <div class="customerHistoryWrapper"></div>
 
-    已收到您的預約訂單，感謝您的預約 如需查看訂單記錄，請至
-
-    <a href="/html/login/history.html"><button>會員訂單</button></a>
-    查詢
     <!-- Footer -->
     <footer>
       <div class="footer-background"></div>
     </footer>
+
+    <!-- FrieBase  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBL9Tmhwb15yAohPn_DLoAFUgVJoy76bnk",
+        authDomain: "happydog-82c2f.firebaseapp.com",
+        databaseURL: "https://happydog-82c2f.firebaseio.com",
+        projectId: "happydog-82c2f",
+        storageBucket: "happydog-82c2f.appspot.com",
+        messagingSenderId: "1070136598571",
+        appId: "1:1070136598571:web:0de4a08e0493465e984a6e",
+        measurementId: "G-N3V1TLZNZW",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="/JavaScript/Member.js"></script>
   </body>
 </html>

@@ -5,8 +5,10 @@
 
 body {
   font-family: "Noto Sans TC", sans-serif;
-  color: #3f3a3a;
+  color: rgb(6, 63, 111, 1);
   position: relative;
+  background-image: url(/Img/background.png);
+  background-size: contain;
 }
 .navbar-logoLoginWrapper {
   display: flex;
@@ -70,8 +72,8 @@ body {
 /* Footer */
 .footer-background {
   bottom: 0;
-  background-color: #fdc98b;
-  height: 100px;
+  background-color: rgb(6, 63, 111, 1);
+  height: 50px;
   width: 100%;
   position: absolute;
 }
