@@ -60,22 +60,22 @@ function sendBookingDetail() {
     });
 }
 
-// Firebase Log In 監聽
-window.addEventListener("load", function () {
-  firebase.auth().onAuthStateChanged((user) => {
-    console.log("hello there");
-    console.log(user);
-    if (user) {
-      console.log("sign in");
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      console.log(user);
-    } else {
-      console.log("nothing");
-      // User is signed out
-    }
-  });
-});
+// // Firebase Log In 監聽
+// window.addEventListener("load", function () {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     console.log("hello there");
+//     console.log(user);
+//     if (user) {
+//       console.log("sign in");
+//       // User is signed in, see docs for a list of available properties
+//       // https://firebase.google.com/docs/reference/js/firebase.User
+//       console.log(user);
+//     } else {
+//       console.log("nothing");
+//       // User is signed out
+//     }
+//   });
+// });
 
 // Google Map
 let map;

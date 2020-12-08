@@ -130,23 +130,15 @@ logInBtn.addEventListener("click", (event) => {
     });
 });
 
-// Firebase Log In 監聽
-window.addEventListener("load", function () {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log("sign in");
-      console.log(user);
-    } else {
-      console.log("user is sign out");
-      console.log(user);
-    }
-  });
-});
-// var btnLogOut = document.getElementById('btnLogOut');
-// btnLogOut.onclick = function() {
-//   firebase.auth().signOut().then(function() {
-//     alert('您被逐出了');
-//     var user = firebase.auth().currentUser;
-//     console.log(user)
-//   })
-// }
+// // Firebase Log In 監聽
+// window.addEventListener("load", function () {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       console.log("sign in");
+//       console.log(user);
+//     } else {
+//       console.log("user is sign out");
+//       console.log(user);
+//     }
+//   });
+// });

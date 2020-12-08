@@ -1,4 +1,4 @@
-// firebase.initializ
+// Firebase firestore initializ
 const db = firebase.firestore();
 const firestoreCollection = db.collection("bookingday");
 
@@ -6,8 +6,6 @@ const firestoreCollection = db.collection("bookingday");
 const user = sessionStorage.getItem("user");
 const uid = JSON.parse(user);
 console.log(uid);
-
-let memberBookingHistoryData = [];
 
 const customerHistoryWrapper = document.querySelector(
   ".customerHistoryWrapper"
@@ -19,6 +17,7 @@ firestoreCollection
   .then(function (doc) {
     doc.forEach(function (doc) {
       console.log(doc.data());
+
       // Create Element To Put Inside Data
       // Owner
       let ownerWrapper = document.createElement("div");
@@ -64,6 +63,16 @@ firestoreCollection
       contactPhone.classList.add("contactPhone");
       contactPhoneWrapper.appendChild(contactPhone);
       contactPhone.innerHTML = doc.data().phone;
+
+      // Email
+      let emailWrapper = document.createElement("div");
+      emailWrapper.classList.add("emailWrapper");
+      customerHistoryWrapper.appendChild(emailWrapper);
+
+      let contactPhoneTitle = document.createElement("div");
+      contactPhoneTitle.classList.add("contactPhoneTitle");
+      emailWrapper.appendChild(contactPhoneTitle);
+      contactPhoneTitle.innerHTML = "聯絡電話:";
 
       let email = document.createElement("div");
       email.classList.add("email");
