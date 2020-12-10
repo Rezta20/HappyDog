@@ -3,6 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+
     <!-- React  -->
     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
     <!-- React DOM -->
@@ -10,71 +23,215 @@
     <!-- JSX Babel -->
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="/Css/navbar.css" />
+    <link rel="stylesheet" href="/Css/Traininng/training.css" />
+
     <title>Happy Dog</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Navbar -->
+    <nav class="navbar-ForMobie">
+      <!-- Logo -->
+      <div class="navbar-logoLoginWrapper">
+        <div class="navbar-logoWrapper">
+          <a class="logo-A" href="">
+            <img
+              class="logo"
+              src="/img/happy Dog Design-04.png"
+              alt="happyDog-logo"
+            />
+          </a>
+        </div>
+
+        <!-- Navbar Log In  -->
+        <div class="login-wrapper">
+          <a class="login-A" href="">
+            <img class="login-img" src="/img/Login-02.png" alt="login-img" />
+            <div class="navbar-text">登入</div>
+          </a>
+        </div>
+        <!-- <div class="login-wrapper">
+            <a class="login-A toMemberpage" href="">
+              <div class="navbar-text">登出</div>
+            </a>
+          </div> -->
+      </div>
+
+      <!-- Navbar Elements -->
+      <div class="navbar-iconWrapper">
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">預約散步</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Training/training.Html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">才藝學習</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/petFoodie.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">寵食分享</div>
+          </a>
+        </div>
+        <div class="navbar-element">
+          <a class="navbar-A" href="/Html/Contact/Contact.html">
+            <img src="/img/Navbar-Training-06.png" alt="" />
+
+            <div class="navbar-text">聯絡我們</div>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="rootWrapper">
+      <div id="root"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-background"></div>
+    </footer>
 
     <script type="text/babel">
-      //   function Welcome(props) {
-      //     return <h1> Hello,{props.name} </h1>;
+      function StarDark(props) {
+        console.log(props.starDark);
+        // <i className="fas fa-star"></i>
+        const star = [];
+        for (let i = 0; i < props.starDark; i++) {
+          star.push(<i className="fas fa-star"></i>);
+        }
 
-      //     const element = <Welcome name="Sara" />;
-      //     ReactDOM.render(element, document.getElementById("root"));
-      //   }
+        return <div>{star}</div>;
+      }
 
-      //   const rootElement = document.querySelector("#root");
+      function StarLight(props) {
+        console.log(props.starLight);
+        const star = [];
+        for (let i = 0; i < props.starLight; i++) {
+          star.push(<i className="far fa-star"></i>);
+        }
+        return <div>{star}</div>;
+      }
 
-      //   const Content = (props) => (
-      //     <div className="Content">{props.children}</div>
-      //   );
-
-      //   const element = (
-      //     <div className="container">
-      //       <Content>
-      //         Hello World
-      //         <Content> GoodBye World</Content>
-      //         <span> Hey yo could you see me </span>
-      //       </Content>
-      //     </div>
-      //   );
-
-      //   Pure JavaScript
-
-      //   const element = document.createElement("div");
-      //   element.textContent = "Hello World";
-      //   element.className = "container";
-      //   rootElement.append(element);
-
-      // React DOM
-
-      //   const element = React.createElement(
-      //     "div",
-      //     { className: "container" },
-      //     "Hello World"
-      //   );
-
-      //   JSX
-
-      //   const element = <div className="container"> Hello World</div>;
-
-      function Comment(props) {
+      function Card(props) {
         return (
-          <div className="Comment">
-            <div className="UserInfo">
-              <img
-                className="Avatar"
-                src={props.author.avatarUrl}
-                alt={props.author.name}
-              />
-              <div className="UserInfo-name">{props.author.name}</div>
+          <div className="cardWrapper">
+            <img
+              className="traingImg"
+              src={props.traingImgUrl}
+              alt={props.trainingImgAlt}
+            />
+            <div className="titleStarWrapper">
+              <div className="title">{props.title}</div>
+              <div className="star">
+                <StarDark starDark={props.starDark} />
+                <StarLight starLight={props.starLight} />
+              </div>
             </div>
-            <div className="Comment-text">{props.text}</div>
-            <div className="Comment-date">{formatDate(props.date)}</div>
+            <div className="cardContent">{props.cardContent}</div>
+            <button className="moreBtn">了解更多</button>
           </div>
         );
       }
-      ReactDOM.render(Comment, document.getElementById("root"));
+
+      function CardGroup(props) {
+        const data = [
+          {
+            imgUrl: "../../Img/training1.JPG",
+            imgAlt: "福星頂草莓",
+          },
+        ];
+        const cards = [];
+        return (
+          <div className="cardGroupWrapper">
+            <Card
+              traingImgUrl={"../../Img/training1.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：頂草莓"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+              starDark={2}
+              starLight={1}
+            />
+            <Card
+              traingImgUrl={"../../Img/training2.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：裝酷"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training3.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：頂草莓"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training4.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：等等"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training5.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：賣萌"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training6.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：坐好"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training7.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：頂草莓"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training8.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：頂草莓"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+            <Card
+              traingImgUrl={"../../Img/training1.JPG"}
+              trainingImgAlt={"福星頂草莓"}
+              title={"才藝：頂草莓"}
+              cardContent={
+                "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來"
+              }
+            />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<CardGroup />, document.getElementById("root"));
     </script>
   </body>
 </html>

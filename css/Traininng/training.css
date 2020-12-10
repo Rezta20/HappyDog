@@ -1,0 +1,58 @@
+body {
+  height: 250vh;
+}
+
+.rootWrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardWrapper {
+  border: solid 1px;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 24%;
+}
+
+.traingImg {
+  width: 80%;
+  height: auto;
+  margin: 12px auto 3px;
+}
+
+.titleStarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: 5px auto;
+}
+
+.title {
+  width: 68%;
+  font-size: 20px;
+}
+
+.star {
+  text-align: left;
+  width: 32%;
+}
+
+.cardContent {
+  width: 78%;
+  margin: 5px auto;
+}
+.moreBtn {
+  width: 100px;
+  margin: 5px auto 10px;
+}
+
+.cardGroupWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

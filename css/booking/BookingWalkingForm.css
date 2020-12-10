@@ -100,6 +100,7 @@ input {
 }
 
 .sendBookingDetailBtn {
+  cursor: pointer;
   margin: 10px;
   font-size: 16px;
   padding: 5px 12px;

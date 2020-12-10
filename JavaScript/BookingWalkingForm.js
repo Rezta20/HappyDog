@@ -36,6 +36,11 @@ bookingTime.innerText = bookingTimeData.time;
 sendDataBtn.addEventListener("click", sendBookingDetail);
 
 function sendBookingDetail() {
+  sendDataBtn.disabled = true;
+  sendDataBtn.innerText = "資料上傳中";
+  sendDataBtn.style.backgroundColor = "#000";
+  sendDataBtn.style.color = "#fff";
+
   db.collection("bookingday")
     .add({
       uid: uid,
@@ -50,6 +55,7 @@ function sendBookingDetail() {
       bookingtime: bookingTimeData.time,
     })
     .then(function (docRef) {
+      // clicked = false;
       console.log("Document successfully written!");
       console.log(docRef.id);
 
@@ -63,8 +69,19 @@ function sendBookingDetail() {
       fetch(
         `https://us-central1-happydog-82c2f.cloudfunctions.net/emailSender?${queryStringParams.toString()}`
       ).then(function () {
+        owner.value = "";
+        pet.value = "";
+        phone.value = "";
+        email.value = "";
+        lineId.value = "";
+        walkingLocation.value = "";
+        remind.value = "";
+        bookingTimeData.bookingDateStr = "";
+        bookingTimeData.time = "";
+
         // Jump to Thankyou page
         location.href = "/html/booking/BookingThankYou.html";
+        sendDataBtn.disabled = false;
       });
     })
     .catch(function (error) {
