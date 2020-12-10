@@ -11,6 +11,8 @@ const customerHistoryWrapper = document.querySelector(
   ".customerHistoryWrapper"
 );
 
+
+// Get Firebase collection data 
 firestoreCollection
   .where("uid", "==", uid)
   .get()

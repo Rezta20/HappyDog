@@ -37,8 +37,7 @@ sendDataBtn.addEventListener("click", sendBookingDetail);
 
 function sendBookingDetail() {
   db.collection("bookingday")
-    .doc()
-    .set({
+    .add({
       uid: uid,
       owner: owner.value,
       pet: pet.value,
@@ -50,10 +49,23 @@ function sendBookingDetail() {
       bookingDayStr: bookingTimeData.bookingDateStr,
       bookingtime: bookingTimeData.time,
     })
-    .then(function () {
+    .then(function (docRef) {
       console.log("Document successfully written!");
-      // Jump to Thankyou page
-      location.href = "/html/booking/BookingThankYou.html";
+      console.log(docRef.id);
+
+      // Get location URL
+      const queryStringParams = new URLSearchParams(location.search);
+      console.log(queryStringParams);
+      queryStringParams.set("orderId", docRef.id);
+      queryStringParams.toString();
+      console.log(queryStringParams.toString());
+      // Send Mail API
+      fetch(
+        `https://us-central1-happydog-82c2f.cloudfunctions.net/emailSender?${queryStringParams.toString()}`
+      ).then(function () {
+        // Jump to Thankyou page
+        location.href = "/html/booking/BookingThankYou.html";
+      });
     })
     .catch(function (error) {
       console.error("Error writing document: ", error);

@@ -7,8 +7,8 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   color: rgb(6, 63, 111, 1);
   position: relative;
-  background-image: url(/Img/bg3.png);
-  background-size: cover;
+  background-image: url(/Img/bg4.png);
+  background-size: contain;
 }
 
 .navbar-logoLoginWrapper {
@@ -23,12 +23,13 @@ body {
 
 /* Logo */
 .logo {
-  height: 60px;
+  width: 20%;
 }
 
 /* Navbar Log In  */
 .login-wrapper {
   display: flex;
+  width: 100%;
 }
 
 .login-A {
