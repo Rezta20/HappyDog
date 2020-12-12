@@ -38,8 +38,7 @@ sendDataBtn.addEventListener("click", sendBookingDetail);
 function sendBookingDetail() {
   sendDataBtn.disabled = true;
   sendDataBtn.innerText = "資料上傳中";
-  sendDataBtn.style.backgroundColor = "#000";
-  sendDataBtn.style.color = "#fff";
+  sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
 
   db.collection("bookingday")
     .add({

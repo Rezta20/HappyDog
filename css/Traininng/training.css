@@ -1,10 +1,15 @@
 body {
-  height: 250vh;
+  height: 270vh;
 }
 
 .rootWrapper {
   display: flex;
   justify-content: space-around;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .cardWrapper {
@@ -38,8 +43,12 @@ body {
 }
 
 .star {
-  text-align: left;
+  display: flex;
   width: 32%;
+}
+
+.fa-star {
+  color: #fc9f35;
 }
 
 .cardContent {
@@ -55,4 +64,76 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+}
+
+/* Popup  */
+.cover {
+  background-color: rgb(68, 68, 68, 0.8);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 270vh;
+  display: flex;
+  justify-content: center;
+}
+
+.popupWrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 25px 35px;
+  margin-top: 185px;
+  width: 50%;
+  height: 800px;
+  border: solid 2px #000;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.cross {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24px;
+}
+
+.upperWrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 20px;
+  line-height: 2.5;
+}
+
+.upperContentWrapper {
+  margin-left: 20px;
+}
+
+.starName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 24px;
+}
+
+.star {
+  font-size: 24px;
+  padding-right: 15px;
+}
+
+.popUpImg {
+  width: 55%;
+  height: auto;
+}
+
+.trainingContent {
+  margin-top: 20px;
+}
+
+.youtube {
+  margin-top: 25px;
+  border: solid 2px #000;
+  height: 300px;
 }

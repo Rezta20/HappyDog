@@ -19,7 +19,7 @@ body {
 /* Back Button  */
 .back-A {
   text-decoration: none;
-  color: #3f3a3a;
+  color: rgb(6, 63, 111, 1);
 }
 .backWrapper {
   display: flex;
@@ -28,7 +28,7 @@ body {
 }
 
 .fa-arrow-alt-circle-left {
-  color: #3f3a3a;
+  color: rgb(6, 63, 111, 1);
 }
 
 .backContent {

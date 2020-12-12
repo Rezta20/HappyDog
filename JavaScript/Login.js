@@ -25,15 +25,14 @@ function changeToLogin() {
 }
 
 // FireStore Set up
-firebase.initializeApp({
-  apiKey: "apiKey",
-  projectId: "happydog-82c2f",
-  authDomain: "happydog-82c2f.firebaseapp.com",
-  databaseURL: "https://happydog-82c2f.firebaseio.com/",
-});
+// firebase.initializeApp({
+//   apiKey: "apiKey",
+//   projectId: "happydog-82c2f",
+//   authDomain: "happydog-82c2f.firebaseapp.com",
+//   databaseURL: "https://happydog-82c2f.firebaseio.com/",
+// });
 
 // firebase.initializeApp(config);
-const database = firebase.database();
 
 // Firebase Sign Up
 // 綁定註冊按鈕的點擊事件
@@ -54,21 +53,6 @@ signUpBtn.addEventListener("click", () => {
         signUpEmail.value = "";
         signUpPwd.value = "";
       }, 2000);
-
-      // Get sign up time
-      let date = new Date();
-      let now = date.getTime();
-
-      // 記錄相關資訊到 firebase realtime database
-      database
-        .ref(u.uid)
-        .set({
-          signup: now,
-          email: user.email,
-        })
-        .then(() => {
-          console.log("User created successfully");
-        });
     })
     .catch((err) => {
       if (

@@ -1,3 +1,15 @@
 body {
   min-height: 100vh;
 }
+
+.contentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+.content {
+  border: solid 2px;
+  padding: 10px 20px;
+}
