@@ -6,10 +6,47 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 350px;
+  min-height: 60vh;
 }
 
-.content {
+.wrapper {
   border: solid 2px;
+  border-radius: 12px;
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.6;
+}
+
+.fa-check-circle {
+  font-size: 45px;
+}
+
+.thankyou {
+  font-size: 34px;
+  font-family: "Lobster", cursive;
+}
+
+.memberFont {
+  text-decoration: underline;
+}
+
+.btn {
+  border-radius: 12px;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+  background-color: #fc9f35;
+}
+
+.homeBtn {
+  background-color: #063f6f;
+  color: #fff;
+}
+
+.homeBtn:hover,
+.memberorderBtn:hover {
+  background-color: #d2e8fd;
+  color: #063f6f;
 }

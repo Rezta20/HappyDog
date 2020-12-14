@@ -35,7 +35,7 @@ section {
 /* Login Card Log In  */
 .login-CardLogInBox {
   height: 400px;
-  width: 80%;
+  width: 300px;
   border: solid 1px #063f6f;
   border-radius: 26px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
@@ -119,6 +119,7 @@ section {
   border-radius: 50px;
   box-shadow: 1px 1px #063f6f;
   background-color: #d2e8fd;
+  outline: none;
 }
 
 .loginCard-noAccountText {
@@ -127,6 +128,7 @@ section {
 
 .loginCard-applySpan {
   color: #063f6f;
+  text-decoration: underline;
 }
 
 /* Sign In card  */
@@ -149,4 +151,5 @@ section {
   border-radius: 50px;
   box-shadow: 1px 1px #063f6f;
   background-color: #fdc98b;
+  outline: none;
 }

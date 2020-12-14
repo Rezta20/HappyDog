@@ -2,9 +2,48 @@ body {
   min-height: 100vh;
 }
 
-#logoutBtn {
-  margin: 10px;
-  width: 100px;
+.membercontentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.wrapper {
+  border: solid 2px;
+  border-radius: 12px;
+  padding: 10px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.8;
+}
+
+.membership {
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "Lobster", cursive;
+}
+
+.btnWrapper {
+  margin-top: 10px;
+}
+
+.btn {
+  border-radius: 12px;
+  width: 80px;
   height: 30px;
-  font-size: 18px;
+  margin: 10px;
+  background-color: #fc9f35;
+  outline: none;
+}
+
+.memberorderBtn {
+  background-color: #063f6f;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #d2e8fd;
+  color: #063f6f;
 }

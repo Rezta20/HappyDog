@@ -1,8 +1,51 @@
 body {
-  min-height: 100vh;
+  min-height: 250vh;
+}
+
+.customerHistoryWrapper {
+  display: flex;
+  justify-content: center;
+  border: solid 2px;
+  margin: 80px auto;
+  width: 600px;
+}
+
+.customerWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 2.2;
+  padding: 20px;
+  width: 400px;
 }
 
 .ownerWrapper,
-.petWrapper {
+.petWrapper,
+.contactPhoneWrapper,
+.emailWrapper,
+.lineWrapper,
+.walkingWrapper,
+.remindWrapper {
   display: flex;
+}
+
+.ownerTitle,
+.petTitle,
+.contactPhoneTitle,
+.emailTitle,
+.lineTitle,
+.walkingTitle,
+.remindTitle {
+  width: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.ownerName,
+.petName,
+.contactPhone,
+.email,
+.lineId,
+.walkingLocation,
+.remind {
 }

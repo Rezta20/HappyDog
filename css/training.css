@@ -1,5 +1,5 @@
 body {
-  height: 270vh;
+  height: 320vh;
 }
 
 .rootWrapper {
@@ -72,7 +72,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 270vh;
+  height: 320vh;
   display: flex;
   justify-content: center;
 }

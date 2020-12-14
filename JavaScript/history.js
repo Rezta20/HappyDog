@@ -10,9 +10,9 @@ console.log(uid);
 const customerHistoryWrapper = document.querySelector(
   ".customerHistoryWrapper"
 );
+const customerWrapper = document.querySelector(".customerWrapper");
 
-
-// Get Firebase collection data 
+// Get Firebase collection data
 firestoreCollection
   .where("uid", "==", uid)
   .get()
@@ -20,11 +20,13 @@ firestoreCollection
     doc.forEach(function (doc) {
       console.log(doc.data());
 
+      customerHistoryWrapper.appendChild(customerWrapper);
+
       // Create Element To Put Inside Data
       // Owner
       let ownerWrapper = document.createElement("div");
       ownerWrapper.classList.add("ownerWrapper");
-      customerHistoryWrapper.appendChild(ownerWrapper);
+      customerWrapper.appendChild(ownerWrapper);
 
       let ownerTitle = document.createElement("div");
       ownerTitle.classList.add("ownerTitle");
@@ -39,7 +41,7 @@ firestoreCollection
       // Pet
       let petWrapper = document.createElement("div");
       petWrapper.classList.add("petWrapper");
-      customerHistoryWrapper.appendChild(petWrapper);
+      customerWrapper.appendChild(petWrapper);
 
       let petTitle = document.createElement("div");
       petTitle.classList.add("petTitle");
@@ -54,7 +56,7 @@ firestoreCollection
       //Contact Phone
       let contactPhoneWrapper = document.createElement("div");
       contactPhoneWrapper.classList.add("contactPhoneWrapper");
-      customerHistoryWrapper.appendChild(contactPhoneWrapper);
+      customerWrapper.appendChild(contactPhoneWrapper);
 
       let contactPhoneTitle = document.createElement("div");
       contactPhoneTitle.classList.add("contactPhoneTitle");
@@ -69,31 +71,61 @@ firestoreCollection
       // Email
       let emailWrapper = document.createElement("div");
       emailWrapper.classList.add("emailWrapper");
-      customerHistoryWrapper.appendChild(emailWrapper);
+      customerWrapper.appendChild(emailWrapper);
 
-      let contactPhoneTitle = document.createElement("div");
-      contactPhoneTitle.classList.add("contactPhoneTitle");
-      emailWrapper.appendChild(contactPhoneTitle);
-      contactPhoneTitle.innerHTML = "聯絡電話:";
+      let emailTitle = document.createElement("div");
+      emailTitle.classList.add("emailTitle");
+      emailWrapper.appendChild(emailTitle);
+      emailTitle.innerHTML = "Email:";
 
       let email = document.createElement("div");
       email.classList.add("email");
-      customerHistoryWrapper.appendChild(email);
+      emailWrapper.appendChild(email);
       email.innerHTML = doc.data().email;
+
+      // Line
+      let lineWrapper = document.createElement("div");
+      lineWrapper.classList.add("lineWrapper");
+      customerWrapper.appendChild(lineWrapper);
+
+      let lineTitle = document.createElement("div");
+      lineTitle.classList.add("lineTitle");
+      lineWrapper.appendChild(lineTitle);
+      lineTitle.innerHTML = "Line ID:";
 
       let lineId = document.createElement("div");
       lineId.classList.add("lineId");
-      customerHistoryWrapper.appendChild(lineId);
+      lineWrapper.appendChild(lineId);
       lineId.innerHTML = doc.data().Line;
+
+      // Walking location
+      let walkingWrapper = document.createElement("div");
+      walkingWrapper.classList.add("walkingWrapper");
+      customerWrapper.appendChild(walkingWrapper);
+
+      let walkingTitle = document.createElement("div");
+      walkingTitle.classList.add("walkingTitle");
+      walkingWrapper.appendChild(walkingTitle);
+      walkingTitle.innerHTML = "遛狗地點:";
 
       let walkingLocation = document.createElement("div");
       walkingLocation.classList.add("walkingLocation");
-      customerHistoryWrapper.appendChild(walkingLocation);
+      walkingWrapper.appendChild(walkingLocation);
       walkingLocation.innerHTML = doc.data().location;
+
+      // Remind
+      let remindWrapper = document.createElement("div");
+      remindWrapper.classList.add("remindWrapper");
+      customerWrapper.appendChild(remindWrapper);
+
+      let remindTitle = document.createElement("div");
+      remindTitle.classList.add("remindTitle");
+      remindWrapper.appendChild(remindTitle);
+      remindTitle.innerHTML = "我們應該注意的事情：";
 
       let remind = document.createElement("div");
       remind.classList.add("remind");
-      customerHistoryWrapper.appendChild(remind);
+      remindWrapper.appendChild(remind);
       remind.innerHTML = doc.data().remind;
     });
   });

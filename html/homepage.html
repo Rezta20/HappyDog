@@ -20,35 +20,42 @@
       <!-- Logo -->
       <div class="navbar-logoLoginWrapper">
         <div class="navbar-logoWrapper">
-          <a class="logo-A" href="">
-            <img
-              class="logo"
-              src="/img/happy Dog Design-04.png"
-              alt="happyDog-logo"
-            />
+          <a class="logo-A" href="/Html/homepage.html">
+            <img class="logo" src="/img/logo_long_v3.png" alt="happyDog-logo" />
           </a>
         </div>
 
         <!-- Navbar Log In  -->
-        <div class="login-wrapper">
-          汪，您目前是登入中
-          <!-- <a class="login-A" href="">
+        <div class="login-wrapper notLoginState">
+          <a class="login-A" href="/Html/Login/login.html">
             <img class="login-img" src="/img/Login-02.png" alt="login-img" />
             <div class="navbar-text">登入</div>
-          </a> -->
-        </div>
-        <!-- <div class="login-wrapper">
-          <a class="login-A toMemberpage" href="">
-            <div class="navbar-text">登出</div>
           </a>
-        </div> -->
+        </div>
+
+        <div class="login-wrapper loginState">
+          <p class="navbar-text">
+            汪，您目前是登入中 。<span
+              ><a class="login-A toMemberpage" href="/Html/Login/member.html">
+                查看會員資料
+              </a></span
+            >
+          </p>
+        </div>
       </div>
 
       <!-- Navbar Elements -->
       <div class="navbar-iconWrapper">
         <div class="navbar-element">
+          <a class="navbar-A" href="/Html/homepage.html">
+            <img src="/img/dog--v2.png" alt="" />
+
+            <div class="navbar-text">回首頁</div>
+          </a>
+        </div>
+        <div class="navbar-element">
           <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
-            <img src="/img/Navbar-Training-06.png" alt="" />
+            <img src="/img/dog--v2.png" alt="" />
 
             <div class="navbar-text">預約散步</div>
           </a>
@@ -84,5 +91,7 @@
     <footer>
       <div class="footer-background"></div>
     </footer>
+
+    <script src="/JavaScript/ifLogin.js"></script>
   </body>
 </html>
