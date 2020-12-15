@@ -8,7 +8,7 @@ logoutBtn.addEventListener("click", function (e) {
   sessionStorage.removeItem("user");
   console.log("User signed out!");
   alert("登出成功");
-  location.href = "/html/homepage.html";
+  location.href = "../../Html/homepage.html";
 });
 
 // Firebase 監聽

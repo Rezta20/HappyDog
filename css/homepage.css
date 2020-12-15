@@ -1,3 +1,42 @@
 body {
   min-height: 100vh;
 }
+
+/* Cover */
+.maincover {
+  width: 100%;
+  height: 550px;
+  background-color: #d2e8fd;
+  display: flex;
+}
+
+.halfcircle {
+  height: 550px;
+  width: 650px;
+  background-color: #fc9f35;
+  border-radius: 0px 600px 500px 0;
+}
+
+.coverImg {
+  width: 737px;
+  position: absolute;
+  left: 0;
+}
+
+.coverContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+  text-decoration: underline;
+  line-height: 3;
+  font-size: 32px;
+}
+
+.happy {
+  padding-left: 70px;
+}
+
+.serviceImg {
+  width: 200px;
+}

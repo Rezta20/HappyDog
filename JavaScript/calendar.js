@@ -117,7 +117,7 @@ function sendBookingDatatoBookingform() {
     bookingTimeData.bookingDateStr !== undefined &&
     bookingTimeData.time !== undefined
   ) {
-    location.href = "/html/Booking/BookingWalkingForm.html";
+    location.href = "/Html/Booking/bookingWalkingForm.html";
   }
 
   // 將資料存到sessionStorage

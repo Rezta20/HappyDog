@@ -7,7 +7,7 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   color: rgb(6, 63, 111, 1);
   position: relative;
-  background-image: url(/Img/bg4.png);
+  background-image: url(../../img/bg4.png);
   background-size: contain;
 }
 
