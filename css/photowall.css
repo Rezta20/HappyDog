@@ -1,3 +1,7 @@
+.photoIcon {
+  background-image: url("../img/navbar/photo-hover.png");
+}
+
 body {
   height: 320vh;
 }

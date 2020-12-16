@@ -1,3 +1,7 @@
+.bookingWalkingIcon {
+  background-image: url("../../img/navbar/walkingdog-hover.png");
+}
+
 body {
   min-height: 100vh;
 }

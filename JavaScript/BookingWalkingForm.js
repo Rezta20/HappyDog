@@ -258,7 +258,7 @@ function initMap() {
 
       icon: {
         labelOrigin: { x: 15, y: -14 },
-        url: "/img/12638.png",
+        url: "/img/pawlabel.png",
         scaledSize: new google.maps.Size(30, 30),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0),
@@ -266,8 +266,3 @@ function initMap() {
     });
   }
 }
-
-window.addEventListener("load", function () {
-  document.querySelector(".loadingWrapper").style.display = "none";
-  document.querySelector(".contentWrapper").style.display = "block";
-});

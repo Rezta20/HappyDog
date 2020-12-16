@@ -7,7 +7,7 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   color: rgb(6, 63, 111, 1);
   position: relative;
-  background-image: url(../../img/bg4.png);
+  background-image: url(../../img/background.png);
   background-size: contain;
 }
 
@@ -26,8 +26,28 @@ body {
 }
 
 /* Logo */
+.navbar-logoWrapper {
+  margin: 10px 0px 0px 10px;
+}
+
 .logo {
-  width: 25%;
+  width: 180px;
+}
+
+/* Login Button  */
+.loginBtn {
+  font-size: 14px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background-color: rgb(6, 63, 111, 1);
+  color: #ffffff;
+  text-align: center;
+}
+
+.loginBtn:hover {
+  background-color: #fc9f35;
+  box-shadow: 2px 3px #063f6f;
+  padding: 2px 12px 4px 8px;
 }
 
 /* Navbar Log In  */
@@ -35,7 +55,7 @@ body {
   font-size: 16px;
   display: flex;
   justify-content: flex-end;
-  padding-right: 7px;
+  margin: 10px 10px 0 0;
   width: 100%;
 }
 
@@ -51,20 +71,22 @@ body {
   color: #fc9f35;
 }
 
-.login-img {
-  width: 50px;
-}
-
 /* Navbar Element  */
 .navbar-A {
   text-decoration: none;
+}
+
+.navbariconWrapperFlex {
+  display: flex;
+  justify-content: center;
+  background-color: #d2e8fd;
 }
 
 .navbar-iconWrapper {
   display: flex;
   justify-content: space-around;
   background-color: #d2e8fd;
-  width: 100%;
+  width: 85%;
 }
 
 .navbar-element {
@@ -82,6 +104,47 @@ body {
 .navbar-element img {
   height: 50px;
   width: 50px;
+}
+
+/* Navbar Icon  */
+
+.navbarIcon {
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-size: contain;
+}
+
+.homeIcon {
+  background-image: url("../img/navbar/homepage.png");
+}
+
+.homeIcon:hover {
+  background-image: url("../img/navbar/homepage-hover.png");
+}
+
+.bookingWalkingIcon {
+  background-image: url("../img/navbar/walkingdog.png");
+}
+
+.bookingWalkingIcon:hover {
+  background-image: url("../img/navbar/walkingdog-hover.png");
+}
+
+.photoIcon {
+  background-image: url("../img/navbar/photo.png");
+}
+
+.photoIcon:hover {
+  background-image: url("../img/navbar/photo-hover.png");
+}
+
+.contactIcon {
+  background-image: url("../img/navbar/contact.png");
+}
+
+.contactIcon:hover {
+  background-image: url("../img/navbar/contact-hover.png");
 }
 
 /* LoginState */

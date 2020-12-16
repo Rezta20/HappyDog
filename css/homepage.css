@@ -2,6 +2,10 @@ body {
   min-height: 100vh;
 }
 
+.homeIcon {
+  background-image: url("../img/navbar/homepage-hover.png");
+}
+
 /* Cover */
 .maincover {
   width: 100%;

@@ -2,7 +2,11 @@ body {
   min-height: 100vh;
 }
 
-.contentWrapper {
+.bookingWalkingIcon {
+  background-image: url("../../img/navbar/walkingdog-hover.png");
+}
+
+.contentWrapperInside {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -21,7 +25,7 @@ body {
   font-size: 28px;
   font-weight: 700;
   margin: 35px 0;
-
+  text-align: center;
   text-decoration: underline;
   text-decoration-color: #fc9f35;
   text-decoration-style: wavy;

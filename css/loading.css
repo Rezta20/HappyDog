@@ -1,0 +1,24 @@
+.loadingWrapper {
+  position: absolute;
+  top: 150px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255, 1);
+  width: 100%;
+  height: 85%;
+  display: block;
+}
+
+.contentWrapper {
+  display: none;
+}
+
+.loading {
+  position: absolute;
+  left: 36%;
+  top: 45%;
+  z-index: 3;
+}
+
+.loadingGif {
+  width: 450px;
+}
