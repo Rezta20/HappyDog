@@ -28,7 +28,7 @@ body {
 
 .uploadCardWrapper {
   position: fixed;
-  top: 190px;
+  top: 15%;
   border: solid 2px #063f6f;
   background-color: #fff;
   height: 560px;

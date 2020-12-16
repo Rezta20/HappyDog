@@ -56,7 +56,7 @@ section {
   font-size: 32px;
 }
 .loginCard-titleBackground {
-  background-color: #fdc98b;
+  background-color: #fc9f35;
   margin-top: 10px;
   height: 15px;
   width: 100%;
@@ -80,34 +80,44 @@ section {
 /* Login Card Member */
 
 .loginCard-memberWrapper {
-  display: flex;
+  width: 100%;
   margin-top: 5px;
+  display: flex;
+  justify-content: center;
 }
 
-.loginCard-member {
+.socialLogin {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 40px;
-  border: solid 2px #063f6f;
-  border-radius: 50%;
-  margin: 12px;
+  margin: 30px 7px 10px;
+  width: 40%;
+  border-radius: 3px;
 }
 
-.loginImg-A {
-  text-decoration: none;
+.facebookLogin {
+  background-color: #475a95;
+  color: #fff;
 }
 
-.Line {
-  font-size: 35px;
-  font-family: "Rubik", sans-serif;
-  font-weight: bolder;
-  color: #063f6f;
+.googleLogin {
+  border: solid 1px #063f6f;
 }
 
-.loginCard-sourceImg {
-  color: #063f6f;
+.socialLoginIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.google {
+  padding-left: 3px;
+  width: 24px;
+  height: 24px;
+}
+
+.socialIconText {
+  font-size: 12px;
+  text-align: center;
 }
 
 /* Login button  */
@@ -120,6 +130,13 @@ section {
   box-shadow: 1px 1px #063f6f;
   background-color: #d2e8fd;
   outline: none;
+}
+
+.loginCard-loginButton:hover {
+  box-shadow: 3px 3px #063f6f;
+  background-color: #fc9f35;
+  color: #fff;
+  padding: 0px 3px 4px 1px;
 }
 
 .loginCard-noAccountText {
@@ -147,9 +164,15 @@ section {
   width: 100px;
   height: 30px;
   font-size: 18px;
-  margin-top: 15px;
+  margin-top: 45px;
   border-radius: 50px;
   box-shadow: 1px 1px #063f6f;
-  background-color: #fdc98b;
+  color: #fff;
+  background-color: #fc9f35;
   outline: none;
+}
+
+.signinCard-loginButton:hover {
+  box-shadow: 3px 3px #063f6f;
+  padding: 0px 3px 4px 1px;
 }

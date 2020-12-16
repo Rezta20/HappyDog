@@ -77,7 +77,7 @@ exports.emailSender = functions.https.onRequest((req, res) => {
           html: `
 
           <table style="margin: 20px auto;width: 800px" >
-          <tr><td style=" text-align:center;"><a href=""><img width="430" height="auto"src="https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logosaved.png?alt=media&token=18d7c909-97a6-4c36-ae15-24fd04c7da57"></td></tr>
+          <tr><td style=" text-align:center;"><a href=""><img width="430" height="auto" src="https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logosaved.png?alt=media&token=18d7c909-97a6-4c36-ae15-24fd04c7da57"></td></tr>
           </table></a>
           <p style="margin:20px auto;color:#063F6F; font-size:18px;text-align:center;">THANK YOU FOR YOUR BOOKING！</p>
           <p style="margin:20px auto;color:#063F6F; font-size:18px;text-align:center;">Hi，<b>${
