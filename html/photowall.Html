@@ -62,30 +62,32 @@
       </div>
 
       <!-- Navbar Elements -->
-      <div class="navbar-iconWrapper">
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/homepage.html">
-            <div class="navbarIcon homeIcon"></div>
-            <div class="navbar-text">回首頁</div>
-          </a>
-        </div>
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
-            <div class="navbarIcon bookingWalkingIcon"></div>
-            <div class="navbar-text">預約散步</div>
-          </a>
-        </div>
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/photowall.Html">
-            <div class="navbarIcon photoIcon"></div>
-            <div class="navbar-text">毛孩日誌</div>
-          </a>
-        </div>
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/Contact/Contact.html">
-            <div class="navbarIcon contactIcon"></div>
-            <div class="navbar-text">聯絡我們</div>
-          </a>
+      <div class="navbariconWrapperFlex">
+        <div class="navbar-iconWrapper">
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/homepage.html">
+              <div class="navbarIcon homeIcon"></div>
+              <div class="navbar-text">寵物當家</div>
+            </a>
+          </div>
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
+              <div class="navbarIcon bookingWalkingIcon"></div>
+              <div class="navbar-text">預約散步</div>
+            </a>
+          </div>
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/photowall.Html">
+              <div class="navbarIcon photoIcon"></div>
+              <div class="navbar-text">毛孩日誌</div>
+            </a>
+          </div>
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/Contact/Contact.html">
+              <div class="navbarIcon contactIcon"></div>
+              <div class="navbar-text">聯絡我們</div>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
@@ -152,104 +154,99 @@
         );
       }
 
+      function UploadCard(props) {
+        const [previewFile, setPreviewFile] = React.useState();
+
+        function previewPicture() {
+          document.querySelector(".previewText").style.display = "none";
+          document
+            .querySelector(".previewPicture")
+            .setAttribute(
+              "style",
+              "width:320px; height: 401px; object-fit:contain"
+            );
+          setPreviewFile(URL.createObjectURL(event.target.files[0]));
+        }
+        return (
+          <div class="uploadCardWrapperFlex">
+            <div
+              class="cover"
+              onClick={() => {
+                props.setShowUpload(false);
+              }}
+            ></div>
+            <div className="uploadCardWrapper">
+              <div className="crossWrapper">
+                <i
+                  class="fas fa-times"
+                  onClick={() => {
+                    props.setShowUpload(false);
+                  }}
+                ></i>
+              </div>
+              <div className="uploadContentWrapper">
+                <div className="uploadArea">
+                  <p className="previewText">預覽圖片</p>
+                  <img className="previewPicture" src={previewFile} alt="" />
+                </div>
+                <label for="upload">
+                  <i class="fas fa-file-upload fa-2x"></i>
+                </label>
+                <input
+                  type="file"
+                  id="upload"
+                  name="image"
+                  accept="image/jpg, image/png, image/svg"
+                  onChange={previewPicture}
+                />
+                <textarea
+                  type="text"
+                  className="hashtagInput"
+                  placeholder="寫下你想加的標籤"
+                ></textarea>
+              </div>
+              <div class="sendPhotoBtnWrapper">
+                <button className="sendPhotoBtn"> 確認送出</button>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       function CardGroup(props) {
         const [show, setShow] = React.useState(false);
         const [index, setIndex] = React.useState(0);
+        const [data, setData] = React.useState([]);
+        const [showUpload, setShowUpload] = React.useState(false);
 
-        const data = [
-          {
-            imgUrl: "../../img/training1.JPG",
-            imgAlt: "福星頂草莓",
-            titleData: "才藝：頂草莓",
-            starD: 3,
-            starL: 0,
-            cardData:
-              "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來",
-          },
-          {
-            imgUrl: "../../img/training2.JPG",
-            imgAlt: "卡卡裝酷",
-            titleData: "才藝：裝酷",
-            starD: 1,
-            starL: 2,
-            cardData:
-              "姐的時尚你怎麼會懂我姐的時尚你怎麼會懂我姐的時尚你怎麼會懂我姐的時尚你怎麼會懂我姐的時尚你怎麼",
-          },
-          {
-            imgUrl: "../../img/training3.JPG",
-            imgAlt: "卡卡套髮圈",
-            titleData: "才藝：裝萌等待散步",
-            starD: 2,
-            starL: 1,
-            cardData:
-              "要不要出門要不要出門要不要出門要不要出門要不要出門要不要出門要不要出門要不要出門要不要出門",
-          },
-          {
-            imgUrl: "../../img/training4.JPG",
-            imgAlt: "卡卡坐",
-            titleData: "才藝：坐坐",
-            starD: 1,
-            starL: 2,
-            cardData:
-              "哥哥快點給我肉乾哥哥快點給我肉乾哥哥快點給我肉乾哥哥快點給我肉乾哥哥快點給我肉乾哥哥快點給我肉乾",
-          },
-          {
-            imgUrl: "../../img/training5.JPG",
-            imgAlt: "賣萌",
-            titleData: "才藝：賣萌",
-            starD: 1,
-            starL: 2,
-            cardData:
-              "抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我抱我",
-          },
-          {
-            imgUrl: "../../img/training6.JPG",
-            imgAlt: "柴柴",
-            titleData: "才藝：兩眼看著你",
-            starD: 2,
-            starL: 1,
-            cardData:
-              "跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩跟我玩",
-          },
-          {
-            imgUrl: "../../img/training7.JPG",
-            imgAlt: "哈囉",
-            titleData: "才藝：揮手手",
-            starD: 3,
-            starL: 0,
-            cardData: "早安安安安安安安安安安安安安安",
-          },
-          {
-            imgUrl: "../../img/training8.JPG",
-            imgAlt: "米米",
-            titleData: "才藝：等等還不行",
-            starD: 2,
-            starL: 1,
-            cardData:
-              "好了沒好了沒快讓我吃好了沒好了沒快讓我吃好了沒好了沒快讓我吃好了沒好了沒快讓我吃好了沒好了沒快讓我吃好了沒好了沒快讓我吃好了沒好了沒快讓我吃",
-          },
-          {
-            imgUrl: "../../img/training1.JPG",
-            imgAlt: "福星頂草莓",
-            titleData: "才藝：頂草莓",
-            starD: 2,
-            starL: 1,
-            cardData:
-              "草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來草莓不要滾下來",
-          },
-        ];
+        React.useEffect(() => {
+          // Firebase firestore initializ
+          const db = firebase.firestore();
+          const firestoreCollection = db.collection("photowall");
+
+          firestoreCollection.get().then(function (doc) {
+            const dataArray = [];
+            doc.forEach(function (doc) {
+              dataArray.push(doc.data());
+            });
+            setData(dataArray);
+            console.log("hi");
+          });
+        }, []);
+        console.log(data);
+
         const cards = [];
 
         for (let i = 0; i < data.length; i++) {
           cards.push(
             <Card
               key={i}
-              trainingImgUrl={data[i].imgUrl}
+              trainingImgUrl={data[i].photo}
               trainingImgAlt={data[i].imgAlt}
-              title={data[i].titleData}
+              title={data[i].user}
               starDark={data[i].starD}
               starLight={data[i].starL}
-              cardContent={data[i].cardData}
+              // cardContent={data[i].hashtag[0]}
               setShow={setShow}
               setIndex={setIndex}
               index={i}
@@ -275,15 +272,25 @@
         }
 
         return (
-          <div className="cardsWrapper">
-            {cards}
-            {popupcard}
-          </div>
+          <>
+            <button
+              className="uploadBtn"
+              onClick={() => {
+                setShowUpload(true);
+              }}
+            >
+              上傳圖片
+            </button>
+            {showUpload && <UploadCard setShowUpload={setShowUpload} />}
+            <div className="cardsWrapper">
+              {cards}
+              {popupcard}
+            </div>
+          </>
         );
       }
 
       function Popupcard(props) {
-        // cosole.log(props);
         return (
           <div
             className="cover"
@@ -340,6 +347,36 @@
       }
 
       ReactDOM.render(<CardGroup />, document.getElementById("root"));
+    </script>
+
+    <!-- FrieBase  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBL9Tmhwb15yAohPn_DLoAFUgVJoy76bnk",
+        authDomain: "happydog-82c2f.firebaseapp.com",
+        databaseURL: "https://happydog-82c2f.firebaseio.com",
+        projectId: "happydog-82c2f",
+        storageBucket: "happydog-82c2f.appspot.com",
+        messagingSenderId: "1070136598571",
+        appId: "1:1070136598571:web:0de4a08e0493465e984a6e",
+        measurementId: "G-N3V1TLZNZW",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
     </script>
   </body>
 </html>
