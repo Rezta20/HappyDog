@@ -7,9 +7,75 @@ body {
 }
 
 /* Upload Button  */
+.uploadBtnWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.uploadPictureDescriptionWrapper {
+  display: flex;
+  align-items: center;
+  width: 85%;
+}
+
+.uploadPictureDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  background-color: #063f6f;
+  color: #fff;
+  width: 100%;
+  height: 30px;
+}
+
+.uploadPictureDescriptionTriangle {
+  width: 0px;
+  height: 0px;
+  border-color: transparent transparent transparent #063f6f;
+  border-style: solid solid solid solid;
+  border-width: 15px;
+}
+
 .uploadBtn {
   display: flex;
-  margin: 15px 15px 10px auto;
+  font-size: 14px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background-color: #fc9f35;
+  box-shadow: 2px 3px #063f6f;
+  outline: none;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.uploadBtn:hover {
+  padding: 7px 6px 3px 10px;
+  background-color: #063f6f;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  color: #fff;
+}
+
+/* Title Tags  */
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.titleTags {
+  font-size: 14px;
+  border-radius: 10px;
+  color: #063f6f;
+  background-color: #d2e8fd;
+  border: none;
+  margin: 0 25px;
+  padding: 5px 12px;
 }
 
 /* Upload Card  */
@@ -21,32 +87,18 @@ body {
 .cover {
   position: absolute;
   top: 0;
-  background-color: #000000;
   width: 100%;
-  height: 100vh;
+  background-color: rgb(68, 68, 68, 0.8);
+  height: 320vh;
 }
 
 .uploadCardWrapper {
   position: fixed;
   top: 15%;
-  border: solid 2px #063f6f;
+  border: solid 3px #063f6f;
   background-color: #fff;
-  height: 560px;
+  height: 580px;
   width: 425px;
-}
-
-.crossWrapper {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 10px 0 0;
-}
-
-.fa-times {
-  font-size: 20px;
-}
-
-#upload {
-  opacity: 0;
 }
 
 .uploadContentWrapper {
@@ -62,38 +114,76 @@ body {
   align-items: center;
   justify-content: center;
   border: dashed 3px #063f6f;
+  background-color: rgb(68, 68, 68, 0.1);
   height: 400px;
   width: 75%;
 }
 
-.hashtagInput {
+.crossWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 0 0;
+}
+
+.fa-times {
+  font-size: 20px;
+}
+
+.uploadIconWrapper {
   width: 75%;
-  height: 35px;
-  padding: 7px 0 0 7px;
-  resize: none;
-  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  position: relative;
+}
+
+.uploadIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#upload {
+  opacity: 0;
+  width: 5px;
+  position: absolute;
+  top: 0;
+}
+
+.fa-file-upload {
+  margin-left: 5px;
+}
+
+.basic-multi-select {
+  width: 76%;
+  margin: 8px auto;
 }
 
 .sendPhotoBtnWrapper {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 50px;
+  justify-content: center;
+  width: 100%;
 }
 
 .sendPhotoBtn {
   background-color: #fc9f35;
   box-shadow: 2px 3px #063f6f;
-  padding: 2px 9px 4px 7px;
+  padding: 5px 7px;
   border-radius: 10px;
   outline: none;
   color: #fff;
+  margin: 3px 0;
 }
 
 .sendPhotoBtn:hover {
-  padding: 3px 7px;
+  padding: 6px 5px 4px 9px;
   background-color: #063f6f;
   color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
+
 /* Cards  */
 .rootWrapper {
   display: flex;
@@ -103,6 +193,28 @@ body {
 .cardsWrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.cardUserTitle {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 15px auto 0px;
+}
+
+.userImg {
+  background-image: url("https://pbs.twimg.com/media/DqVoWExVAAA3G87.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  margin-right: 11px;
+}
+
+.userName {
+  font-size: 16px;
 }
 
 .cardWrapper {
@@ -115,118 +227,26 @@ body {
   width: 24%;
 }
 
-.traingImg {
+.photoImg {
   width: 80%;
   height: auto;
   margin: 12px auto 3px;
 }
 
-.titleStarWrapper {
+.titleHeartWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   width: 100%;
   margin: 5px auto;
 }
 
-.title {
-  width: 68%;
+.tags {
+  width: 80%;
   font-size: 20px;
-}
-
-.star {
-  display: flex;
-  width: 32%;
-}
-
-.fa-star {
-  color: #fc9f35;
 }
 
 .cardContent {
   width: 78%;
   margin: 5px auto;
-}
-.moreBtn {
-  width: 100px;
-  margin: 5px auto 10px;
-}
-
-.cardGroupWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-/* Popup  */
-.cover {
-  background-color: rgb(68, 68, 68, 0.8);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 320vh;
-  display: flex;
-  justify-content: center;
-}
-
-.popupWrapper {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: 25px 35px;
-  margin-top: 185px;
-  width: 50%;
-  height: 800px;
-  border: solid 2px #000;
-  background-color: #fff;
-  z-index: 2;
-}
-
-.cross {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 24px;
-}
-
-.upperWrapper {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  font-size: 20px;
-  line-height: 2.5;
-}
-
-.upperContentWrapper {
-  margin-left: 20px;
-}
-
-.starName {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.name {
-  font-size: 24px;
-}
-
-.star {
-  font-size: 24px;
-  padding-right: 15px;
-}
-
-.popUpImg {
-  width: 55%;
-  height: auto;
-}
-
-.trainingContent {
-  margin-top: 20px;
-}
-
-.youtube {
-  margin-top: 25px;
-  border: solid 2px #000;
-  height: 300px;
 }

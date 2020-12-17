@@ -120,11 +120,11 @@ body {
 }
 
 .homeIcon {
-  background-image: url("../img/navbar/homepage.png");
+  background-image: url("../img/navbar/navbar\ icon-09.png");
 }
 
 .homeIcon:hover {
-  background-image: url("../img/navbar/homepage-hover.png");
+  background-image: url("../img/navbar/navbar\ icon-10.png");
 }
 
 .bookingWalkingIcon {
@@ -144,11 +144,11 @@ body {
 }
 
 .contactIcon {
-  background-image: url("../img/navbar/contact.png");
+  background-image: url("../img/navbar/navbar\ icon-03\ 2.png");
 }
 
 .contactIcon:hover {
-  background-image: url("../img/navbar/contact-hover.png");
+  background-image: url("../img/navbar/navbar\ icon-07\ 2.png");
 }
 
 /* LoginState */

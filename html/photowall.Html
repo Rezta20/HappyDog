@@ -113,6 +113,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -133,53 +134,100 @@
     </script>
     <script src="../../JavaScript/ifLogin.js"></script>
 
+    <!-- React Select  -->
+    <script src="https://cdn.jsdelivr.net/npm/emotion@9.2.12/dist/emotion.umd.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.5.10/prop-types.min.js"></script>
+    <script src="https://unpkg.com/react-input-autosize@2.2.1/dist/react-input-autosize.min.js"></script>
+    <script src="https://unpkg.com/react-select@2.1.2/dist/react-select.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+
     <script type="text/babel">
-      function StarDark(props) {
-        console.log(props.starDark);
-        // <i className="fas fa-star"></i>
-        const star = [];
-        for (let i = 0; i < props.starDark; i++) {
-          star.push(<i className="fas fa-star"></i>);
-        }
-
-        return <div>{star}</div>;
-      }
-
-      function StarLight(props) {
-        console.log(props.starLight);
-        const star = [];
-        for (let i = 0; i < props.starLight; i++) {
-          star.push(<i className="far fa-star"></i>);
-        }
-        return <div>{star}</div>;
-      }
-
       function Card(props) {
         return (
           <div className="cardWrapper">
-            <img
-              className="traingImg"
-              src={props.trainingImgUrl}
-              alt={props.trainingImgAlt}
-            />
-            <div className="titleStarWrapper">
-              <div className="title">{props.title}</div>
-              <div className="star">
-                <StarDark starDark={props.starDark} />
-                <StarLight starLight={props.starLight} />
-              </div>
+            <div className="cardUserTitle">
+              <div className="userImg"></div>
+              <div className="userName">userName</div>
+            </div>
+            <img className="photoImg" src={props.trainingImgUrl} />
+            <div className="titleHeartWrapper">
+              <div className="tags">{props.title}</div>
             </div>
             <div className="cardContent">{props.cardContent}</div>
-            <button
-              className="moreBtn"
-              onClick={() => {
-                props.setShow(true);
-                props.setIndex(props.index);
-              }}
-            >
-              了解更多
-            </button>
           </div>
+        );
+      }
+
+      function Tags(props) {
+        // React select
+        const options = [
+          {
+            value: "可愛",
+            label: "可愛",
+          },
+          { value: "毛茸茸", label: "毛茸茸" },
+          {
+            value: "冒險家",
+            label: "冒險家",
+          },
+          {
+            value: "開心",
+            label: "開心",
+          },
+          {
+            value: "好笑的",
+            label: "好笑的",
+          },
+          {
+            value: "柴犬",
+            label: "柴犬",
+          },
+          {
+            value: "米克斯",
+            label: "米克斯",
+          },
+        ];
+
+        function handleChange(newValue) {
+          console.log(newValue);
+
+          firebase
+            .firestore()
+            .collection("photoTags")
+            .where("tag", "==", `${newValue[newValue.length - 1].label}`)
+            .get()
+            .then(function (querySnapshot) {
+              if (querySnapshot.empty) {
+                firebase
+                  .firestore()
+                  .collection("photoTags")
+                  .add({
+                    tag: newValue[newValue.length - 1].label,
+                  })
+                  .then(function (docRef) {
+                    console.log("upload success");
+                  })
+                  .catch(function (error) {
+                    console.error("Error writing document: ", error);
+                  });
+              }
+            })
+            .catch(function (error) {
+              console.log("Error getting documents: ", error);
+            });
+        }
+
+        return (
+          <Select.Creatable
+            defaultValue={[options[0], options[1]]}
+            options={options}
+            isMulti
+            name="colors"
+            className="basic-multi-select"
+            classNamePrefix="select"
+            onChange={handleChange}
+          />
         );
       }
 
@@ -194,12 +242,65 @@
               "style",
               "width:320px; height: 401px; object-fit:contain"
             );
-          setPreviewFile(URL.createObjectURL(event.target.files[0]));
+          const picture = URL.createObjectURL(event.target.files[0]);
+          setPreviewFile(picture);
         }
+
+        function sendData() {
+          // Get a reference to the storage service, which is used to create references in your storage bucket
+          const ref = firebase.storage().ref();
+          const db = firebase.firestore();
+          const picture = document.querySelector("#upload").files[0];
+
+          //  unique id
+          let randomNumber = Math.floor(Math.random() * 1000);
+          let time = Date.now();
+          let pictureName = `photoWallPicture ${randomNumber}${time}`;
+
+          ref
+            .child(pictureName)
+            .put(picture)
+            .then(function (snapshot) {
+              console.log("Uploaded a blob or file!");
+
+              ref
+                .child(pictureName)
+                .getDownloadURL()
+                .then(function (url) {
+                  // `url` is the download URL for 'images/stars.jpg'
+                  const user = firebase.auth().currentUser;
+                  const userData = user.providerData[0];
+
+                  db.collection("photowall")
+                    .add({
+                      photo: url,
+                      content: "",
+                      rank: Date.now(),
+                      time: `${new Date().getFullYear()}/${
+                        new Date().getMonth() + 1
+                      }/${new Date().getDate()}`,
+                      user: userData.displayName,
+                      userPhoto: userData.photoURL,
+                      uid: userData.uid,
+                    })
+                    .then(function (docRef) {
+                      // clicked = false;
+                      console.log("Document successfully written!");
+                    })
+                    .catch(function (error) {
+                      console.error("Error writing document: ", error);
+                    });
+                });
+            })
+            .catch(function (error) {
+              console.log("Image Error");
+            });
+        }
+
         return (
-          <div class="uploadCardWrapperFlex">
+          <div className="uploadCardWrapperFlex">
             <div
-              class="cover"
+              className="cover"
               onClick={() => {
                 props.setShowUpload(false);
               }}
@@ -207,7 +308,7 @@
             <div className="uploadCardWrapper">
               <div className="crossWrapper">
                 <i
-                  class="fas fa-times"
+                  className="fas fa-times"
                   onClick={() => {
                     props.setShowUpload(false);
                   }}
@@ -218,24 +319,26 @@
                   <p className="previewText">預覽圖片</p>
                   <img className="previewPicture" src={previewFile} alt="" />
                 </div>
-                <label for="upload">
-                  <i class="fas fa-file-upload fa-2x"></i>
-                </label>
-                <input
-                  type="file"
-                  id="upload"
-                  name="image"
-                  accept="image/jpg, image/png, image/svg"
-                  onChange={previewPicture}
-                />
-                <textarea
-                  type="text"
-                  className="hashtagInput"
-                  placeholder="寫下你想加的標籤"
-                ></textarea>
+                <div class="uploadIconWrapper">
+                  <label htmlFor="upload" className="uploadIcon">
+                    <div class="uploadText">上傳圖片</div>
+                    <i className="fas fa-file-upload fa-2x"></i>
+                  </label>
+                  <input
+                    type="file"
+                    id="upload"
+                    name="image"
+                    accept="image/jpg, image/png, image/svg"
+                    onChange={previewPicture}
+                  />
+                </div>
+                <Tags />
               </div>
-              <div class="sendPhotoBtnWrapper">
-                <button className="sendPhotoBtn"> 確認送出</button>
+
+              <div className="sendPhotoBtnWrapper">
+                <button className="sendPhotoBtn" onClick={sendData}>
+                  確認送出
+                </button>
               </div>
             </div>
           </div>
@@ -259,10 +362,8 @@
               dataArray.push(doc.data());
             });
             setData(dataArray);
-            console.log("hi");
           });
         }, []);
-        console.log(data);
 
         const cards = [];
 
@@ -271,10 +372,7 @@
             <Card
               key={i}
               trainingImgUrl={data[i].photo}
-              trainingImgAlt={data[i].imgAlt}
               title={data[i].user}
-              starDark={data[i].starD}
-              starLight={data[i].starL}
               // cardContent={data[i].hashtag[0]}
               setShow={setShow}
               setIndex={setIndex}
@@ -283,95 +381,35 @@
           );
         }
 
-        let popupcard;
-
-        // setShow(true)
-        if (show) {
-          popupcard = (
-            <Popupcard
-              setShow={setShow}
-              popupImgSrc={data[index].imgUrl}
-              popupImgAlt={data[index].imgAlt}
-              name={data[index].titleData}
-              starDark={data[index].starD}
-              starLight={data[index].starL}
-              simpleContent={data[index].cardData}
-            />
-          );
-        }
-
         return (
           <>
-            <button
-              className="uploadBtn"
-              onClick={() => {
-                setShowUpload(true);
-              }}
-            >
-              上傳圖片
-            </button>
-            {showUpload && <UploadCard setShowUpload={setShowUpload} />}
-            <div className="cardsWrapper">
-              {cards}
-              {popupcard}
-            </div>
-          </>
-        );
-      }
-
-      function Popupcard(props) {
-        return (
-          <div
-            className="cover"
-            onClick={() => {
-              props.setShow(false);
-            }}
-          >
-            <div
-              className="popupWrapper"
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <div
-                className="cross"
+            <div className="uploadBtnWrapper">
+              <div className="uploadPictureDescriptionWrapper">
+                <div className="uploadPictureDescription">
+                  趕快上傳照片，和我們分享你家寶貝最可愛的一面吧！
+                </div>
+                <div className="uploadPictureDescriptionTriangle"></div>
+              </div>
+              <button
+                className="uploadBtn"
                 onClick={() => {
-                  props.setShow(false);
+                  setShowUpload(true);
                 }}
               >
-                <i className="far fa-times-circle"></i>
-              </div>
-              <div className="upperWrapper">
-                <img
-                  className="popUpImg"
-                  src={props.popupImgSrc}
-                  alt={props.popupImgAlt}
-                />
-
-                <div className="upperContentWrapper">
-                  <div className="starName">
-                    <div className="name">{props.name}</div>
-                    <div className="star">
-                      <StarDark starDark={props.starDark} />
-                      <StarLight starLight={props.starLight} />
-                    </div>
-                  </div>
-                  <div className="simpleContent">{props.simpleContent}</div>
-                </div>
-              </div>
-              <div className="trainingContent">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis
-                nemo placeat nihil similique, rerum repellendus provident
-                aliquam? Illo ex eos vitae explicabo fugit ipsa minus, lorem
-                recusandae nihil itaque impedit doloremque! Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Maiores excepturi, at
-                similique eos aut optio odio impedit repudiandae doloribus
-                sapiente! Ducimus soluta dicta quo doloribus delectus adipisci
-                sint unde eveniet.
-              </div>
-              <div className="youtube"></div>
+                上傳照片
+              </button>
             </div>
-          </div>
+            <div class="tagsWrapper">
+              <button className="titleTags">可愛</button>
+              <button className="titleTags">開心</button>
+              <button className="titleTags">有趣</button>
+              <button className="titleTags">黃色系</button>
+              <button className="titleTags">黑色系</button>
+              <button className="titleTags">米克斯</button>
+            </div>
+            {showUpload && <UploadCard setShowUpload={setShowUpload} />}
+            <div className="cardsWrapper">{cards}</div>
+          </>
         );
       }
 

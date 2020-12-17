@@ -18,6 +18,3 @@ window.addEventListener("load", function () {
     }
   });
 });
-
-const user = firebase.auth().currentUser;
-console.log(user);
