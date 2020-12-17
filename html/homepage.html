@@ -9,6 +9,13 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+
     <!-- CSS -->
     <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/loading.css" />
@@ -38,9 +45,9 @@
 
         <div class="login-wrapper loginState">
           <p class="navbar-text">
-            汪，您目前是登入中 。<span
+            汪，登入中&emsp;<span
               ><a class="login-A toMemberpage" href="/Html/Login/member.html">
-                查看會員資料
+                <i class="far fa-user-circle "></i>
               </a></span
             >
           </p>
@@ -129,6 +136,38 @@
     
     <!-- Script -->
     <script src="../JavaScript/loading.js"></script>
-    <script src="../JavaScript/ifLogin.js"></script>
+
+    <!-- FrieBase  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBL9Tmhwb15yAohPn_DLoAFUgVJoy76bnk",
+        authDomain: "happydog-82c2f.firebaseapp.com",
+        databaseURL: "https://happydog-82c2f.firebaseio.com",
+        projectId: "happydog-82c2f",
+        storageBucket: "happydog-82c2f.appspot.com",
+        messagingSenderId: "1070136598571",
+        appId: "1:1070136598571:web:0de4a08e0493465e984a6e",
+        measurementId: "G-N3V1TLZNZW",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      
+    </script>
+      <script src="../JavaScript/ifLogin.js"></script>
   </body>
 </html>

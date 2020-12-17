@@ -36,7 +36,6 @@ section {
 .login-CardLogInBox {
   height: 400px;
   width: 300px;
-  border: solid 1px #063f6f;
   border-radius: 26px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -104,13 +103,18 @@ section {
   border: solid 1px #063f6f;
 }
 
+.socialLogin:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
 .socialLoginIcon {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .google {
-  padding-left: 3px;
+  padding-left: 5px;
   width: 24px;
   height: 24px;
 }
@@ -125,10 +129,11 @@ section {
   width: 100px;
   height: 30px;
   font-size: 18px;
-  margin-top: 15px;
+  margin-top: 22px;
   border-radius: 50px;
+  color: #fff;
   box-shadow: 1px 1px #063f6f;
-  background-color: #d2e8fd;
+  background-color: #fc9f35;
   outline: none;
 }
 

@@ -71,6 +71,10 @@ body {
   color: #fc9f35;
 }
 
+.fa-user-circle {
+  font-size: 28px;
+}
+
 /* Navbar Element  */
 .navbar-A {
   text-decoration: none;
