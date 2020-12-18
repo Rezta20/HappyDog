@@ -70,6 +70,11 @@ section {
   height: 30px;
   width: 180px;
   margin: 12px 0;
+  outline: none;
+}
+
+.loginCard-input:focus {
+  box-shadow: 0 0 15pt 1pt#fc9f35;
 }
 
 .mobileLogin-id {
@@ -122,26 +127,28 @@ section {
 .socialIconText {
   font-size: 12px;
   text-align: center;
+  width: 55px;
 }
 
 /* Login button  */
-.loginCard-loginButton {
+.loginCard-loginButton,
+.signinCard-loginButton {
   width: 100px;
   height: 30px;
   font-size: 18px;
   margin-top: 22px;
   border-radius: 50px;
   color: #fff;
-  box-shadow: 1px 1px #063f6f;
+  box-shadow: 1px 2px #063f6f;
   background-color: #fc9f35;
   outline: none;
 }
 
-.loginCard-loginButton:hover {
-  box-shadow: 3px 3px #063f6f;
+.loginCard-loginButton:hover,
+.signinCard-loginButton:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px 0px inset;
   background-color: #fc9f35;
   color: #fff;
-  padding: 0px 3px 4px 1px;
 }
 
 .loginCard-noAccountText {
@@ -166,18 +173,5 @@ section {
 }
 
 .signinCard-loginButton {
-  width: 100px;
-  height: 30px;
-  font-size: 18px;
-  margin-top: 45px;
-  border-radius: 50px;
-  box-shadow: 1px 1px #063f6f;
-  color: #fff;
-  background-color: #fc9f35;
-  outline: none;
-}
-
-.signinCard-loginButton:hover {
-  box-shadow: 3px 3px #063f6f;
-  padding: 0px 3px 4px 1px;
+  margin: 30px auto 20px;
 }

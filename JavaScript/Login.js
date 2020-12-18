@@ -6,6 +6,8 @@ const logInBtn = document.querySelector(".loginCard-loginButton");
 const logInEmail = document.querySelector("#loginEmail");
 const logInPwd = document.querySelector("#loginPwd");
 
+const checkSignInPwdInput = document.querySelector(".checkSignInPwd");
+
 // Change the Card Movement
 const logInCard = document.querySelector("#logInCard-Mobile");
 const signInCard = document.querySelector("#signInCard-Mobile");
@@ -27,38 +29,46 @@ function changeToLogin() {
 // 綁定註冊按鈕的點擊事件
 signUpBtn.addEventListener("click", () => {
   let user = {
-    email: signUpemail.value,
-    pwd: signUppwd.value,
+    email: signUpEmail.value,
+    pwd: signUpPwd.value,
   };
 
-  // Through auth().createUserWithEmailAndPassword build user
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(user.email, user.pwd)
-    .then((u) => {
-      alert("帳號註冊成功！");
-      changeToLogin();
-      setTimeout(function () {
-        signUpEmail.value = "";
-        signUpPwd.value = "";
-      }, 2000);
-    })
-    .catch((err) => {
-      if (
-        err.message == "The email address is already in use by another account."
-      ) {
-        alert("這個信箱已辦過帳號囉！");
-      } else if (err.message == "Password should be at least 6 characters") {
-        alert("密碼請至少輸入6位數");
-      } else if (
-        err.message == "The password must be 6 characters long or more."
-      ) {
-        alert("密碼需要為6位數或是更長");
-      } else if (err.message == "The email address is badly formatted.") {
-        alert("信箱格式請輸入XXXX@xxxxx.xxx的格式");
-      }
-      console.log(err.message);
-    });
+  if (checkSignInPwdInput.value === user.pwd) {
+    // Through auth().createUserWithEmailAndPassword build user
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(user.email, user.pwd)
+      .then((u) => {
+        alert("帳號註冊成功！");
+        changeToLogin();
+
+        // 2秒後清空資料
+        setTimeout(function () {
+          signUpEmail.value = "";
+          signUpPwd.value = "";
+        }, 2000);
+      })
+      .catch((err) => {
+        if (
+          err.message ==
+          "The email address is already in use by another account."
+        ) {
+          alert("這個信箱已辦過帳號囉！");
+        } else if (err.message == "Password should be at least 6 characters") {
+          alert("密碼請至少輸入6位數");
+        } else if (
+          err.message == "The password must be 6 characters long or more."
+        ) {
+          alert("密碼需要為6位數或是更長");
+        } else if (err.message == "The email address is badly formatted.") {
+          alert("信箱格式請輸入XXXX@xxxxx.xxx的格式");
+        }
+        console.log(err.message);
+      });
+  } else if (checkSignInPwdInput.value !== user.pwd) {
+    alert("確認密碼與密碼不符，請重新輸入");
+    checkSignInPwdInput.value = "";
+  }
 });
 
 // Firebase Log In
@@ -134,8 +144,6 @@ function fbLogin() {
       // ...
     });
 }
-
-//  firebase.auth().currentUser;
 
 // Google Log in
 document.querySelector(".googleLogin").addEventListener("click", googleLogin);

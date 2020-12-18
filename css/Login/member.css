@@ -25,6 +25,23 @@ body {
   font-family: "Lobster", cursive;
 }
 
+.userDetail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 105%;
+}
+
+.userImg {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://i.pinimg.com/564x/bd/fb/b7/bdfbb7e28f77d8909e6de54f88323819.jpg");
+}
+
 .btnWrapper {
   margin-top: 10px;
 }

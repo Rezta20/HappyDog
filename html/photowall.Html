@@ -160,62 +160,93 @@
       }
 
       function Tags(props) {
-        // React select
-        const options = [
-          {
-            value: "可愛",
-            label: "可愛",
-          },
-          { value: "毛茸茸", label: "毛茸茸" },
-          {
-            value: "冒險家",
-            label: "冒險家",
-          },
-          {
-            value: "開心",
-            label: "開心",
-          },
-          {
-            value: "好笑的",
-            label: "好笑的",
-          },
-          {
-            value: "柴犬",
-            label: "柴犬",
-          },
-          {
-            value: "米克斯",
-            label: "米克斯",
-          },
-        ];
+        const [options, setOptions] = React.useState([]);
+
+        React.useEffect(() => {
+          // const options = [
+          //   {
+          //     value: "可愛",
+          //     label: "可愛",
+          //   },
+          //   {
+          //     value: "開心",
+          //     label: "開心",
+          //   },
+          //   {
+          //     value: "有趣",
+          //     label: "有趣",
+          //   },
+          //   {
+          //     value: "米克斯",
+          //     label: "米克斯",
+          //   },
+          //   {
+          //     value: "柴犬",
+          //     label: "柴犬",
+          //   },
+          //   {
+          //     value: "冒險家",
+          //     label: "冒險家",
+          //   },
+          // ];
+          // setOptions(options);
+
+          // Firebase firestore initializ
+          const db = firebase.firestore();
+          const firestoreCollection = db.collection("photoTags");
+
+          firestoreCollection.get().then(function (docs) {
+            const options = [];
+            docs.forEach((doc) => {
+              console.log(doc.data());
+              options.push({ value: doc.data().tag, label: doc.data().tag });
+            });
+            //   // React select
+            //   const options = [
+            //     {
+            //       value: "獒犬",
+            //       label: "獒犬",
+            //     },
+            //     {
+            //       value: "米克斯",
+            //       label: "米克斯",
+            //     }
+            //   ];
+            setOptions(options);
+          });
+        }, []);
+        //
 
         function handleChange(newValue) {
           console.log(newValue);
 
-          firebase
-            .firestore()
-            .collection("photoTags")
-            .where("tag", "==", `${newValue[newValue.length - 1].label}`)
-            .get()
-            .then(function (querySnapshot) {
-              if (querySnapshot.empty) {
-                firebase
-                  .firestore()
-                  .collection("photoTags")
-                  .add({
-                    tag: newValue[newValue.length - 1].label,
-                  })
-                  .then(function (docRef) {
-                    console.log("upload success");
-                  })
-                  .catch(function (error) {
-                    console.error("Error writing document: ", error);
-                  });
-              }
-            })
-            .catch(function (error) {
-              console.log("Error getting documents: ", error);
-            });
+          if (newValue.length - 1 === -1) {
+          } else {
+            firebase
+              .firestore()
+              .collection("photoTags")
+              .where("tag", "==", `${newValue[newValue.length - 1].label}`)
+              .get()
+              .then(function (querySnapshot) {
+                if (querySnapshot.empty) {
+                  firebase
+                    .firestore()
+                    .collection("photoTags")
+                    .add({
+                      tag: newValue[newValue.length - 1].label,
+                    })
+                    .then(function (docRef) {
+                      console.log("upload success");
+                    })
+                    .catch(function (error) {
+                      console.error("Error writing document: ", error);
+                    });
+                }
+              })
+              .catch(function (error) {
+                console.log("Error getting documents: ", error);
+              });
+          }
         }
 
         return (
@@ -223,7 +254,7 @@
             defaultValue={[options[0], options[1]]}
             options={options}
             isMulti
-            name="colors"
+            name="tags"
             className="basic-multi-select"
             classNamePrefix="select"
             onChange={handleChange}
@@ -319,9 +350,9 @@
                   <p className="previewText">預覽圖片</p>
                   <img className="previewPicture" src={previewFile} alt="" />
                 </div>
-                <div class="uploadIconWrapper">
+                <div className="uploadIconWrapper">
                   <label htmlFor="upload" className="uploadIcon">
-                    <div class="uploadText">上傳圖片</div>
+                    <div className="uploadText">上傳圖片</div>
                     <i className="fas fa-file-upload fa-2x"></i>
                   </label>
                   <input
@@ -399,9 +430,9 @@
                 上傳照片
               </button>
             </div>
-            <div class="tagsWrapper">
+            <div className="tagsWrapper">
+              <button className="titleTags">全部</button>
               <button className="titleTags">可愛</button>
-              <button className="titleTags">開心</button>
               <button className="titleTags">有趣</button>
               <button className="titleTags">黃色系</button>
               <button className="titleTags">黑色系</button>

@@ -1,5 +1,9 @@
-const content = document.querySelector(".content");
+const userId = document.querySelector(".userId");
+const currentUser = firebase.auth().currentUser;
 
+console.log(currentUser);
+
+// content.innerHTML =
 // Firebase Log out
 const logoutBtn = document.querySelector("#logoutBtn");
 logoutBtn.addEventListener("click", function (e) {

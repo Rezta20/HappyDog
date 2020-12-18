@@ -7,8 +7,8 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   color: rgb(6, 63, 111, 1);
   position: relative;
-  background-image: url(../../img/background.png);
-  background-size: cover;
+  background-image: url("../img/bg-1200x700-a_1218_工作區域\ 1.png");
+  background-size: contain;
 }
 
 .navbar-logoLoginWrapper {
@@ -42,6 +42,7 @@ body {
   background-color: rgb(6, 63, 111, 1);
   color: #ffffff;
   text-align: center;
+  outline: none;
 }
 
 .loginBtn:hover {
@@ -120,11 +121,11 @@ body {
 }
 
 .homeIcon {
-  background-image: url("../img/navbar/navbar\ icon-09.png");
+  background-image: url("../img/navbar/homepage.png");
 }
 
 .homeIcon:hover {
-  background-image: url("../img/navbar/navbar\ icon-10.png");
+  background-image: url("../img/navbar/homepage-hover.png");
 }
 
 .bookingWalkingIcon {
@@ -144,11 +145,11 @@ body {
 }
 
 .contactIcon {
-  background-image: url("../img/navbar/navbar\ icon-03\ 2.png");
+  background-image: url("../img/navbar/contact.png");
 }
 
 .contactIcon:hover {
-  background-image: url("../img/navbar/navbar\ icon-07\ 2.png");
+  background-image: url("../img/navbar/contact-hover.png");
 }
 
 /* LoginState */
