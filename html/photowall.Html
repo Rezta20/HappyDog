@@ -141,20 +141,43 @@
     <script src="https://unpkg.com/react-select@2.1.2/dist/react-select.min.js"></script>
 
     <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <script>
+      // Firebase 監聽
+      window.addEventListener("load", function () {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            console.log("sign in");
+            console.log(user);
+            console.log(user.email);
+            loginState.style.display = "flex";
+            notLoginState.style.display = "none";
+          } else {
+            console.log("user is sign out");
+            console.log(user);
+            loginState.style.display = "none";
+            notLoginState.style.display = "flex";
+          }
+        });
+      });
+    </script>
 
     <script type="text/babel">
       function Card(props) {
         return (
           <div className="cardWrapper">
             <div className="cardUserTitle">
-              <div className="userImg"></div>
-              <div className="userName">userName</div>
+              <div
+                className="userImg"
+                style={{ backgroundImage: `url(${props.userImg})` }}
+              ></div>
+              <div className="userName">{props.userName}</div>
             </div>
-            <img className="photoImg" src={props.trainingImgUrl} />
+            <img className="photoImg" src={props.photoImgUrl} />
             <div className="titleHeartWrapper">
-              <div className="tags">{props.title}</div>
+              <div className="tags">
+                {props.hashTags?.map(() => "#" + data)}
+              </div>
             </div>
-            <div className="cardContent">{props.cardContent}</div>
           </div>
         );
       }
@@ -301,7 +324,7 @@
                   // `url` is the download URL for 'images/stars.jpg'
                   const user = firebase.auth().currentUser;
                   const userData = user.providerData[0];
-
+                  console.log(userData);
                   db.collection("photowall")
                     .add({
                       photo: url,
@@ -402,9 +425,10 @@
           cards.push(
             <Card
               key={i}
-              trainingImgUrl={data[i].photo}
-              title={data[i].user}
-              // cardContent={data[i].hashtag[0]}
+              userImg={data[i].userPhoto}
+              userName={data[i].user}
+              photoImgUrl={data[i].photo}
+              hashTags={data[i].hashtags}
               setShow={setShow}
               setIndex={setIndex}
               index={i}

@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       center: "title",
       right: "  ",
     },
+    unselectAuto: false,
 
     selectable: true,
 
