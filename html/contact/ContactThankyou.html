@@ -11,6 +11,12 @@
     <!-- Favicon  -->
     <link rel="icon" type="image/png" href="../../img/favicon.png" />
 
+      <!-- Font Awesome  -->
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+
     <title>Happy Dog</title>
   </head>
   <body>
@@ -33,43 +39,51 @@
 
         <div class="login-wrapper loginState">
           <p class="navbar-text">
-            汪，您目前是登入中 。<span
+            汪，登入中&emsp;<span
               ><a class="login-A toMemberpage" href="/Html/Login/member.html">
-                查看會員資料
-              </a></span
-            >
+                <i class="far fa-user-circle"></i> </a
+            ></span>
           </p>
         </div>
       </div>
 
       <!-- Navbar Elements -->
-      <div class="navbar-iconWrapper">
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/homepage.html">
-            <div class="navbarIcon homeIcon"></div>
-            <div class="navbar-text">回首頁</div>
-          </a>
-        </div>
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
-            <div class="navbarIcon bookingWalkingIcon"></div>
-            <div class="navbar-text">預約散步</div>
-          </a>
-        </div>
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/photowall.Html">
-            <div class="navbarIcon photoIcon"></div>
-            <div class="navbar-text">毛孩日誌</div>
-          </a>
-        </div>
-        <div class="navbar-element">
-          <a class="navbar-A" href="/Html/Contact/Contact.html">
-            <div class="navbarIcon contactIcon"></div>
-            <div class="navbar-text">聯絡我們</div>
-          </a>
+      <div class="navbariconWrapperFlex">
+        <div class="navbar-iconWrapper">
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/homepage.html">
+              <div class="navbarIcon homeIcon"></div>
+              <div class="navbar-text">寵物當家</div>
+            </a>
+          </div>
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/Booking/bookingWalking.html">
+              <div class="navbarIcon bookingWalkingIcon"></div>
+              <div class="navbar-text">預約散步</div>
+            </a>
+          </div>
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/photowall.Html">
+              <div class="navbarIcon photoIcon"></div>
+              <div class="navbar-text">毛孩日誌</div>
+            </a>
+          </div>
+          <div class="navbar-element">
+            <a class="navbar-A" href="/Html/Contact/Contact.html">
+              <div class="navbarIcon contactIcon"></div>
+              <div class="navbar-text">聯絡我們</div>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
+
+    <!-- Loading -->
+    <div class="loadingWrapper">
+      <div class="loading">
+        <img class="loadingGif" src="/img/loading.gif" alt="" />
+      </div>
+    </div>
 </head>
 <body>
 

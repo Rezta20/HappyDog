@@ -7,7 +7,7 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   color: rgb(6, 63, 111, 1);
   position: relative;
-  background-image: url("../img/1.png");
+  background-image: url("../img/background.png");
   background-size: contain;
 }
 
@@ -64,7 +64,6 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-  text-decoration: none;
   color: #063f6f;
 }
 
@@ -74,6 +73,24 @@ body {
 
 .fa-user-circle {
   font-size: 28px;
+}
+
+.loginState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userPhoto {
+  display: none;
+  border-radius: 50px;
+  height: 35px;
+  width: 35px;
+  background-size: contain;
+}
+
+.userPhoto:hover {
+  box-shadow: 3px 3px 10px grey;
 }
 
 /* Navbar Element  */

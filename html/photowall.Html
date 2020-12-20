@@ -39,7 +39,7 @@
       <div class="navbar-logoLoginWrapper">
         <div class="navbar-logoWrapper">
           <a class="logo-A" href="/Html/homepage.html">
-            <img class="logo" src="../../img/logo.png" alt="happyDog-logo" />
+            <img class="logo" src="../img/logo.png" alt="happyDog-logo" />
           </a>
         </div>
 
@@ -52,11 +52,10 @@
 
         <div class="login-wrapper loginState">
           <p class="navbar-text">
-            汪，您目前是登入中 。<span
+            汪，登入中&emsp;<span
               ><a class="login-A toMemberpage" href="/Html/Login/member.html">
-                查看會員資料
-              </a></span
-            >
+                <i class="far fa-user-circle"></i> </a
+            ></span>
           </p>
         </div>
       </div>
@@ -91,6 +90,13 @@
         </div>
       </div>
     </nav>
+
+    <!-- Loading -->
+    <div class="loadingWrapper">
+      <div class="loading">
+        <img class="loadingGif" src="/img/loading.gif" alt="" />
+      </div>
+    </div>
 
     <!-- Content -->
     <div class="rootWrapper">
@@ -175,7 +181,9 @@
             <img className="photoImg" src={props.photoImgUrl} />
             <div className="titleHeartWrapper">
               <div className="tags">
-                {props.hashTags?.map(() => "#" + data)}
+                {props.hashTags?.map((data) => (
+                  <span>#{data} </span>
+                ))}
               </div>
             </div>
           </div>

@@ -30,18 +30,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     selectAllow: (info) => {
       let now = new Date();
+      let end = info.end;
       let selected = info.start;
-      if (selected < now) {
-        return false;
-      } else if (
-        selected > now &&
-        info.start.getMonth() == info.end.getMonth() &&
-        info.start.getDate() == info.end.getDate() - 1
-      ) {
-        return true;
-      } else {
+
+      // Cannot choose past date
+      if (selected < now || end < now) {
         return false;
       }
+
+      // Cannot choose multi day
+
+      if (
+        new Date(
+          selected.getFullYear(),
+          selected.getMonth(),
+          selected.getDate() + 1
+        ).getTime() == end.getTime()
+      ) {
+        return true;
+      }
+      return false;
     },
 
     select: function (info) {
@@ -68,11 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         sendDataBtn.style.opacity = "1";
       }
     },
-
-    // events:
-    //   {
-    //     start:clickedDate
-    //   }
 
     height: "auto",
   });
