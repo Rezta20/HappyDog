@@ -49,10 +49,16 @@ body {
 }
 
 .viewDescription {
+  display: flex;
+  justify-content: flex-start;
   font-size: 18px;
-  margin: 15px 30px 25px;
-  width: 50%;
+  max-width: 1090px;
+  margin: 7px auto;
   background-color: #fff;
+}
+
+.viewDescription:last-child {
+  margin-bottom: 30px;
 }
 
 /* Time Table  */
@@ -63,6 +69,8 @@ body {
   flex-direction: column;
   font-size: 20px;
   font-weight: 600;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .timeTitleWrapper {
@@ -80,6 +88,7 @@ body {
 .timeBtnWrapper {
   display: flex;
   justify-content: space-around;
+  max-width: 1500px;
 }
 
 .timeBtnMorningWrapper,
@@ -149,4 +158,9 @@ body {
   cursor: pointer;
   background-color: #fc9f35;
   color: #fff;
+}
+
+/* RWD  */
+
+@media only screen and (max-height: 1150px) {
 }

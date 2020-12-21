@@ -9,16 +9,10 @@ window.addEventListener("load", function () {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const providerData = user.providerData[0];
-
-      console.log("sign in");
-      console.log(user);
-      console.log(user.email);
       if (
         providerData.providerId === "google.com" ||
         providerData.providerId === "facebook.com"
       ) {
-        console.log("ho");
-        console.log(providerData.displayName);
         userIcon.style.display = "none";
         userPhoto.style.display = "inline";
         userPhoto.style.backgroundImage = `url(${providerData.photoURL})`;
@@ -27,8 +21,6 @@ window.addEventListener("load", function () {
       loginState.style.display = "flex";
       notLoginState.style.display = "none";
     } else {
-      console.log("user is sign out");
-      console.log(user);
       loginState.style.display = "none";
       notLoginState.style.display = "flex";
     }

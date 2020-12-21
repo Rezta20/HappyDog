@@ -5,6 +5,7 @@ const timeTitleWrapper = document.querySelector(".timeTitleWrapper");
 const morningBtnWrapper = document.querySelector(".timeBtnMorningWrapper");
 const afternoonBtnWrapper = document.querySelector(".timeBtnAfternoonWrapper");
 const eveningBtnWrapper = document.querySelector(".timeBtnEveningWrapper");
+const selectedDateColor = document.querySelector(".fc-daygrid-day-events");
 // Store Pick Date Data
 let bookingTimeData = {};
 
@@ -56,14 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
       let clickedDate = info.start;
       var view = calendar.view;
 
-      // Set Selected Date
-      bookingTimeData.bookingDateStr = info.startStr;
-      bookingTimeData.bookingDateEnd = info.endStr;
-
       // Change View To Week
       if (view.type === "dayGridMonth") {
         calendar.changeView("dayGridWeek");
         calendar.gotoDate(clickedDate);
+        calendar.select(clickedDate);
+
+        // Set Selected Dates
+        bookingTimeData.bookingDateStr = info.startStr;
+        bookingTimeData.bookingDateEnd = info.endStr;
+
         monthViewDescription.style.display = "none";
         weekViewDescription.style.display = "block";
         timeTitleWrapper.style.opacity = "1";
@@ -74,6 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
         afternoonBtnWrapper.style.opacity = "1";
         eveningBtnWrapper.style.opacity = "1";
         sendDataBtn.style.opacity = "1";
+      }
+      if (view.type === "dayGridWeek") {
+        // Set Selected Date
+        bookingTimeData.bookingDateStr = info.startStr;
+        bookingTimeData.bookingDateEnd = info.endStr;
       }
     },
 
@@ -113,14 +121,9 @@ for (let i = 0; i < timeBtn.length; i++) {
 
 // Send Booking Date Button Event
 function sendBookingDatatoBookingform() {
-  if (bookingTimeData.bookingDateStr === undefined) {
-    alert("請選擇日期");
-  } else if (bookingTimeData.time === undefined) {
+  if (bookingTimeData.time === undefined) {
     alert("請選擇時間");
-  } else if (
-    bookingTimeData.bookingDateStr !== undefined &&
-    bookingTimeData.time !== undefined
-  ) {
+  } else if (bookingTimeData.time !== undefined) {
     location.href = "/Html/Booking/bookingWalkingForm.html";
   }
 
