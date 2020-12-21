@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     selectable: true,
 
+    longPressDelay: 0,
+
+    selectLongPressDelay: 0,
+
     selectAllow: (info) => {
       let now = new Date();
       let end = info.end;
