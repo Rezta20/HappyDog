@@ -39,7 +39,11 @@ signUpBtn.addEventListener("click", () => {
       .auth()
       .createUserWithEmailAndPassword(user.email, user.pwd)
       .then((u) => {
-        alert("帳號註冊成功！");
+        Swal.fire({
+          title: "已登入",
+          icon: "success",
+          confirmButtonText: "確定",
+        });
         changeToLogin();
 
         // 2秒後清空資料
@@ -53,20 +57,40 @@ signUpBtn.addEventListener("click", () => {
           err.message ==
           "The email address is already in use by another account."
         ) {
-          alert("這個信箱已辦過帳號囉！");
+          Swal.fire({
+            title: "這個信箱已辦過帳號囉！",
+            icon: "warning",
+            confirmButtonText: "確定",
+          });
         } else if (err.message == "Password should be at least 6 characters") {
-          alert("密碼請至少輸入6位數");
+          Swal.fire({
+            title: "密碼請至少輸入6位數",
+            icon: "warning",
+            confirmButtonText: "確定",
+          });
         } else if (
           err.message == "The password must be 6 characters long or more."
         ) {
-          alert("密碼需要為6位數或是更長");
+          Swal.fire({
+            title: "密碼需要為6位數或是更長",
+            icon: "warning",
+            confirmButtonText: "確定",
+          });
         } else if (err.message == "The email address is badly formatted.") {
-          alert("信箱格式請輸入XXXX@xxxxx.xxx的格式");
+          Swal.fire({
+            title: "信箱格式請輸入XXXX@xxxxx.xxx的格式",
+            icon: "warning",
+            confirmButtonText: "確定",
+          });
         }
         console.log(err.message);
       });
   } else if (checkSignInPwdInput.value !== user.pwd) {
-    alert("確認密碼與密碼不符，請重新輸入");
+    Swal.fire({
+      title: "確認密碼與密碼不符，請重新輸入",
+      icon: "warning",
+      confirmButtonText: "確定",
+    });
     checkSignInPwdInput.value = "";
   }
 });
@@ -97,18 +121,34 @@ logInBtn.addEventListener("click", (event) => {
       if (
         err.message == "The email address is already in use by another account."
       ) {
-        alert("這個信箱已辦過帳號囉！");
+        Swal.fire({
+          title: "這個信箱已辦過帳號囉！",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
       } else if (
         err.message ==
         "The password is invalid or the user does not have a password."
       ) {
-        alert("密碼不正確或未輸入，請再輸入其他密碼");
+        Swal.fire({
+          title: "密碼不正確或未輸入，請再輸入其他密碼",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
       } else if (
         err.message == "The password must be 6 characters long or more."
       ) {
-        alert("密碼需要為6位數或是更長");
+        Swal.fire({
+          title: "密碼需要為6位數或是更長",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
       } else if (err.message == "The email address is badly formatted.") {
-        alert("信箱格式請輸入XXXX@xxxxx.xxx的格式");
+        Swal.fire({
+          title: "信箱格式請輸入XXXX@xxxxx.xxx的格式",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
       }
     });
 });

@@ -191,7 +191,7 @@
             <div className="titleHeartWrapper">
               <div className="tags">
                 {props.hashTags?.map((data) => (
-                  <span>#{data} </span>
+                  <span> #{data.value} </span>
                 ))}
               </div>
             </div>
@@ -203,34 +203,6 @@
         const [options, setOptions] = React.useState([]);
 
         React.useEffect(() => {
-          // const options = [
-          //   {
-          //     value: "可愛",
-          //     label: "可愛",
-          //   },
-          //   {
-          //     value: "開心",
-          //     label: "開心",
-          //   },
-          //   {
-          //     value: "有趣",
-          //     label: "有趣",
-          //   },
-          //   {
-          //     value: "米克斯",
-          //     label: "米克斯",
-          //   },
-          //   {
-          //     value: "柴犬",
-          //     label: "柴犬",
-          //   },
-          //   {
-          //     value: "冒險家",
-          //     label: "冒險家",
-          //   },
-          // ];
-          // setOptions(options);
-
           // Firebase firestore initializ
           const db = firebase.firestore();
           const firestoreCollection = db.collection("photoTags");
@@ -241,17 +213,7 @@
               console.log(doc.data());
               options.push({ value: doc.data().tag, label: doc.data().tag });
             });
-            //   // React select
-            //   const options = [
-            //     {
-            //       value: "獒犬",
-            //       label: "獒犬",
-            //     },
-            //     {
-            //       value: "米克斯",
-            //       label: "米克斯",
-            //     }
-            //   ];
+
             setOptions(options);
           });
         }, []);
@@ -259,6 +221,7 @@
 
         function handleChange(newValue) {
           console.log(newValue);
+          props.setSaveTag(newValue);
 
           if (newValue.length - 1 === -1) {
           } else {
@@ -304,6 +267,7 @@
 
       function UploadCard(props) {
         const [previewFile, setPreviewFile] = React.useState();
+        const [saveTag, setSaveTag] = React.useState([]);
 
         function previewPicture() {
           document.querySelector(".previewText").style.display = "none";
@@ -342,10 +306,10 @@
                   const user = firebase.auth().currentUser;
                   const userData = user.providerData[0];
                   console.log(userData);
-                  db.collection("photowall")
+                  db.collection("photoWall")
                     .add({
                       photo: url,
-                      content: "",
+                      hashTags: saveTag,
                       rank: Date.now(),
                       time: `${new Date().getFullYear()}/${
                         new Date().getMonth() + 1
@@ -357,6 +321,7 @@
                     .then(function (docRef) {
                       // clicked = false;
                       console.log("Document successfully written!");
+                      props.setShowUpload(false);
                     })
                     .catch(function (error) {
                       console.error("Error writing document: ", error);
@@ -403,7 +368,7 @@
                     onChange={previewPicture}
                   />
                 </div>
-                <Tags />
+                <Tags setSaveTag={setSaveTag} />
               </div>
 
               <div className="sendPhotoBtnWrapper">
@@ -425,7 +390,7 @@
         React.useEffect(() => {
           // Firebase firestore initializ
           const db = firebase.firestore();
-          const firestoreCollection = db.collection("photowall");
+          const firestoreCollection = db.collection("photoWall");
 
           firestoreCollection.get().then(function (doc) {
             const dataArray = [];
@@ -439,16 +404,17 @@
         const cards = [];
 
         for (let i = 0; i < data.length; i++) {
+          console.log(data);
           cards.push(
             <Card
-              key={i}
+              key={data[i].rank}
+              index={i}
               userImg={data[i].userPhoto}
               userName={data[i].user}
               photoImgUrl={data[i].photo}
-              hashTags={data[i].hashtags}
+              hashTags={data[i].hashTags}
               setShow={setShow}
               setIndex={setIndex}
-              index={i}
             />
           );
         }

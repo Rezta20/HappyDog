@@ -44,6 +44,7 @@ body {
   height: 30px;
   margin: 10px;
   background-color: #fc9f35;
+  outline: none;
 }
 
 .homeBtn {

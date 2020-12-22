@@ -1,7 +1,8 @@
 const userId = document.querySelector(".userId");
-const currentUser = firebase.auth().currentUser;
+const userImg = document.querySelector(".userImg");
+const email = document.querySelector(".email");
 
-console.log(currentUser);
+const currentUser = firebase.auth().currentUser;
 
 // content.innerHTML =
 // Firebase Log out
@@ -24,4 +25,18 @@ logoutBtn.addEventListener("click", function (e) {
       console.log("Signed out! Error");
       alert("登出失敗");
     });
+});
+
+// Firebase 監聽
+window.addEventListener("load", function () {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      const providerData = user.providerData[0];
+      userId.innerHTML = `會員姓名：${providerData.displayName}`;
+      email.innerHTML = `會員帳號：${providerData.email}`;
+      userImg.style.backgroundImage = `url(${providerData.photoURL})`;
+      console.log(providerData);
+    } else {
+    }
+  });
 });

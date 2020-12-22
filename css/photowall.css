@@ -97,7 +97,7 @@ body {
   top: 0;
   width: 100%;
   background-color: rgb(68, 68, 68, 0.8);
-  height: 320vh;
+  min-height: 100%;
 }
 
 .uploadCardWrapper {
@@ -201,6 +201,7 @@ body {
 .cardsWrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cardUserTitle {
@@ -226,8 +227,8 @@ body {
 }
 
 .cardWrapper {
-  border: solid 1px;
-  margin: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -236,6 +237,8 @@ body {
 }
 
 .photoImg {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
   width: 80%;
   height: auto;
   margin: 12px auto 3px;
