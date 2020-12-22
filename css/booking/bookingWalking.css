@@ -22,6 +22,7 @@ body {
 .whoTextWrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .whoTextTitle {
@@ -125,7 +126,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 800px;
-  margin: 30px 60px 0 0;
+  margin: 35px 60px 0 0;
 }
 
 .card {
@@ -174,6 +175,10 @@ body {
   transform: rotateY(180deg);
 }
 
+.back-phone {
+  display: none;
+}
+
 /* Footer */
 .footer-background {
   left: 0;
@@ -215,11 +220,74 @@ body {
     width: 100%;
   }
 }
+
+/* iPad  */
+@media only screen and (max-width: 1024px) {
+  .front {
+    display: none;
+  }
+  }
+
+  .card:hover .inner {
+    transform: none;
+  }
+  .whoTextTitle {
+    margin: 20px auto;
+  }
+
+  .back {
+    display: none;
+  }
+
+  .back-phone {
+    display: none;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 15px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .back-phone-under {
+    padding-top: 25px;
+  }
+}
+
+/* iphone  */
+@media only screen and (max-width: 960px) {
+  .card {
+    font-size: 16px;
+    height: 200px;
+  }
+
+  .descriptionTitle {
+    font-size: 20px;
+  }
+
+  .back-phone {
+    padding-top: 20px;
+    line-height: 1.6;
+  }
+
+  .back-phone-under {
+    padding-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .card {
+    width: 120%;
+  }
+
+  .whoTextTitle {
+    font-size: 22px;
+  }
+}
+
 @media only screen and (max-width: 420px) {
   .whoTextTitle {
     width: 100%;
     font-size: 20px;
-    margin: 20px 0;
   }
 
   .calendarTextTitle {
@@ -260,7 +328,12 @@ body {
     height: 100%;
   }
 
-  .back {
-    line-height: 1.3;
+  .back-phone {
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .back-phone-under {
+    padding-top: 35px;
   }
 }

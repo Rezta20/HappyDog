@@ -113,20 +113,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Set Selected Time
 for (let i = 0; i < timeBtn.length; i++) {
-  function setTime() {
+  timeBtn[i].addEventListener("click", function setTime() {
     bookingTimeData.time = timeBtn[i].innerText;
     for (let z = 0; z < timeBtn.length; z++) {
       timeBtn[z].style.boxShadow = "";
     }
     timeBtn[i].style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
-  }
-  timeBtn[i].addEventListener("click", setTime);
+  });
 }
 
 // Send Booking Date Button Event
 function sendBookingDatatoBookingform() {
   if (bookingTimeData.time === undefined) {
-    alert("請選擇時間");
+    Swal.fire({
+      title: "請選擇時間",
+      icon: "warning",
+      confirmButtonText: "確定",
+    });
   } else if (bookingTimeData.time !== undefined) {
     location.href = "/Html/Booking/bookingWalkingForm.html";
   }

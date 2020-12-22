@@ -181,6 +181,11 @@ body {
 /* Footer */
 .footer-background {
   bottom: 0;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(6, 63, 111, 1);
   height: 50px;
   width: 100%;

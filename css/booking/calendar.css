@@ -162,5 +162,8 @@ body {
 
 /* RWD  */
 
-@media only screen and (max-height: 1150px) {
+@media only screen and (max-height: 375px) {
+  .navbar-logo {
+    width: 10px;
+  }
 }

@@ -1,13 +1,18 @@
 body {
-  min-height: 250vh;
+  min-height: 100vh;
+}
+
+.contentWrapper {
+  padding-bottom: 10px;
 }
 
 .customerHistoryWrapper {
   display: flex;
   justify-content: center;
-  border: solid 2px;
-  margin: 80px auto;
-  width: 600px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 50px auto 100px;
+  width: 500px;
 }
 
 .customerWrapper {

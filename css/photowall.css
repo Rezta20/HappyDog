@@ -3,7 +3,15 @@
 }
 
 body {
-  height: 320vh;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+.rootWrapper {
+  padding-bottom: 90px;
 }
 
 /* Upload Button  */

@@ -26,6 +26,9 @@
     />
     <link rel="stylesheet" href="" />
     
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="../../css/navbar.css" />
     <link rel="stylesheet" href="../../css/loading.css">
@@ -82,7 +85,7 @@
             </a>
           </div>
           <div class="navbar-element">
-            <a class="navbar-A" href="/Html/photowall.Html">
+            <a class="navbar-A" href="/Html/photowall.html">
               <div class="navbarIcon photoIcon"></div>
               <div class="navbar-text">毛孩日誌</div>
             </a>
@@ -162,8 +165,8 @@
           <div class="inputWrapper">
             <p>遛狗地點:</p>
             <select name="遛狗地點" id="" class="locationSelect">
-              <option value="中山公園">中山公園</option>
               <option value="榮星花園">榮星花園</option>
+              <option value="中山公園">中山公園</option>  
               <option value="民權公園">民權公園</option>
               <option value="民生公園">民生公園</option>
               <option value="華山狗公園">華山狗公園</option>
@@ -193,8 +196,39 @@
   </div>
     <!-- Footer -->
     <footer>
-      <div class="footer-background"></div>
+      <div class="footer-background">© 2020 by Hsiao-Hsuan</div>
     </footer>
+
+ <!-- FrieBase  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBL9Tmhwb15yAohPn_DLoAFUgVJoy76bnk",
+        authDomain: "happydog-82c2f.firebaseapp.com",
+        databaseURL: "https://happydog-82c2f.firebaseio.com",
+        projectId: "happydog-82c2f",
+        storageBucket: "happydog-82c2f.appspot.com",
+        messagingSenderId: "1070136598571",
+        appId: "1:1070136598571:web:0de4a08e0493465e984a6e",
+        measurementId: "G-N3V1TLZNZW",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
 
     <!-- Script -->
     <script src="../../JavaScript/ifLogin.js"></script>

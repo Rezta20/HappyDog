@@ -1,6 +1,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Google Font  -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -26,8 +28,12 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
 
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Favicon  -->
     <link rel="icon" type="image/png" href="../../img/favicon.png" />
+
     <title>Happy Dog</title>
   </head>
   <body>
@@ -79,7 +85,7 @@
             </a>
           </div>
           <div class="navbar-element">
-            <a class="navbar-A" href="/Html/photowall.Html">
+            <a class="navbar-A" href="/Html/photowall.html">
               <div class="navbarIcon photoIcon"></div>
               <div class="navbar-text">毛孩日誌</div>
             </a>
@@ -103,13 +109,13 @@
 
     <!-- Description  -->
     <div class="bookingDescriptionMonthViewWrapper">
-      <p class="viewDescription monthViewDescription">❇ 請點選日期預約</p>
+      <p class="viewDescription monthViewDescription">・請點選日期預約</p>
     </div>
 
     <div class="bookingDescriptionWeekViewWrapper">
-      <p class="viewDescription">❇ 請點選單日</p>
-      <p class="viewDescription">❇ 預約制以一週為單位</p>
-      <p class="viewDescription">❇ 預約時間皆為固定如有其他問題歡迎來電洽詢</p>
+      <p class="viewDescription">・ 請點選單日</p>
+      <p class="viewDescription">・預約制以一週為單位</p>
+      <p class="viewDescription">・ 預約時間皆為固定如有其他問題歡迎來電洽詢</p>
     </div>
 
     <!-- Time Table  -->
@@ -147,7 +153,7 @@
 
     <!-- Footer -->
     <footer>
-      <div class="footer-background"></div>
+      <div class="footer-background">© 2020 by Hsiao-Hsuan</div>
     </footer>
 
     <!-- FrieBase  -->
@@ -179,8 +185,8 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     </script>
+
     <!-- Script  -->
-    <!-- <script src="../../JavaScript/loading.js"></script> -->
     <script src="../../JavaScript/ifLogin.js"></script>
     <script src="../../JavaScript/calendar.js"></script>
   </body>

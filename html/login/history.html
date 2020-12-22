@@ -13,6 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../css/navbar.css" />
+    <link rel="stylesheet" href="../../css/loading.css" />
     <link rel="stylesheet" href="../../css/Login/history.css" />
 
     <!-- Favicon  -->
@@ -75,7 +76,7 @@
             </a>
           </div>
           <div class="navbar-element">
-            <a class="navbar-A" href="/Html/photowall.Html">
+            <a class="navbar-A" href="/Html/photowall.html">
               <div class="navbarIcon photoIcon"></div>
               <div class="navbar-text">毛孩日誌</div>
             </a>
@@ -99,9 +100,10 @@
 
     <!-- Content  -->
     <!-- JavaScript active element  -->
-    <div class="customerHistoryWrapper">
-      <div class="customerWrapper">
-        <!-- <div class="ownerWrapper">
+    <div class="contentWrapper">
+      <div class="customerHistoryWrapper">
+        <div class="customerWrapper">
+          <!-- <div class="ownerWrapper">
           <div class="ownerTitle">飼主姓名：</div>
           <div class="ownerName">kgopdkgpd</div>
         </div>
@@ -129,12 +131,13 @@
           <div class="remindTitle">我們應該注意的事情：</div>
           <div class="remind">dfgdfg</div>
         </div> -->
+        </div>
       </div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <div class="footer-background"></div>
+      <div class="footer-background">© 2020 by Hsiao-Hsuan</div>
     </footer>
 
     <!-- FrieBase  -->
@@ -166,7 +169,10 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     </script>
+
+    <!-- Script  -->
     <script src="../../JavaScript/ifLogin.js"></script>
+    <script src="../../JavaScript/loading.js"></script>
     <script src="../../JavaScript/history.js"></script>
   </body>
 </html>

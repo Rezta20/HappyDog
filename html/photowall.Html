@@ -25,6 +25,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../css/navbar.css" />
+    <link rel="stylesheet" href="../../css/loading.css" />
     <link rel="stylesheet" href="../../css/photowall.css" />
 
     <!-- Favicon  -->
@@ -81,7 +82,7 @@
             </a>
           </div>
           <div class="navbar-element">
-            <a class="navbar-A" href="/Html/photowall.Html">
+            <a class="navbar-A" href="/Html/photowall.html">
               <div class="navbarIcon photoIcon"></div>
               <div class="navbar-text">毛孩日誌</div>
             </a>
@@ -104,13 +105,15 @@
     </div>
 
     <!-- Content -->
-    <div class="rootWrapper">
-      <div id="root"></div>
+    <div class="contentWrapper">
+      <div class="rootWrapper">
+        <div id="root"></div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <div class="footer-background"></div>
+      <div class="footer-background">© 2020 by Hsiao-Hsuan</div>
     </footer>
 
     <!-- FrieBase  -->
@@ -143,7 +146,9 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     </script>
+
     <script src="../../JavaScript/ifLogin.js"></script>
+    <script src="../../JavaScript/loading.js"></script>
 
     <!-- React Select  -->
     <script src="https://cdn.jsdelivr.net/npm/emotion@9.2.12/dist/emotion.umd.min.js"></script>
@@ -151,7 +156,6 @@
     <script src="https://unpkg.com/react-input-autosize@2.2.1/dist/react-input-autosize.min.js"></script>
     <script src="https://unpkg.com/react-select@2.1.2/dist/react-select.min.js"></script>
 
-    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
     <script>
       // Firebase 監聽
       window.addEventListener("load", function () {

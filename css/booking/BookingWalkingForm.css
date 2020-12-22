@@ -12,12 +12,9 @@ body {
 }
 
 .contentWrapper {
-  /* display: flex; */
-  /* height: 780px; */
   flex-direction: column;
   justify-content: center;
   padding-bottom: 100px;
-  /* align-items: center; */
 }
 
 /* Back Button  */
@@ -27,6 +24,7 @@ body {
 }
 .backWrapper {
   display: flex;
+  width: 190px;
   align-items: center;
   margin: 20px 0 0 25px;
 }
@@ -40,8 +38,16 @@ body {
   margin-left: 5px;
   font-size: 18px;
   padding-bottom: 4px;
-  width: 30%;
+  width: 100%;
   background-color: #fff;
+}
+
+.backWrapper:hover .backContent {
+  color: #fc9f35;
+}
+
+.backWrapper:hover .fa-arrow-alt-circle-left {
+  color: #fc9f35;
 }
 
 /* Form  */
@@ -53,7 +59,7 @@ body {
 .outsideFormWrapper {
   display: flex;
   flex-direction: column;
-  border: solid 1px #3f3a3a;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 30px;
   width: 80%;
   margin: 0 25px;
@@ -64,6 +70,12 @@ input {
   width: 150px;
   text-indent: 5px;
   font-size: 16px;
+  border: solid 1px #063f6f;
+  border-radius: 5px;
+}
+
+input:focus {
+  box-shadow: 0 0 15pt 1pt#fc9f35;
 }
 
 .inputWrapper {
@@ -83,6 +95,12 @@ input {
 .locationSelect {
   height: 30px;
   width: 155px;
+  border-radius: 5px;
+  border: solid 1px #063f6f;
+}
+
+.locationSelect:focus {
+  box-shadow: 0 0 15pt 1pt#fc9f35;
 }
 
 .remindWrapper {
@@ -98,6 +116,12 @@ input {
   padding: 7px 0 0 7px;
   line-height: 1;
   font-size: 16px;
+  border: solid 1px #063f6f;
+  border-radius: 5px;
+}
+
+.remind:focus {
+  box-shadow: 0 0 15pt 1pt#fc9f35;
 }
 
 .sendBookingDetailBtnWrapper {
@@ -116,4 +140,16 @@ input {
   background-color: #d2e8fd;
   box-shadow: 1px 3px #063f6f;
   text-decoration: none;
+}
+
+/* Map Info Window */
+
+#infowindowsTitle {
+  text-align: center;
+  margin: 5px auto;
+}
+
+#windowPic {
+  width: 420px;
+  height: 250px;
 }
