@@ -131,7 +131,7 @@ logInBtn.addEventListener("click", (event) => {
         "The password is invalid or the user does not have a password."
       ) {
         Swal.fire({
-          title: "密碼不正確或未輸入，請再輸入其他密碼",
+          title: "密碼不正確或未輸入",
           icon: "warning",
           confirmButtonText: "確定",
         });
@@ -149,6 +149,18 @@ logInBtn.addEventListener("click", (event) => {
           icon: "warning",
           confirmButtonText: "確定",
         });
+      } else if (
+        err.message ==
+        "There is no user record corresponding to this identifier. The user may have been deleted."
+      ) {
+        Swal.fire({
+          title: "帳號未註冊，請先註冊",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+        changeToSignin();
+        logInEmail.value = "";
+        logInPwd.value = "";
       }
     });
 });

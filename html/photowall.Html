@@ -16,6 +16,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
 
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- React  -->
     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
     <!-- React DOM -->
@@ -161,14 +164,9 @@
       window.addEventListener("load", function () {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
-            console.log("sign in");
-            console.log(user);
-            console.log(user.email);
             loginState.style.display = "flex";
             notLoginState.style.display = "none";
           } else {
-            console.log("user is sign out");
-            console.log(user);
             loginState.style.display = "none";
             notLoginState.style.display = "flex";
           }
@@ -185,13 +183,13 @@
               <div className="userName">{props.userName}</div>
             </div>
             <img className="photoImg" src={props.photoImgUrl} />
-            <div className="titleHeartWrapper">
-              <div className="tags">
-                {props.hashTags?.map((data) => (
-                  <span> #{data.value} </span>
-                ))}
-              </div>
+
+            <div className="tags">
+              {props.hashTags?.map((data) => (
+                <span> #{data.value} </span>
+              ))}
             </div>
+            <div className="cardDate">{props.cardDate}</div>
           </div>
         );
       }
@@ -207,7 +205,6 @@
           firestoreCollection.get().then(function (docs) {
             const options = [];
             docs.forEach((doc) => {
-              console.log(doc.data());
               options.push({ value: doc.data().tag, label: doc.data().tag });
             });
 
@@ -217,7 +214,6 @@
         //
 
         function handleChange(newValue) {
-          console.log(newValue);
           props.setSaveTag(newValue);
 
           if (newValue.length - 1 === -1) {
@@ -265,8 +261,9 @@
       }
 
       function UploadCard(props) {
-        const [previewFile, setPreviewFile] = React.useState();
+        const [previewFile, setPreviewFile] = React.useState("nothing");
         const [saveTag, setSaveTag] = React.useState([]);
+        const [alreadyUpload, setAlreadyUpload] = React.useState(false);
 
         function previewPicture() {
           document.querySelector(".previewText").style.display = "none";
@@ -293,71 +290,79 @@
           const nativeImg =
             "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2FlogoNative1.png?alt=media&token=682b9c60-f667-471c-9169-fd69f36a9f21";
 
-          ref
-            .child(pictureName)
-            .put(picture)
-            .then(function (snapshot) {
-              console.log("Uploaded a blob or file!");
-
-              ref
-                .child(pictureName)
-                .getDownloadURL()
-                .then(function (url) {
-                  // `url` is the download URL for 'images/stars.jpg'
-                  const user = firebase.auth().currentUser;
-                  const userData = user.providerData[0];
-
-                  if (
-                    userData.displayName === null ||
-                    userData.photoURL === null
-                  ) {
-                    db.collection("photoWall")
-                      .add({
-                        photo: url,
-                        hashTags: saveTag,
-                        rank: Date.now(),
-                        time: `${new Date().getFullYear()}/${
-                          new Date().getMonth() + 1
-                        }/${new Date().getDate()}`,
-                        user: "Happy Dog",
-                        userPhoto: nativeImg,
-                        uid: userData.uid,
-                      })
-                      .then(function (docRef) {
-                        // clicked = false;
-                        console.log("Document successfully written!");
-                        props.setShowUpload(false);
-                      })
-                      .catch(function (error) {
-                        console.error("Error writing document: ", error);
-                      });
-                  } else {
-                    db.collection("photoWall")
-                      .add({
-                        photo: url,
-                        hashTags: saveTag,
-                        rank: Date.now(),
-                        time: `${new Date().getFullYear()}/${
-                          new Date().getMonth() + 1
-                        }/${new Date().getDate()}`,
-                        user: userData.displayName,
-                        userPhoto: userData.photoURL,
-                        uid: userData.uid,
-                      })
-                      .then(function (docRef) {
-                        // clicked = false;
-                        console.log("Document successfully written!");
-                        props.setShowUpload(false);
-                      })
-                      .catch(function (error) {
-                        console.error("Error writing document: ", error);
-                      });
-                  }
-                });
-            })
-            .catch(function (error) {
-              console.log("Image Error");
+          if (previewFile === "nothing") {
+            Swal.fire({
+              title: "請上傳圖片唷",
+              icon: "warning",
+              confirmButtonText: "確定",
             });
+          } else {
+            setAlreadyUpload(true);
+            ref
+              .child(pictureName)
+              .put(picture)
+              .then(function (snapshot) {
+                console.log("Uploaded a blob or file!");
+
+                ref
+                  .child(pictureName)
+                  .getDownloadURL()
+                  .then(function (url) {
+                    // `url` is the download URL for 'images/stars.jpg'
+                    const user = firebase.auth().currentUser;
+                    const userData = user.providerData[0];
+
+                    if (
+                      userData.displayName === null ||
+                      userData.photoURL === null
+                    ) {
+                      db.collection("photoWall")
+                        .add({
+                          photo: url,
+                          hashTags: saveTag,
+                          rank: Date.now(),
+                          time: `${new Date().getFullYear()}.${
+                            new Date().getMonth() + 1
+                          }.${new Date().getDate()}`,
+                          user: "Happy Dog",
+                          userPhoto: nativeImg,
+                          uid: userData.uid,
+                        })
+                        .then(function (docRef) {
+                          console.log("Document successfully written!");
+                          props.setShowUpload(false);
+                        })
+                        .catch(function (error) {
+                          console.error("Error writing document: ", error);
+                        });
+                    } else {
+                      db.collection("photoWall")
+                        .add({
+                          photo: url,
+                          hashTags: saveTag,
+                          rank: Date.now(),
+                          time: `${new Date().getFullYear()}.${
+                            new Date().getMonth() + 1
+                          }.${new Date().getDate()}`,
+                          user: userData.displayName,
+                          userPhoto: userData.photoURL,
+                          uid: userData.uid,
+                        })
+                        .then(function (docRef) {
+                          // clicked = false;
+                          console.log("Document successfully written!");
+                          props.setShowUpload(false);
+                        })
+                        .catch(function (error) {
+                          console.error("Error writing document: ", error);
+                        });
+                    }
+                  });
+              })
+              .catch(function (error) {
+                console.log("Image Error");
+              });
+          }
         }
 
         return (
@@ -400,7 +405,7 @@
 
               <div className="sendPhotoBtnWrapper">
                 <button className="sendPhotoBtn" onClick={sendData}>
-                  確認送出
+                  {alreadyUpload ? "送出中" : "確認送出"}
                 </button>
               </div>
             </div>
@@ -413,14 +418,15 @@
         const [index, setIndex] = React.useState(0);
         const [data, setData] = React.useState([]);
         const [showUpload, setShowUpload] = React.useState(false);
-        const [tagView, setTagView] = React.useState();
+        const [tagView, setTagView] = React.useState("全部");
 
+        // 從Firebase上 抓資料
         React.useEffect(() => {
           // Firebase firestore initializ
           const db = firebase.firestore();
           const firestoreCollection = db.collection("photoWall");
 
-          firestoreCollection.get().then(function (doc) {
+          firestoreCollection.onSnapshot(function (doc) {
             const dataArray = [];
             doc.forEach(function (doc) {
               dataArray.push(doc.data());
@@ -432,7 +438,6 @@
         const cards = [];
 
         for (let i = 0; i < data.length; i++) {
-          console.log(data);
           cards.push(
             <Card
               key={data[i].rank}
@@ -441,6 +446,7 @@
               userName={data[i].user}
               photoImgUrl={data[i].photo}
               hashTags={data[i].hashTags}
+              cardDate={data[i].time}
               setShow={setShow}
               setIndex={setIndex}
             />
@@ -456,30 +462,92 @@
                 </div>
                 <div className="uploadPictureDescriptionTriangle"></div>
               </div>
+
               <button
                 className="uploadBtn"
                 onClick={() => {
-                  setShowUpload(true);
+                  if (firebase.auth().currentUser === null) {
+                    Swal.fire({
+                      title: "請先登入帳號",
+                      icon: "warning",
+                      confirmButtonText: "確定",
+                    }).then(function () {
+                      location.href = "../Html/Login/login.html";
+                    });
+                  } else {
+                    setShowUpload(true);
+                  }
                 }}
               >
-                上傳照片
+                上傳圖片
               </button>
             </div>
-            <div className="tagsWrapper">
-              <button
-                className={`titleTags ${tagView === "全部" ? "selected" : ""}`}
-                onClick={() => {
-                  setTagView("全部");
-                }}
-              >
-                全部
-              </button>
-              <button className="titleTags ">可愛</button>
-              <button className="titleTags">有趣</button>
-              <button className="titleTags">黃色系</button>
-              <button className="titleTags">黑色系</button>
-              <button className="titleTags">米克斯</button>
+
+            <div className="titleTagsOutsideWrapper">
+              <div className="titleTagsWrapper">
+                <button
+                  className={`titleTags ${
+                    tagView === "全部" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    setTagView("全部");
+                  }}
+                >
+                  全部
+                </button>
+                <button
+                  className={`titleTags ${
+                    tagView === "可愛" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    setTagView("可愛");
+                  }}
+                >
+                  可愛
+                </button>
+                <button
+                  className={`titleTags ${
+                    tagView === "有趣" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    setTagView("有趣");
+                  }}
+                >
+                  有趣
+                </button>
+                <button
+                  className={`titleTags ${
+                    tagView === "黃色系" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    setTagView("黃色系");
+                  }}
+                >
+                  黃色系
+                </button>
+                <button
+                  className={`titleTags ${
+                    tagView === "黑色系" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    setTagView("黑色系");
+                  }}
+                >
+                  黑色系
+                </button>
+                <button
+                  className={`titleTags ${
+                    tagView === "米克斯" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    setTagView("米克斯");
+                  }}
+                >
+                  米克斯
+                </button>
+              </div>
             </div>
+
             {showUpload && <UploadCard setShowUpload={setShowUpload} />}
             <div className="cardsWrapper">{cards}</div>
           </>

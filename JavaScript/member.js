@@ -23,19 +23,9 @@ logoutBtn.addEventListener("click", function (e) {
         title: "已登出",
         icon: "success",
         confirmButtonText: "確定",
+      }).then(function () {
+        location.href = "../../Html/homepage.html";
       });
-
-      // alertCheckBtn.onclick = function () {
-      //   location.href = "../../Html/homepage.html";
-      // };
-
-      // setTimeout(function () {
-      //   alertCheckBtn.onclick = function () {
-      //     location.href = "../../Html/homepage.html";
-      //   };
-      // }, 2000);
-
-      location.href = "../../Html/homepage.html";
     })
     .catch(function (error) {
       // An error happened.
