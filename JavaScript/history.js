@@ -12,7 +12,12 @@ const customerHistoryWrapper = document.querySelector(
 );
 const customerWrapper = document.querySelector(".customerWrapper");
 
-// Get Firebase collection data
+// // Firebase 監聽
+// window.addEventListener("load", function () {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       const providerData = user.providerData[0];
+//       // Get Firebase collection data
 firestoreCollection
   .where("uid", "==", uid)
   .get()
@@ -129,3 +134,7 @@ firestoreCollection
       remind.innerHTML = doc.data().remind;
     });
   });
+//     } else {
+//     }
+//   });
+// });

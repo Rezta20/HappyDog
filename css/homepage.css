@@ -7,6 +7,29 @@ body {
 }
 
 /* Cover */
+.coverWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.coverText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+.coverImg {
+  width: 85%;
+  margin: 0 auto;
+  bottom: 50px;
+  position: absolute;
+}
+
 .maincover {
   width: 100%;
   height: 550px;
@@ -21,11 +44,11 @@ body {
   border-radius: 0px 600px 500px 0;
 }
 
-.coverImg {
+/* .coverImg {
   width: 737px;
   position: absolute;
   left: 0;
-}
+} */
 
 .coverContentWrapper {
   display: flex;

@@ -103,9 +103,10 @@ body {
 .uploadCardWrapper {
   position: fixed;
   top: 15%;
+  margin-bottom: 15%;
   border: solid 3px #063f6f;
   background-color: #fff;
-  height: 580px;
+  height: auto;
   width: 425px;
 }
 
@@ -173,6 +174,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 15px;
 }
 
 .sendPhotoBtn {

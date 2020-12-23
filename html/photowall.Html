@@ -291,6 +291,8 @@
           let randomNumber = Math.floor(Math.random() * 1000);
           let time = Date.now();
           let pictureName = `photoWallPicture ${randomNumber}${time}`;
+          const nativeImg =
+            "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2Flogo-square2.png?alt=media&token=d41d1501-68f5-4197-9be4-285b7fd14eb4";
 
           ref
             .child(pictureName)
@@ -306,26 +308,57 @@
                   const user = firebase.auth().currentUser;
                   const userData = user.providerData[0];
                   console.log(userData);
-                  db.collection("photoWall")
-                    .add({
-                      photo: url,
-                      hashTags: saveTag,
-                      rank: Date.now(),
-                      time: `${new Date().getFullYear()}/${
-                        new Date().getMonth() + 1
-                      }/${new Date().getDate()}`,
-                      user: userData.displayName,
-                      userPhoto: userData.photoURL,
-                      uid: userData.uid,
-                    })
-                    .then(function (docRef) {
-                      // clicked = false;
-                      console.log("Document successfully written!");
-                      props.setShowUpload(false);
-                    })
-                    .catch(function (error) {
-                      console.error("Error writing document: ", error);
-                    });
+
+                  if (
+                    userData.displayName === null ||
+                    userData.photoURL === null
+                  ) {
+                    console.log("1");
+                    db.collection("photoWall")
+                      .add({
+                        photo: url,
+                        hashTags: saveTag,
+                        rank: Date.now(),
+                        time: `${new Date().getFullYear()}/${
+                          new Date().getMonth() + 1
+                        }/${new Date().getDate()}`,
+                        user: "Happy Dog",
+                        userPhoto: nativeImg,
+                        uid: userData.uid,
+                      })
+                      .then(function (docRef) {
+                        // clicked = false;
+                        console.log("Document successfully written!");
+                        props.setShowUpload(false);
+                      })
+                      .catch(function (error) {
+                        console.error("Error writing document: ", error);
+                      });
+                  } else {
+                    console.log("2");
+                    console.log(userData.photoURL);
+                    console.log(userData.displayName);
+                    db.collection("photoWall")
+                      .add({
+                        photo: url,
+                        hashTags: saveTag,
+                        rank: Date.now(),
+                        time: `${new Date().getFullYear()}/${
+                          new Date().getMonth() + 1
+                        }/${new Date().getDate()}`,
+                        user: userData.displayName,
+                        userPhoto: userData.photoURL,
+                        uid: userData.uid,
+                      })
+                      .then(function (docRef) {
+                        // clicked = false;
+                        console.log("Document successfully written!");
+                        props.setShowUpload(false);
+                      })
+                      .catch(function (error) {
+                        console.error("Error writing document: ", error);
+                      });
+                  }
                 });
             })
             .catch(function (error) {
