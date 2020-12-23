@@ -181,10 +181,7 @@
         return (
           <div className="cardWrapper">
             <div className="cardUserTitle">
-              <div
-                className="userImg"
-                style={{ backgroundImage: `url(${props.userImg})` }}
-              ></div>
+              <img className="userImg" src={props.userImg} />
               <div className="userName">{props.userName}</div>
             </div>
             <img className="photoImg" src={props.photoImgUrl} />
@@ -258,9 +255,11 @@
             options={options}
             isMulti
             name="tags"
-            className="basic-multi-select"
+            className="select-container"
             classNamePrefix="select"
             onChange={handleChange}
+            menuPlacement="top"
+            placeholder="請選喜歡的標籤"
           />
         );
       }
@@ -292,7 +291,7 @@
           let time = Date.now();
           let pictureName = `photoWallPicture ${randomNumber}${time}`;
           const nativeImg =
-            "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2Flogo-square2.png?alt=media&token=d41d1501-68f5-4197-9be4-285b7fd14eb4";
+            "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2FlogoNative1.png?alt=media&token=682b9c60-f667-471c-9169-fd69f36a9f21";
 
           ref
             .child(pictureName)
@@ -307,13 +306,11 @@
                   // `url` is the download URL for 'images/stars.jpg'
                   const user = firebase.auth().currentUser;
                   const userData = user.providerData[0];
-                  console.log(userData);
 
                   if (
                     userData.displayName === null ||
                     userData.photoURL === null
                   ) {
-                    console.log("1");
                     db.collection("photoWall")
                       .add({
                         photo: url,
@@ -335,9 +332,6 @@
                         console.error("Error writing document: ", error);
                       });
                   } else {
-                    console.log("2");
-                    console.log(userData.photoURL);
-                    console.log(userData.displayName);
                     db.collection("photoWall")
                       .add({
                         photo: url,
@@ -419,6 +413,7 @@
         const [index, setIndex] = React.useState(0);
         const [data, setData] = React.useState([]);
         const [showUpload, setShowUpload] = React.useState(false);
+        const [tagView, setTagView] = React.useState();
 
         React.useEffect(() => {
           // Firebase firestore initializ
@@ -471,8 +466,15 @@
               </button>
             </div>
             <div className="tagsWrapper">
-              <button className="titleTags">全部</button>
-              <button className="titleTags">可愛</button>
+              <button
+                className={`titleTags ${tagView === "全部" ? "selected" : ""}`}
+                onClick={() => {
+                  setTagView("全部");
+                }}
+              >
+                全部
+              </button>
+              <button className="titleTags ">可愛</button>
               <button className="titleTags">有趣</button>
               <button className="titleTags">黃色系</button>
               <button className="titleTags">黑色系</button>

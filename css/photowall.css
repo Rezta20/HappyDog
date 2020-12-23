@@ -37,6 +37,7 @@ body {
   font-size: 16px;
   background-color: #063f6f;
   color: #fff;
+  padding-left: 22%;
   width: 100%;
   height: 30px;
 }
@@ -165,7 +166,7 @@ body {
   margin-left: 5px;
 }
 
-.basic-multi-select {
+.select-container {
   width: 76%;
   margin: 8px auto;
 }
@@ -214,10 +215,8 @@ body {
 }
 
 .userImg {
-  background-image: url("https://pbs.twimg.com/media/DqVoWExVAAA3G87.jpg");
-  background-size: contain;
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   border-radius: 50px;
   height: 50px;
   width: 50px;
@@ -262,4 +261,8 @@ body {
 .cardContent {
   width: 78%;
   margin: 5px auto;
+}
+
+.selected {
+  background-color: #ff0;
 }

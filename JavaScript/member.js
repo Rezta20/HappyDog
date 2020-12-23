@@ -2,7 +2,7 @@ const userId = document.querySelector(".userId");
 const userImg = document.querySelector(".userImg");
 const email = document.querySelector(".email");
 const userNativePhotoUrl =
-  "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2FIMG_4239.jpg?alt=media&token=33dc36bb-f405-4aef-82ef-184516be4190";
+  "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2FlogoNative1.png?alt=media&token=682b9c60-f667-471c-9169-fd69f36a9f21";
 
 const alertCheckBtn = document.querySelector(".swal2-confirm");
 
