@@ -80,6 +80,11 @@ function sendBookingDetail() {
             document.querySelector(".loadingWrapper").style.display = "block";
             document.querySelector(".contentWrapper").style.display = "none";
 
+            // Add id
+            db.collection("bookingDay")
+              .doc(docRef.id)
+              .set({ orderId: docRef.id }, { merge: true });
+
             // Get location URL
             const queryStringParams = new URLSearchParams(location.search);
             console.log(queryStringParams);

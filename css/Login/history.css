@@ -23,7 +23,7 @@ body {
 
 .blockWrapper {
   display: flex;
-  margin: 5px 0;
+  margin: 6px 0;
 }
 
 .orderTitle {
@@ -35,6 +35,8 @@ body {
 
 .remindWrapper {
   display: block;
+  border-top: dashed 1px #78909c;
+  padding: 10px 0;
 }
 
 .remindTitle {
@@ -42,7 +44,7 @@ body {
 }
 
 .orderContent {
-  margin: 3px 0 3px 33px;
+  margin: 3px 0 3px 47px;
 }
 
 .remindContent {
@@ -50,6 +52,7 @@ body {
 }
 
 details {
+  outline: none;
   margin: 1rem auto;
   padding: 0 1rem;
   width: 35em;
@@ -57,9 +60,8 @@ details {
   position: relative;
   border: 1px solid #78909c;
   border-radius: 6px;
-  background-color: #ff0;
-  color: #263238;
-  cursor: pointer;
+  background-color: rgb(40, 101, 153);
+  color: #fff;
   min-height: 48px;
   max-height: 60px;
   transform-origin: top center;
@@ -85,18 +87,22 @@ details::before {
 }
 details[open] {
   background-color: #fff;
+  color: rgb(40, 101, 153);
+  box-shadow: 0 0 15pt 1pt#fc9f35;
   transition: all 0.8s;
   min-height: 100px;
-  max-height: 400px;
+  max-height: 800px;
 }
 details[open]::before {
   opacity: 0.6;
 }
+
 summary {
-  padding: 1rem 2em 1rem 20px;
+  outline: none;
+  padding: 10px 20px;
   display: block;
   position: relative;
-  font-size: 1.33em;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
 }

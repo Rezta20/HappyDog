@@ -17,114 +17,158 @@ firebase.auth().onAuthStateChanged((user) => {
       .then(function (doc) {
         doc.forEach(function (doc) {
           console.log(doc.data());
-
           customerHistoryWrapper.appendChild(customerWrapper);
-
           // Create Element To Put Inside Data
-          // Owner
+
+          let details = document.createElement("details");
+          customerWrapper.appendChild(details);
+
+          let summary = document.createElement("summary");
+          details.appendChild(summary);
+          summary.innerHTML = `${doc.data().bookingDayStr} &nbsp; ${
+            doc.data().location
+          }`;
+
+          let wrapper = document.createElement("div");
+          wrapper.classList.add("wrapper");
+          details.appendChild(wrapper);
+
+          // order id
+          let orderIdWrapper = document.createElement("div");
+          orderIdWrapper.classList.add("blockWrapper");
+          orderIdWrapper.classList.add("ownerWrapper");
+          wrapper.appendChild(orderIdWrapper);
+
+          let orderIdTitle = document.createElement("div");
+          orderIdTitle.classList.add("orderTitle");
+          orderIdTitle.classList.add("orderIdTitle");
+          orderIdWrapper.appendChild(orderIdTitle);
+          orderIdTitle.innerHTML = "訂單號碼：";
+
+          let orderIdContent = document.createElement("div");
+          orderIdContent.classList.add("orderContent");
+          orderIdContent.classList.add("orderIdContent");
+          orderIdWrapper.appendChild(orderIdContent);
+          orderIdContent.innerHTML = `${doc.data().orderId}`;
+
+          // order time
+          let orderTimeWrapper = document.createElement("div");
+          orderTimeWrapper.classList.add("blockWrapper");
+          orderTimeWrapper.classList.add("orderTimeWrapper");
+          wrapper.appendChild(orderTimeWrapper);
+
+          let orderTimeTitle = document.createElement("div");
+          orderTimeTitle.classList.add("orderTitle");
+          orderTimeTitle.classList.add("orderTimeTitle");
+          orderTimeWrapper.appendChild(orderTimeTitle);
+          orderTimeTitle.innerHTML = "預定時間：";
+
+          let orderTimeContent = document.createElement("div");
+          orderTimeContent.classList.add("orderContent");
+          orderTimeContent.classList.add("orderTimeContent");
+          orderTimeWrapper.appendChild(orderTimeContent);
+
+          // owner name
           let ownerWrapper = document.createElement("div");
+          ownerWrapper.classList.add("blockWrapper");
           ownerWrapper.classList.add("ownerWrapper");
-          customerWrapper.appendChild(ownerWrapper);
+          wrapper.appendChild(ownerWrapper);
 
           let ownerTitle = document.createElement("div");
+          ownerTitle.classList.add("orderTitle");
           ownerTitle.classList.add("ownerTitle");
           ownerWrapper.appendChild(ownerTitle);
-          ownerTitle.innerHTML = "飼主姓名:";
+          ownerTitle.innerHTML = "飼主姓名：";
 
-          let ownerName = document.createElement("div");
-          ownerName.classList.add("ownerName");
-          ownerWrapper.appendChild(ownerName);
-          ownerName.innerHTML = doc.data().owner;
+          let ownerContent = document.createElement("div");
+          ownerContent.classList.add("orderContent");
+          ownerContent.classList.add("ownerContent");
+          ownerWrapper.appendChild(ownerContent);
 
-          // Pet
+          // pet name
           let petWrapper = document.createElement("div");
+          petWrapper.classList.add("blockWrapper");
           petWrapper.classList.add("petWrapper");
-          customerWrapper.appendChild(petWrapper);
+          wrapper.appendChild(petWrapper);
 
           let petTitle = document.createElement("div");
+          petTitle.classList.add("orderTitle");
           petTitle.classList.add("petTitle");
           petWrapper.appendChild(petTitle);
-          petTitle.innerHTML = "寵物姓名:";
+          petTitle.innerHTML = "寵物姓名：";
 
-          let petName = document.createElement("div");
-          petName.classList.add("petName");
-          petWrapper.appendChild(petName);
-          petName.innerHTML = doc.data().pet;
+          let petContent = document.createElement("div");
+          petContent.classList.add("orderContent");
+          petContent.classList.add("petContent");
+          petWrapper.appendChild(petContent);
 
-          //Contact Phone
+          // contact phone
           let contactPhoneWrapper = document.createElement("div");
+          contactPhoneWrapper.classList.add("blockWrapper");
           contactPhoneWrapper.classList.add("contactPhoneWrapper");
-          customerWrapper.appendChild(contactPhoneWrapper);
+          wrapper.appendChild(contactPhoneWrapper);
 
           let contactPhoneTitle = document.createElement("div");
+          contactPhoneTitle.classList.add("orderTitle");
           contactPhoneTitle.classList.add("contactPhoneTitle");
           contactPhoneWrapper.appendChild(contactPhoneTitle);
-          contactPhoneTitle.innerHTML = "聯絡電話:";
+          contactPhoneTitle.innerHTML = "聯絡電話：";
 
-          let contactPhone = document.createElement("div");
-          contactPhone.classList.add("contactPhone");
-          contactPhoneWrapper.appendChild(contactPhone);
-          contactPhone.innerHTML = doc.data().phone;
+          let contactPhoneContent = document.createElement("div");
+          contactPhoneContent.classList.add("orderContent");
+          contactPhoneContent.classList.add("contactPhoneContent");
+          contactPhoneWrapper.appendChild(contactPhoneContent);
 
-          // Email
+          // email
           let emailWrapper = document.createElement("div");
+          emailWrapper.classList.add("blockWrapper");
           emailWrapper.classList.add("emailWrapper");
-          customerWrapper.appendChild(emailWrapper);
+          wrapper.appendChild(emailWrapper);
 
           let emailTitle = document.createElement("div");
+          emailTitle.classList.add("orderTitle");
           emailTitle.classList.add("emailTitle");
           emailWrapper.appendChild(emailTitle);
-          emailTitle.innerHTML = "Email:";
+          emailTitle.innerHTML = "Email：";
 
-          let email = document.createElement("div");
-          email.classList.add("email");
-          emailWrapper.appendChild(email);
-          email.innerHTML = doc.data().email;
+          let emailContent = document.createElement("div");
+          emailContent.classList.add("orderContent");
+          emailContent.classList.add("emailContent");
+          emailWrapper.appendChild(emailContent);
 
           // Line
           let lineWrapper = document.createElement("div");
+          lineWrapper.classList.add("blockWrapper");
           lineWrapper.classList.add("lineWrapper");
-          customerWrapper.appendChild(lineWrapper);
+          wrapper.appendChild(lineWrapper);
 
           let lineTitle = document.createElement("div");
+          lineTitle.classList.add("orderTitle");
           lineTitle.classList.add("lineTitle");
           lineWrapper.appendChild(lineTitle);
           lineTitle.innerHTML = "Line ID:";
 
-          let lineId = document.createElement("div");
-          lineId.classList.add("lineId");
-          lineWrapper.appendChild(lineId);
-          lineId.innerHTML = doc.data().Line;
+          let lineContent = document.createElement("div");
+          lineContent.classList.add("orderContent");
+          lineContent.classList.add("lineContent");
+          lineWrapper.appendChild(lineContent);
 
-          // Walking location
-          let walkingWrapper = document.createElement("div");
-          walkingWrapper.classList.add("walkingWrapper");
-          customerWrapper.appendChild(walkingWrapper);
-
-          let walkingTitle = document.createElement("div");
-          walkingTitle.classList.add("walkingTitle");
-          walkingWrapper.appendChild(walkingTitle);
-          walkingTitle.innerHTML = "遛狗地點:";
-
-          let walkingLocation = document.createElement("div");
-          walkingLocation.classList.add("walkingLocation");
-          walkingWrapper.appendChild(walkingLocation);
-          walkingLocation.innerHTML = doc.data().location;
-
-          // Remind
+          // remind
           let remindWrapper = document.createElement("div");
+          remindWrapper.classList.add("blockWrapper");
           remindWrapper.classList.add("remindWrapper");
-          customerWrapper.appendChild(remindWrapper);
+          wrapper.appendChild(remindWrapper);
 
           let remindTitle = document.createElement("div");
+          remindTitle.classList.add("orderTitle");
           remindTitle.classList.add("remindTitle");
           remindWrapper.appendChild(remindTitle);
           remindTitle.innerHTML = "我們應該注意的事情：";
 
-          let remind = document.createElement("div");
-          remind.classList.add("remind");
-          remindWrapper.appendChild(remind);
-          remind.innerHTML = doc.data().remind;
+          let remindContent = document.createElement("div");
+          remindContent.classList.add("orderContent");
+          remindContent.classList.add("remindContent");
+          remindWrapper.appendChild(remindContent);
         });
       });
   }
