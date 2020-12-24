@@ -25,12 +25,7 @@ firebase.initializeApp(firebaseConfig);
 
 // Firebase firestore initializ
 const db = firebase.firestore();
-const firestoreCollection = db.collection("bookingday");
-
-// Get Session Storage Data
-// const user = sessionStorage.getItem("user");
-// const uid = JSON.parse(user);
-// console.log(uid);
+const firestoreCollection = db.collection("bookingDay");
 
 // Firebase function initializ
 const functions = require("firebase-functions");
@@ -52,13 +47,6 @@ var transport = nodemailer.createTransport({
 });
 
 // // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", { structuredData: true });
-//   response.send("Hello from Firebase!");
-// });
-
 exports.emailSender = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
     const queryStringParams = req.query.orderId;

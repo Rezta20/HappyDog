@@ -263,7 +263,7 @@
       function UploadCard(props) {
         const [previewFile, setPreviewFile] = React.useState("nothing");
         const [saveTag, setSaveTag] = React.useState([]);
-        const [alreadyUpload, setAlreadyUpload] = React.useState(false);
+        const [alreadyUpload, setAlreadyUpload] = React.useState(true);
 
         function previewPicture() {
           document.querySelector(".previewText").style.display = "none";
@@ -297,71 +297,75 @@
               confirmButtonText: "確定",
             });
           } else {
-            setAlreadyUpload(true);
-            ref
-              .child(pictureName)
-              .put(picture)
-              .then(function (snapshot) {
-                console.log("Uploaded a blob or file!");
+            if (alreadyUpload) {
+              setAlreadyUpload(false);
+              ref
+                .child(pictureName)
+                .put(picture)
+                .then(function (snapshot) {
+                  console.log("Uploaded a blob or file!");
 
-                ref
-                  .child(pictureName)
-                  .getDownloadURL()
-                  .then(function (url) {
-                    // `url` is the download URL for 'images/stars.jpg'
-                    const user = firebase.auth().currentUser;
-                    const userData = user.providerData[0];
+                  ref
+                    .child(pictureName)
+                    .getDownloadURL()
+                    .then(function (url) {
+                      // `url` is the download URL for 'images/stars.jpg'
+                      const user = firebase.auth().currentUser;
+                      const userData = user.providerData[0];
 
-                    if (
-                      userData.displayName === null ||
-                      userData.photoURL === null
-                    ) {
-                      db.collection("photoWall")
-                        .add({
-                          photo: url,
-                          hashTags: saveTag,
-                          rank: Date.now(),
-                          time: `${new Date().getFullYear()}.${
-                            new Date().getMonth() + 1
-                          }.${new Date().getDate()}`,
-                          user: "Happy Dog",
-                          userPhoto: nativeImg,
-                          uid: userData.uid,
-                        })
-                        .then(function (docRef) {
-                          console.log("Document successfully written!");
-                          props.setShowUpload(false);
-                        })
-                        .catch(function (error) {
-                          console.error("Error writing document: ", error);
-                        });
-                    } else {
-                      db.collection("photoWall")
-                        .add({
-                          photo: url,
-                          hashTags: saveTag,
-                          rank: Date.now(),
-                          time: `${new Date().getFullYear()}.${
-                            new Date().getMonth() + 1
-                          }.${new Date().getDate()}`,
-                          user: userData.displayName,
-                          userPhoto: userData.photoURL,
-                          uid: userData.uid,
-                        })
-                        .then(function (docRef) {
-                          // clicked = false;
-                          console.log("Document successfully written!");
-                          props.setShowUpload(false);
-                        })
-                        .catch(function (error) {
-                          console.error("Error writing document: ", error);
-                        });
-                    }
-                  });
-              })
-              .catch(function (error) {
-                console.log("Image Error");
-              });
+                      if (
+                        userData.displayName === null ||
+                        userData.photoURL === null
+                      ) {
+                        db.collection("photoWall")
+                          .add({
+                            photo: url,
+                            hashTags: saveTag,
+                            rank: firebase.firestore.FieldValue.serverTimestamp(),
+                            time: `${new Date().getFullYear()}.${
+                              new Date().getMonth() + 1
+                            }.${new Date().getDate()}`,
+                            user: "Happy Dog",
+                            userPhoto: nativeImg,
+                            uid: userData.uid,
+                          })
+                          .then(function (docRef) {
+                            console.log("Document successfully written!");
+                            props.setShowUpload(false);
+                            setAlreadyUpload(true);
+                          })
+                          .catch(function (error) {
+                            console.error("Error writing document: ", error);
+                          });
+                      } else {
+                        db.collection("photoWall")
+                          .add({
+                            photo: url,
+                            hashTags: saveTag,
+                            rank: firebase.firestore.FieldValue.serverTimestamp(),
+                            time: `${new Date().getFullYear()}.${
+                              new Date().getMonth() + 1
+                            }.${new Date().getDate()}`,
+                            user: userData.displayName,
+                            userPhoto: userData.photoURL,
+                            uid: userData.uid,
+                          })
+                          .then(function (docRef) {
+                            // clicked = false;
+                            console.log("Document successfully written!");
+                            props.setShowUpload(false);
+                            setAlreadyUpload(true);
+                          })
+                          .catch(function (error) {
+                            console.error("Error writing document: ", error);
+                          });
+                      }
+                    });
+                })
+                .catch(function (error) {
+                  console.log("Image Error");
+                });
+            }
           }
         }
 
@@ -405,7 +409,7 @@
 
               <div className="sendPhotoBtnWrapper">
                 <button className="sendPhotoBtn" onClick={sendData}>
-                  {alreadyUpload ? "送出中" : "確認送出"}
+                  {alreadyUpload ? "確認送出" : "送出中"}
                 </button>
               </div>
             </div>
@@ -426,13 +430,15 @@
           const db = firebase.firestore();
           const firestoreCollection = db.collection("photoWall");
 
-          firestoreCollection.onSnapshot(function (doc) {
-            const dataArray = [];
-            doc.forEach(function (doc) {
-              dataArray.push(doc.data());
+          firestoreCollection
+            .orderBy("rank", "desc")
+            .onSnapshot(function (doc) {
+              const dataArray = [];
+              doc.forEach(function (doc) {
+                dataArray.push(doc.data());
+              });
+              setData(dataArray);
             });
-            setData(dataArray);
-          });
         }, []);
 
         const cards = [];

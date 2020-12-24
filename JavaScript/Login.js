@@ -43,9 +43,9 @@ signUpBtn.addEventListener("click", () => {
           title: "已登入",
           icon: "success",
           confirmButtonText: "確定",
+        }).then(function () {
+          location.href = "../homepage.html";
         });
-        changeToLogin();
-
         // 2秒後清空資料
         setTimeout(function () {
           signUpEmail.value = "";
@@ -107,10 +107,6 @@ logInBtn.addEventListener("click", (event) => {
 
       if (user) {
         // 抓資料
-        console.log("user is signed in");
-        console.log(user);
-        console.log(user.uid);
-        sessionStorage.setItem("user", JSON.stringify(user.uid));
         location.href = "/Html/homepage.html";
       } else {
         console.log("no user is signed in");

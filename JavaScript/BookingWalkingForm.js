@@ -16,9 +16,6 @@ var db = firebase.firestore();
 // 從sessionStorage取得之前存的資料
 const data = sessionStorage.getItem("bookingTimeData");
 const bookingTimeData = JSON.parse(data);
-const user = sessionStorage.getItem("user");
-const uid = JSON.parse(user);
-console.log(uid);
 console.log(data);
 console.log(bookingTimeData);
 
@@ -60,58 +57,61 @@ function sendBookingDetail() {
     sendDataBtn.disabled = true;
     sendDataBtn.innerText = "資料上傳中";
     sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
+    firebase.auth().onAuthStateChanged((user) => {
+      const providerData = user.providerData[0];
+      if (user) {
+        db.collection("bookingDay")
+          .add({
+            uid: providerData.uid,
+            owner: owner.value,
+            pet: pet.value,
+            phone: phone.value,
+            email: email.value,
+            Line: lineId.value,
+            location: walkingLocation.value,
+            remind: remind.value,
+            bookingDayStr: bookingTimeData.bookingDateStr,
+            bookingtime: bookingTimeData.time,
+          })
+          .then(function (docRef) {
+            // clicked = false;
+            console.log("Document successfully written!");
+            console.log(docRef.id);
+            document.querySelector(".loadingWrapper").style.display = "block";
+            document.querySelector(".contentWrapper").style.display = "none";
 
-    db.collection("bookingday")
-      .add({
-        uid: uid,
-        owner: owner.value,
-        pet: pet.value,
-        phone: phone.value,
-        email: email.value,
-        Line: lineId.value,
-        location: walkingLocation.value,
-        remind: remind.value,
-        bookingDayStr: bookingTimeData.bookingDateStr,
-        bookingtime: bookingTimeData.time,
-      })
-      .then(function (docRef) {
-        // clicked = false;
-        console.log("Document successfully written!");
-        console.log(docRef.id);
-        document.querySelector(".loadingWrapper").style.display = "block";
-        document.querySelector(".contentWrapper").style.display = "none";
+            // Get location URL
+            const queryStringParams = new URLSearchParams(location.search);
+            console.log(queryStringParams);
+            queryStringParams.set("orderId", docRef.id);
+            queryStringParams.toString();
+            console.log(queryStringParams.toString());
+            // Send Mail API
+            fetch(
+              `https://us-central1-happydog-82c2f.cloudfunctions.net/emailSender?${queryStringParams.toString()}`
+            ).then(function () {
+              owner.value = "";
+              pet.value = "";
+              phone.value = "";
+              email.value = "";
+              lineId.value = "";
+              walkingLocation.value = "";
+              remind.value = "";
+              bookingTimeData.bookingDateStr = "";
+              bookingTimeData.time = "";
 
-        // Get location URL
-        const queryStringParams = new URLSearchParams(location.search);
-        console.log(queryStringParams);
-        queryStringParams.set("orderId", docRef.id);
-        queryStringParams.toString();
-        console.log(queryStringParams.toString());
-        // Send Mail API
-        fetch(
-          `https://us-central1-happydog-82c2f.cloudfunctions.net/emailSender?${queryStringParams.toString()}`
-        ).then(function () {
-          owner.value = "";
-          pet.value = "";
-          phone.value = "";
-          email.value = "";
-          lineId.value = "";
-          walkingLocation.value = "";
-          remind.value = "";
-          bookingTimeData.bookingDateStr = "";
-          bookingTimeData.time = "";
-
-          // Jump to Thankyou page
-          location.href = "/Html/Booking/bookingThankYou.html";
-          sendDataBtn.disabled = false;
-        });
-      })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
-      });
+              // Jump to Thankyou page
+              location.href = "/Html/Booking/bookingThankYou.html";
+              sendDataBtn.disabled = false;
+            });
+          })
+          .catch(function (error) {
+            console.error("Error writing document: ", error);
+          });
+      }
+    });
   }
 }
-
 // Google Map
 // let map;
 

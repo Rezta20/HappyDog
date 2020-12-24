@@ -4,6 +4,7 @@ const inner = document.querySelectorAll(".inner");
 const card = document.querySelectorAll(".card");
 const descriptionTitle = document.querySelectorAll(".descriptionTitle");
 const body = document.querySelector("body");
+const bookingCalendarBtn = document.querySelector(".toBookingCalendarBtn");
 
 // for (let i = 0; i < front.length; i++) {
 //   if (front[i].style.display === "") {
@@ -49,4 +50,24 @@ for (let i = 0; i < frontPhone.length; i++) {
   //     //   backPhone[i].style.display = "none";
   //     // }
   //   }
+}
+
+bookingCalendarBtn.addEventListener("click", defaultLogin);
+
+function defaultLogin() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      const providerData = user.providerData[0];
+      console.log(providerData);
+      location.href = "../Booking/calendar.html";
+    } else {
+      Swal.fire({
+        title: "請先登入帳號",
+        icon: "warning",
+        confirmButtonText: "確定",
+      }).then(function () {
+        location.href = "../Login/login.html";
+      });
+    }
+  });
 }

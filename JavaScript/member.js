@@ -16,8 +16,7 @@ logoutBtn.addEventListener("click", function (e) {
     .auth()
     .signOut()
     .then(function () {
-      // Sign-out successful.
-      sessionStorage.removeItem("user");
+      // Sign-out successful
 
       Swal.fire({
         title: "已登出",
