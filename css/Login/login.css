@@ -49,6 +49,7 @@ section {
 
 .loginCard-Title {
   font-size: 23px;
+  cursor: default;
 }
 
 .loginCard-Title > span {
@@ -149,15 +150,18 @@ section {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px 0px inset;
   background-color: #fc9f35;
   color: #fff;
+  cursor: pointer;
 }
 
 .loginCard-noAccountText {
   margin-top: 20px;
+  cursor: default;
 }
 
 .loginCard-applySpan {
   color: #063f6f;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /* Sign In card  */

@@ -23,6 +23,7 @@ body {
   font-size: 34px;
   font-weight: 700;
   font-family: "Lobster", cursive;
+  cursor: default;
 }
 
 .userDetail {
@@ -41,6 +42,10 @@ body {
   background-size: cover;
 }
 
+.email {
+  cursor: default;
+}
+
 .btnWrapper {
   margin-top: 10px;
 }
@@ -51,6 +56,7 @@ body {
   height: 30px;
   margin: 10px;
   background-color: #fc9f35;
+  cursor: pointer;
   outline: none;
 }
 

@@ -13,6 +13,7 @@ firebase.auth().onAuthStateChanged((user) => {
     console.log(providerData.uid);
     firestoreCollection
       .where("uid", "==", providerData.uid)
+      .orderBy("bookingDayStr", "asc")
       .get()
       .then(function (doc) {
         doc.forEach(function (doc) {
@@ -67,6 +68,7 @@ firebase.auth().onAuthStateChanged((user) => {
           orderTimeContent.classList.add("orderContent");
           orderTimeContent.classList.add("orderTimeContent");
           orderTimeWrapper.appendChild(orderTimeContent);
+          orderTimeContent.innerHTML = `${doc.data().bookingtime}`;
 
           // owner name
           let ownerWrapper = document.createElement("div");
@@ -84,6 +86,7 @@ firebase.auth().onAuthStateChanged((user) => {
           ownerContent.classList.add("orderContent");
           ownerContent.classList.add("ownerContent");
           ownerWrapper.appendChild(ownerContent);
+          ownerContent.innerHTML = `${doc.data().owner}`;
 
           // pet name
           let petWrapper = document.createElement("div");
@@ -101,6 +104,7 @@ firebase.auth().onAuthStateChanged((user) => {
           petContent.classList.add("orderContent");
           petContent.classList.add("petContent");
           petWrapper.appendChild(petContent);
+          petContent.innerHTML = `${doc.data().pet}`;
 
           // contact phone
           let contactPhoneWrapper = document.createElement("div");
@@ -118,6 +122,7 @@ firebase.auth().onAuthStateChanged((user) => {
           contactPhoneContent.classList.add("orderContent");
           contactPhoneContent.classList.add("contactPhoneContent");
           contactPhoneWrapper.appendChild(contactPhoneContent);
+          contactPhoneContent.innerHTML = `${doc.data().phone}`;
 
           // email
           let emailWrapper = document.createElement("div");
@@ -135,6 +140,7 @@ firebase.auth().onAuthStateChanged((user) => {
           emailContent.classList.add("orderContent");
           emailContent.classList.add("emailContent");
           emailWrapper.appendChild(emailContent);
+          emailContent.innerHTML = `${doc.data().email}`;
 
           // Line
           let lineWrapper = document.createElement("div");
@@ -152,6 +158,7 @@ firebase.auth().onAuthStateChanged((user) => {
           lineContent.classList.add("orderContent");
           lineContent.classList.add("lineContent");
           lineWrapper.appendChild(lineContent);
+          lineContent.innerHTML = `${doc.data().Line}`;
 
           // remind
           let remindWrapper = document.createElement("div");
@@ -169,6 +176,7 @@ firebase.auth().onAuthStateChanged((user) => {
           remindContent.classList.add("orderContent");
           remindContent.classList.add("remindContent");
           remindWrapper.appendChild(remindContent);
+          remindContent.innerHTML = `${doc.data().remind}`;
         });
       });
   }

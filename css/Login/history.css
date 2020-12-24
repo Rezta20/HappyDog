@@ -15,10 +15,12 @@ body {
 .customerHistoryWrapper {
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 }
 
 .customerWrapper {
   width: 60%;
+  margin-top: 30px;
 }
 
 .blockWrapper {
@@ -48,12 +50,12 @@ body {
 }
 
 .remindContent {
-  margin: 7px 0 5px 33px;
+  margin: 7px 20px 5px 33px;
 }
 
 details {
   outline: none;
-  margin: 1rem auto;
+  margin: 15px auto;
   padding: 0 1rem;
   width: 35em;
   max-width: calc(100% - 2rem);
@@ -68,9 +70,11 @@ details {
   transform: rotate(0.1deg);
   transition: all 0.3s;
 }
+
 details > :last-child {
   margin-bottom: 1rem;
 }
+
 details::before {
   width: 100%;
   height: 100%;
@@ -115,7 +119,7 @@ summary::after {
   top: 50%;
   right: 0;
   content: "";
-  background-color: currentColor;
+  background-color: #ffbe78;
   text-align: right;
   transform: translateY(-50%);
   transition: transform 0.2s ease-in-out;

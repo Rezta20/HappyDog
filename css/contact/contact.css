@@ -3,5 +3,12 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
 }
+
+.outsideWrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.contactICoverImg

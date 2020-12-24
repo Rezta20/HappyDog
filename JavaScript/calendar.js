@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
       center: "title",
       right: "  ",
     },
+    titleFormat: { year: "numeric", month: "long" },
+
     unselectAuto: false,
 
     selectable: true,
