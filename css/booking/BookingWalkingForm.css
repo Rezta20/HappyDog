@@ -75,7 +75,7 @@ input {
 }
 
 input:focus {
-  box-shadow: 0 0 15pt 1pt#fc9f35;
+  box-shadow: 0 0 7pt 1pt#fc9f35;
 }
 
 .inputWrapper {
@@ -100,7 +100,7 @@ input:focus {
 }
 
 .locationSelect:focus {
-  box-shadow: 0 0 15pt 1pt#fc9f35;
+  box-shadow: 0 0 7pt 1pt#fc9f35;
 }
 
 .remindWrapper {
@@ -121,7 +121,7 @@ input:focus {
 }
 
 .remind:focus {
-  box-shadow: 0 0 15pt 1pt#fc9f35;
+  box-shadow: 0 0 7pt 1pt#fc9f35;
 }
 
 .sendBookingDetailBtnWrapper {

@@ -207,6 +207,10 @@
             docs.forEach((doc) => {
               options.push({ value: doc.data().tag, label: doc.data().tag });
             });
+            // TODO: 按照字數排序
+            options.sort(function (a, b) {
+              return a.value.length - b.value.length;
+            });
 
             setOptions(options);
           });
@@ -261,7 +265,7 @@
       }
 
       function UploadCard(props) {
-        const [previewFile, setPreviewFile] = React.useState("nothing");
+        const [previewFile, setPreviewFile] = React.useState("");
         const [saveTag, setSaveTag] = React.useState([]);
         const [alreadyUpload, setAlreadyUpload] = React.useState(true);
 
@@ -282,7 +286,8 @@
           const ref = firebase.storage().ref();
           const db = firebase.firestore();
           const picture = document.querySelector("#upload").files[0];
-
+          let deleteIsNewTag;
+          console.log(saveTag);
           //  unique id
           let randomNumber = Math.floor(Math.random() * 1000);
           let time = Date.now();
@@ -290,7 +295,18 @@
           const nativeImg =
             "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2FlogoNative1.png?alt=media&token=682b9c60-f667-471c-9169-fd69f36a9f21";
 
-          if (previewFile === "nothing") {
+          // Cut is New element
+          saveTag.forEach((item) => {
+            console.log(item);
+            console.log(item.__isNew__);
+            console.log(item.label);
+            deleteIsNewTag = delete item.__isNew__;
+            console.log(deleteIsNewTag);
+            console.log(saveTag);
+            console.log("hello");
+          });
+
+          if (previewFile === "") {
             Swal.fire({
               title: "請上傳圖片唷",
               icon: "warning",
@@ -377,7 +393,7 @@
                 props.setShowUpload(false);
               }}
             ></div>
-            <div className="uploadCardWrapper">
+            <div className="uploadCardWrapper fade-in-fwd">
               <div className="crossWrapper">
                 <i
                   className="fas fa-times"
@@ -444,19 +460,35 @@
         const cards = [];
 
         for (let i = 0; i < data.length; i++) {
-          cards.push(
-            <Card
-              key={data[i].rank}
-              index={i}
-              userImg={data[i].userPhoto}
-              userName={data[i].user}
-              photoImgUrl={data[i].photo}
-              hashTags={data[i].hashTags}
-              cardDate={data[i].time}
-              setShow={setShow}
-              setIndex={setIndex}
-            />
-          );
+          let shouldPushCard = false;
+          /* TODO: 如果 data 裡的 hashTags 有包含 tagView 就 push 進去 */
+          data[i].hashTags.forEach((item) => {
+            if (item.label === tagView) {
+              shouldPushCard = true;
+            } else if (tagView === "全部") {
+              shouldPushCard = true;
+            }
+          });
+          if (shouldPushCard) {
+            // true
+            cards.push(
+              <Card
+                key={data[i].rank}
+                index={i}
+                userImg={data[i].userPhoto}
+                userName={data[i].user}
+                photoImgUrl={data[i].photo}
+                hashTags={data[i].hashTags}
+                cardDate={data[i].time}
+                setShow={setShow}
+                setIndex={setIndex}
+              />
+            );
+          }
+        }
+
+        function toTop() {
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
         return (
@@ -556,6 +588,9 @@
 
             {showUpload && <UploadCard setShowUpload={setShowUpload} />}
             <div className="cardsWrapper">{cards}</div>
+            <button className="toTop" onClick={toTop}>
+              top
+            </button>
           </>
         );
       }

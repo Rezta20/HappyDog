@@ -83,7 +83,7 @@ function sendBookingDetail() {
             // Add id
             db.collection("bookingDay")
               .doc(docRef.id)
-              .set({ orderId: docRef.id }, { merge: true });
+              .set({ orderId: `#${docRef.id} ` }, { merge: true });
 
             // Get location URL
             const queryStringParams = new URLSearchParams(location.search);

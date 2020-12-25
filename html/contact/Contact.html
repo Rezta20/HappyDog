@@ -6,6 +6,7 @@
     
     <!-- CSS Link -->
     <link rel="stylesheet" href="../../css/navbar.css" />
+    <link rel="stylesheet" href="../../css/loading.css">
     <link rel="stylesheet" href="../../css/contact/contact.css">
 
       <!-- Font Awesome  -->
@@ -14,7 +15,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
 
-    <!-- Favicon  -->
+ <!-- Sweetalert2 -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+   
+ <!-- Favicon  -->
     <link rel="icon" type="image/png" href="../../img/favicon.png" />
 
     <title>Happy Dog</title>
@@ -89,7 +93,53 @@
 <!-- Content  -->
 <div class="contentWrapper">
   <div class="outsideWrapper">
-    <img class="contactICoverImg" src="../../img/contact-banner.png" alt="contact-us">
+    <div class="contactTitle">有什麼想跟我們說的嗎？</div>
+
+    <!-- Form  -->
+        <div class="outsideFormWrapper">
+          <div class="inputWrapper">
+            <p>姓名：</p>
+            <input type="text" class="ownerName" placeholder="您的大名" />
+          </div>
+
+          <div class="inputWrapper">
+            <p>電話：</p>
+            <input
+              type="text"
+              class="contactPhone"
+              placeholder="手機號碼/市話"
+            />
+          </div>
+
+          <div class="inputWrapper">
+            <p>Email：</p>
+            <input type="text" class="email" placeholder="電子信箱" />
+          </div>
+
+          <div class="inputWrapper">
+            <p>Line ID：</p>
+            <input type="text" class="lineId" placeholder="聯絡上使用" />
+          </div>
+
+          <div class="inputWrapper remindWrapper">
+            <p>想跟我們說：</p>
+            <textarea
+              type="text"
+              class="remind"
+              rows="4"
+              cols="50"
+              placeholder="任何想要問的都可以留言給我們唷"
+            ></textarea>
+          </div>
+
+          <div class="sendBookingDetailBtnWrapper">
+            <button class="sendBookingDetailBtn">送出資料</button>
+          </div>
+        </div>
+
+        <img class="contactICoverImg" src="../../img/contact-banner.png" alt="contact-us">
+      </div>
+    </div>
   </div>
 </div>
      <!-- Footer -->
@@ -130,5 +180,6 @@
     <!-- Script -->
     <script src="../../JavaScript/ifLogin.js"></script>
     <script src="../../JavaScript/loading.js"></script>
+    <script src="../../JavaScript/contact.js"></script>
 </body>
 </html>

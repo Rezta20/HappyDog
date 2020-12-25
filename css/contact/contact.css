@@ -6,9 +6,96 @@ body {
   min-height: 100vh;
 }
 
-.outsideWrapper{
+.outsideWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactTitle {
+  font-size: 26px;
+  margin-top: 30px;
+}
+
+.contactICoverImg {
+  position: absolute;
+  bottom: 50px;
+  width: 1100px;
+  height: 220px;
+}
+
+/* Form  */
+.outsideFormWrapperFlex {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+.outsideFormWrapper {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 30px;
+  margin: 22px 25px 240px 25px;
+}
+
+input {
+  height: 20px;
+  width: 150px;
+  text-indent: 5px;
+  font-size: 16px;
+  border: solid 1px #063f6f;
+  border-radius: 5px;
+  padding: 2px 0 2px 5px;
+}
+
+input:focus {
+  box-shadow: 0 0 7pt 1pt#fc9f35;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin: 12px 0;
+  width: 54%;
+}
+
+.remindWrapper {
+  flex-direction: column;
+  width: 100%;
+}
+
+.remind {
+  margin-top: 12px;
+  height: 100px;
+  width: 100%;
+  resize: none;
+  padding: 8px 0 0 10px;
+  line-height: 1;
+  font-size: 16px;
+  border: solid 1px #063f6f;
+  border-radius: 5px;
+}
+
+.remind:focus {
+  box-shadow: 0 0 7pt 1pt#fc9f35;
+}
+
+.sendBookingDetailBtnWrapper {
   display: flex;
   justify-content: center;
 }
 
-.contactICoverImg
+.sendBookingDetailBtn {
+  cursor: pointer;
+  margin: 10px;
+  font-size: 16px;
+  padding: 5px 12px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #d2e8fd;
+  box-shadow: 1px 3px #063f6f;
+  text-decoration: none;
+}
