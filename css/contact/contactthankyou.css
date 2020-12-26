@@ -5,3 +5,12 @@
 body {
   height: 100vh;
 }
+
+.content {
+  margin: 5px 0;
+}
+
+.homeBtn:hover {
+  background-color: #fc9f35;
+  color: #fff;
+}

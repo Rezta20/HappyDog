@@ -3,6 +3,7 @@ const owner = document.querySelector(".ownerName");
 const phone = document.querySelector(".contactPhone");
 const email = document.querySelector(".email");
 const lineId = document.querySelector(".lineId");
+const remind = document.querySelector(".remind");
 
 // FireStore Set up
 const db = firebase.firestore();
@@ -34,30 +35,25 @@ function sendBookingDetail() {
     sendDataBtn.disabled = true;
     sendDataBtn.innerText = "資料上傳中";
     sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
-    firebase.auth().onAuthStateChanged((user) => {
-      const providerData = user.providerData[0];
-      if (user) {
-        db.collection("contactForm")
-          .add({
-            name: owner.value,
-            phone: phone.value,
-            email: email.value,
-            Line: lineId.value,
-            remind: remind.value,
-          })
-          .then(function (docRef) {
-            // clicked = false;
-            console.log("Document successfully written!");
-            document.querySelector(".loadingWrapper").style.display = "block";
-            document.querySelector(".contentWrapper").style.display = "none";
-            // Jump to Thankyou page
-            location.href = "/Html/Booking/bookingThankYou.html";
-            sendDataBtn.disabled = false;
-          })
-          .catch(function (error) {
-            console.error("Error writing document: ", error);
-          });
-      }
-    });
+
+    db.collection("contactForm")
+      .add({
+        name: owner.value,
+        phone: phone.value,
+        email: email.value,
+        Line: lineId.value,
+        remind: remind.value,
+      })
+      .then(function (docRef) {
+        console.log("Document successfully written!");
+        document.querySelector(".loadingWrapper").style.display = "block";
+        document.querySelector(".contentWrapper").style.display = "none";
+        // Jump to Thankyou page
+        location.href = "/Html/Contact/contactThankYou.html";
+        sendDataBtn.disabled = false;
+      })
+      .catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
   }
 }

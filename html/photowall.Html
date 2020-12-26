@@ -38,7 +38,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar-ForMobie">
+    <nav class="navbar-ForMobile">
       <!-- Logo -->
       <div class="navbar-logoLoginWrapper">
         <div class="navbar-logoWrapper">
@@ -462,15 +462,19 @@
         for (let i = 0; i < data.length; i++) {
           let shouldPushCard = false;
           /* TODO: 如果 data 裡的 hashTags 有包含 tagView 就 push 進去 */
-          data[i].hashTags.forEach((item) => {
-            if (item.label === tagView) {
-              shouldPushCard = true;
-            } else if (tagView === "全部") {
-              shouldPushCard = true;
-            }
-          });
+          if (tagView === "全部") {
+            shouldPushCard = true;
+          } else {
+            data[i].hashTags.forEach((item) => {
+              if (item.label === tagView) {
+                shouldPushCard = true;
+              }
+            });
+          }
           if (shouldPushCard) {
             // true
+            console.log(data);
+            console.log("data");
             cards.push(
               <Card
                 key={data[i].rank}
@@ -589,7 +593,7 @@
             {showUpload && <UploadCard setShowUpload={setShowUpload} />}
             <div className="cardsWrapper">{cards}</div>
             <button className="toTop" onClick={toTop}>
-              top
+              <i className="fas fa-chevron-up"></i>
             </button>
           </>
         );
