@@ -49,7 +49,7 @@ function sendBookingDetail() {
         document.querySelector(".loadingWrapper").style.display = "block";
         document.querySelector(".contentWrapper").style.display = "none";
         // Jump to Thankyou page
-        location.href = "/Html/Contact/contactThankYou.html";
+        location.href = "/Html/Contact/contactThankyou.html";
         sendDataBtn.disabled = false;
       })
       .catch(function (error) {

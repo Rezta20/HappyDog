@@ -70,6 +70,7 @@ body::-webkit-scrollbar-thumb {
   color: #ffffff;
   text-align: center;
   outline: none;
+  cursor: pointer;
 }
 
 .loginBtn:hover {
