@@ -36,7 +36,8 @@ body {
   font-size: 50px;
   height: 320px;
   width: 100%;
-  text-shadow: -3px 7px 15px #ffbe78;
+  text-shadow: -4px 3px #ffbe78;
+  font-weight: 600;
 }
 
 .coverDogWrapper {
