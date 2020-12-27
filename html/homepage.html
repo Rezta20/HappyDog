@@ -157,16 +157,25 @@
 
       <!-- Photo Wall  -->
       <div class="photoWallWrapper">
-        <img class="dog" src="../img/002-2.png" alt="" />
-
+        <div class="photoWrapper">
+          <img class="dogImg" src="../img/003-3.png" alt="dogImg" />
+        </div>
         <div class="photoWallTextWrapper">
-          <div class="photoWallText">
-            我我我我我我我我我我我我我我我我我我我我我
+          <div class="photoWallTitle">在找地方曬您家的狗狗？</div>
+          <div class="photoWallText">快到毛孩日誌分享您家可愛的寶貝</br>
+            並給牠一個屬於牠的專屬標籤吧！
           </div>
-          <button class="toPhotoWall"></button>
+          <a href="../Html/photowall.html">
+          <button class="toPhotoWallBtn">前往分享</button>
+        </a>
         </div>
       </div>
     </div>
+
+    <!-- toTopBtn -->
+    <button class="toTop" onclick="toTop()">
+      <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- Footer -->
     <footer>
@@ -206,5 +215,10 @@
       firebase.analytics();
     </script>
     <script src="../JavaScript/ifLogin.js"></script>
+    <script>
+      function toTop() {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
   </body>
 </html>

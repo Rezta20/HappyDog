@@ -9,6 +9,7 @@ body {
   position: relative;
   background-image: url("../img/background.png");
   background-size: contain;
+  cursor: default;
 }
 
 /* scroll  */

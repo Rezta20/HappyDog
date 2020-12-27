@@ -36,20 +36,19 @@ body {
   font-size: 50px;
   height: 320px;
   width: 100%;
+  text-shadow: -3px 7px 15px #ffbe78;
 }
 
 .coverDogWrapper {
   z-index: -1;
-  width: 100%;
+  width: 45%;
   height: 300px;
   position: relative;
 }
 
 .coverImg {
-  width: 60%;
-  margin: 0 auto;
+  width: 100%;
   position: absolute;
-  left: 20%;
   bottom: 0;
   -moz-animation: updown 3s ease-in-out forwards;
   -webkit-animation: updown 3s ease-in-out forwards;
@@ -152,9 +151,22 @@ body {
 }
 
 .toBookingBtn {
-  margin-top: 30px;
-  width: 100px;
-  height: 30px;
+  border-radius: 10px;
+  width: 120px;
+  height: 35px;
+  font-size: 16px;
+  margin-top: 35px;
+  background-color: #ffbe78;
+  color: rgb(40, 101, 153);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 1px 5px #fff;
+}
+
+.toBookingBtn:hover {
+  box-shadow: 2px 2px 10px #fff;
+  color: #ffff;
 }
 
 /* PhotoWall */
@@ -162,11 +174,78 @@ body {
 .photoWallWrapper {
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
   height: 800px;
-  background-color: #ff0;
+  width: 80%;
 }
 
-.dog {
-  width: 50%;
-  /* height: 100px; */
+.photoWrapper {
+  width: 550px;
+  height: 700px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dogImg {
+  width: 550px;
+}
+
+.photoWallTextWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 700px;
+  width: calc(100% - 550px);
+}
+
+.photoWallTitle {
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.photoWallText {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.toPhotoWallBtn {
+  border-radius: 10px;
+  width: 120px;
+  height: 35px;
+  font-size: 16px;
+  margin-top: 35px;
+  background-color: #fc9f35;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 1px 5px #063f6f;
+}
+
+.toPhotoWallBtn:hover {
+  box-shadow: 2px 2px 10px #063f6f;
+  color: #063f6f;
+}
+
+/* toTopBtn  */
+
+.toTop {
+  position: fixed;
+  bottom: 65px;
+  right: 12px;
+  font-size: 10px;
+  background-color: #d2e8fd;
+  color: #063f6f;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
