@@ -23,17 +23,16 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  
 }
 
 .whoTextTitle {
   width: 100%;
   font-size: 28px;
-  font-weight: 700;
   margin: 35px 0;
   text-align: center;
-  text-decoration: underline;
-  text-decoration-color: #fc9f35;
-  text-decoration-style: wavy;
+  text-shadow: -4px 3px #ffbe78;
+  font-weight: 600;
 }
 
 /* Link to bookingWalkingCalendar */
