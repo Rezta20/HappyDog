@@ -1,9 +1,9 @@
-const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
-const owner = document.querySelector(".ownerName");
-const phone = document.querySelector(".contactPhone");
 const email = document.querySelector(".email");
 const lineId = document.querySelector(".lineId");
+const owner = document.querySelector(".ownerName");
+const phone = document.querySelector(".contactPhone");
 const remind = document.querySelector(".remind");
+const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
 
 // FireStore Set up
 const db = firebase.firestore();
@@ -49,8 +49,7 @@ function sendBookingDetail() {
         // Jump to Thankyou page
         location.href = "/Html/Contact/contactThankyou.html";
         sendDataBtn.disabled = false;
-      })
-      .catch(function (error) {});
+      });
   }
 }
 sendDataBtn.addEventListener("click", sendBookingDetail);

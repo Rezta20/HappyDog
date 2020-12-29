@@ -1,10 +1,10 @@
-const frontPhone = document.querySelectorAll(".front");
 const backPhone = document.querySelectorAll(".back-phone");
-const inner = document.querySelectorAll(".inner");
-const card = document.querySelectorAll(".card");
-const descriptionTitle = document.querySelectorAll(".descriptionTitle");
 const body = document.querySelector("body");
 const bookingCalendarBtn = document.querySelector(".toBookingCalendarBtn");
+const card = document.querySelectorAll(".card");
+const descriptionTitle = document.querySelectorAll(".descriptionTitle");
+const frontPhone = document.querySelectorAll(".front");
+const inner = document.querySelectorAll(".inner");
 
 // for (let i = 0; i < front.length; i++) {
 //   if (front[i].style.display === "") {

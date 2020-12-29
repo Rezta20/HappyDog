@@ -1,25 +1,75 @@
-const signUpBtn = document.querySelector(".signinCard-loginButton");
-const signUpEmail = document.querySelector("#signUpemail");
-const signUpPwd = document.querySelector("#signUppwd");
+const checkSignInPwdInput = document.querySelector(".checkSignInPwd");
+const facebookLoginBtn = document.querySelector(".facebookLogin");
+const googleLoginBtn = document.querySelector(".googleLogin");
 const logInBtn = document.querySelector(".loginCard-loginButton");
+const logInCard = document.querySelector("#logInCard-Mobile");
 const logInEmail = document.querySelector("#loginEmail");
 const logInPwd = document.querySelector("#loginPwd");
-const checkSignInPwdInput = document.querySelector(".checkSignInPwd");
-const logInCard = document.querySelector("#logInCard-Mobile");
+const signUpBtn = document.querySelector(".signinCard-loginButton");
 const signInCard = document.querySelector("#signInCard-Mobile");
+const signUpEmail = document.querySelector("#signUpemail");
+const signUpPwd = document.querySelector("#signUppwd");
 
-function changeToSignin() {
-  logInCard.style.left = "-100%";
-  logInCard.style.opacity = "0";
-  signInCard.style.left = "0";
-  signInCard.style.opacity = "1";
-}
+function checkLogInData() {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(logInEmail.value, logInPwd.value)
+    .then(() => {
+      var user = firebase.auth().currentUser;
 
-function changeToLogin() {
-  logInCard.style.left = "0";
-  logInCard.style.opacity = "1";
-  signInCard.style.left = "100%";
-  signInCard.style.opacity = "0";
+      if (user) {
+        // 抓資料
+        location.href = "/Html/homepage.html";
+      } else {
+        console.log("no user is signed in");
+      }
+    })
+    .catch((err) => {
+      if (
+        err.message == "The email address is already in use by another account."
+      ) {
+        Swal.fire({
+          title: "這個信箱已辦過帳號囉！",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+      } else if (
+        err.message ==
+        "The password is invalid or the user does not have a password."
+      ) {
+        Swal.fire({
+          title: "密碼不正確或未輸入",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+      } else if (
+        err.message == "The password must be 6 characters long or more."
+      ) {
+        Swal.fire({
+          title: "密碼需要為6位數或是更長",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+      } else if (err.message == "The email address is badly formatted.") {
+        Swal.fire({
+          title: "信箱格式請輸入XXXX@xxxxx.xxx的格式",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+      } else if (
+        err.message ==
+        "There is no user record corresponding to this identifier. The user may have been deleted."
+      ) {
+        Swal.fire({
+          title: "帳號未註冊，請先註冊",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+        changeToSignin();
+        logInEmail.value = "";
+        logInPwd.value = "";
+      }
+    });
 }
 
 function checkSignUpData(user) {
@@ -84,66 +134,18 @@ function checkSignUpData(user) {
   }
 }
 
-function checkLogInData() {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(logInEmail.value, logInPwd.value)
-    .then(() => {
-      var user = firebase.auth().currentUser;
+function changeToLogin() {
+  logInCard.style.left = "0";
+  logInCard.style.opacity = "1";
+  signInCard.style.left = "100%";
+  signInCard.style.opacity = "0";
+}
 
-      if (user) {
-        // 抓資料
-        location.href = "/Html/homepage.html";
-      } else {
-        console.log("no user is signed in");
-      }
-    })
-    .catch((err) => {
-      if (
-        err.message == "The email address is already in use by another account."
-      ) {
-        Swal.fire({
-          title: "這個信箱已辦過帳號囉！",
-          icon: "warning",
-          confirmButtonText: "確定",
-        });
-      } else if (
-        err.message ==
-        "The password is invalid or the user does not have a password."
-      ) {
-        Swal.fire({
-          title: "密碼不正確或未輸入",
-          icon: "warning",
-          confirmButtonText: "確定",
-        });
-      } else if (
-        err.message == "The password must be 6 characters long or more."
-      ) {
-        Swal.fire({
-          title: "密碼需要為6位數或是更長",
-          icon: "warning",
-          confirmButtonText: "確定",
-        });
-      } else if (err.message == "The email address is badly formatted.") {
-        Swal.fire({
-          title: "信箱格式請輸入XXXX@xxxxx.xxx的格式",
-          icon: "warning",
-          confirmButtonText: "確定",
-        });
-      } else if (
-        err.message ==
-        "There is no user record corresponding to this identifier. The user may have been deleted."
-      ) {
-        Swal.fire({
-          title: "帳號未註冊，請先註冊",
-          icon: "warning",
-          confirmButtonText: "確定",
-        });
-        changeToSignin();
-        logInEmail.value = "";
-        logInPwd.value = "";
-      }
-    });
+function changeToSignin() {
+  logInCard.style.left = "-100%";
+  logInCard.style.opacity = "0";
+  signInCard.style.left = "0";
+  signInCard.style.opacity = "1";
 }
 
 // Click sign up button event
@@ -187,7 +189,7 @@ function fbLogin() {
       // ...
     });
 }
-document.querySelector(".facebookLogin").addEventListener("click", fbLogin);
+facebookLoginBtn.addEventListener("click", fbLogin);
 
 // Google Log in
 function googleLogin() {
@@ -215,4 +217,4 @@ function googleLogin() {
       // ...
     });
 }
-document.querySelector(".googleLogin").addEventListener("click", googleLogin);
+googleLoginBtn.addEventListener("click", googleLogin);

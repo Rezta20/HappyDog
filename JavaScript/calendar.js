@@ -1,23 +1,61 @@
-const timeBtn = document.querySelectorAll(".timeBtn");
-const sendDataBtn = document.querySelector(".sendBookingDatedataBtn");
-const monthBtn = document.querySelector(".monthBtn");
-const timeTitleWrapper = document.querySelector(".timeTitleWrapper");
-const morningBtnWrapper = document.querySelector(".timeBtnMorningWrapper");
 const afternoonBtnWrapper = document.querySelector(".timeBtnAfternoonWrapper");
 const eveningBtnWrapper = document.querySelector(".timeBtnEveningWrapper");
+const monthBtn = document.querySelector(".monthBtn");
+const monthViewDescription = document.querySelector(
+  ".bookingDescriptionMonthViewWrapper"
+);
+const morningBtnWrapper = document.querySelector(".timeBtnMorningWrapper");
 const selectedDateColor = document.querySelector(".fc-daygrid-day-events");
+const sendDataBtn = document.querySelector(".sendBookingDatedataBtn");
+const timeBtns = document.querySelectorAll(".timeBtn");
+const timeTitleWrapper = document.querySelector(".timeTitleWrapper");
+const weekViewDescription = document.querySelector(
+  ".bookingDescriptionWeekViewWrapper"
+);
+
 // Store Pick Date Data
 let bookingTimeData = {};
+
+function hiddenTimeBtn() {
+  monthViewDescription.style.display = "block";
+  weekViewDescription.style.display = "none";
+
+  timeTitleWrapper.style.opacity = "0";
+
+  morningBtnWrapper.style.maxHeight = "0";
+  morningBtnWrapper.style.opacity = "0";
+
+  afternoonBtnWrapper.style.maxHeight = "0";
+  afternoonBtnWrapper.style.opacity = "0";
+
+  eveningBtnWrapper.style.maxHeight = "0";
+  eveningBtnWrapper.style.opacity = "0";
+
+  sendDataBtn.style.opacity = "0";
+}
+
+function showTimeBtn() {
+  monthViewDescription.style.display = "none";
+  weekViewDescription.style.display = "block";
+
+  timeTitleWrapper.style.opacity = "1";
+
+  morningBtnWrapper.style.opacity = "1";
+  morningBtnWrapper.style.maxHeight = "300px";
+
+  afternoonBtnWrapper.style.opacity = "1";
+  afternoonBtnWrapper.style.maxHeight = "300px";
+
+  eveningBtnWrapper.style.opacity = "1";
+  eveningBtnWrapper.style.maxHeight = "300px";
+
+  sendDataBtn.style.opacity = "1";
+}
 
 // Full Calendar
 document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("calendar");
-  const monthViewDescription = document.querySelector(
-    ".bookingDescriptionMonthViewWrapper"
-  );
-  const weekViewDescription = document.querySelector(
-    ".bookingDescriptionWeekViewWrapper"
-  );
+
   const calendar = new FullCalendar.Calendar(calendarEl, {
     headerToolbar: {
       left: "prev,next today",
@@ -70,22 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Set Selected Dates
         bookingTimeData.bookingDateStr = info.startStr;
         bookingTimeData.bookingDateEnd = info.endStr;
-
-        monthViewDescription.style.display = "none";
-        weekViewDescription.style.display = "block";
-
-        timeTitleWrapper.style.opacity = "1";
-
-        morningBtnWrapper.style.opacity = "1";
-        morningBtnWrapper.style.maxHeight = "300px";
-
-        afternoonBtnWrapper.style.opacity = "1";
-        afternoonBtnWrapper.style.maxHeight = "300px";
-
-        eveningBtnWrapper.style.opacity = "1";
-        eveningBtnWrapper.style.maxHeight = "300px";
-
-        sendDataBtn.style.opacity = "1";
+        showTimeBtn();
       }
       if (view.type === "dayGridWeek") {
         // Set Selected Date
@@ -98,38 +121,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   calendar.render();
 
-  //  Change View to Month (click right-top month Button)
-  function changeViewToMonth() {
+  monthBtn.addEventListener("click", () => {
     calendar.changeView("dayGridMonth");
-    monthViewDescription.style.display = "block";
-    weekViewDescription.style.display = "none";
-
-    timeTitleWrapper.style.opacity = "0";
-
-    morningBtnWrapper.style.maxHeight = "0";
-    morningBtnWrapper.style.opacity = "0";
-
-    afternoonBtnWrapper.style.maxHeight = "0";
-    afternoonBtnWrapper.style.opacity = "0";
-
-    eveningBtnWrapper.style.maxHeight = "0";
-    eveningBtnWrapper.style.opacity = "0";
-
-    sendDataBtn.style.opacity = "0";
-  }
-  monthBtn.addEventListener("click", changeViewToMonth);
+    hiddenTimeBtn();
+  });
 });
 
 // Set Selected Time
-timeBtn.forEach((e) => {
-  e.addEventListener("click", () => {
-    bookingTimeData.time = e.innerText;
+timeBtns.forEach((timeBtn) => {
+  timeBtn.addEventListener("click", () => {
+    bookingTimeData.time = timeBtn.innerText;
 
-    timeBtn.forEach((a) => {
-      a.style.boxShadow = "";
+    timeBtns.forEach((timeBtn) => {
+      timeBtn.style.boxShadow = "";
     });
-
-    e.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
+    timeBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
   });
 });
 

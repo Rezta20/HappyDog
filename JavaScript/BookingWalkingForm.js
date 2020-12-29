@@ -1,19 +1,19 @@
 // Set to FireStore Variable
-const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
+const bookingDate = document.querySelector(".bookingDate");
+const bookingTime = document.querySelector(".bookingTime");
+const email = document.querySelector(".email");
+const lineId = document.querySelector(".lineId");
 const owner = document.querySelector(".ownerName");
 const pet = document.querySelector(".petName");
 const phone = document.querySelector(".contactPhone");
-const email = document.querySelector(".email");
-const lineId = document.querySelector(".lineId");
-const bookingDate = document.querySelector(".bookingDate");
-const bookingTime = document.querySelector(".bookingTime");
-const walkingLocation = document.querySelector(".locationSelect");
 const remind = document.querySelector(".remind");
+const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
+const walkingLocation = document.querySelector(".locationSelect");
 
 // FireStore Set up
 const db = firebase.firestore();
 
-// 從sessionStorage取得之前存的資料
+// Get Session Storage Data
 const data = sessionStorage.getItem("bookingTimeData");
 const bookingTimeData = JSON.parse(data);
 
@@ -22,7 +22,6 @@ bookingDate.innerText = bookingTimeData.bookingDateStr;
 bookingTime.innerText = bookingTimeData.time;
 
 // Set Data To Firestore
-sendDataBtn.addEventListener("click", sendBookingDetail);
 
 function sendBookingDetail() {
   // 判斷是否有填資料
@@ -107,19 +106,19 @@ function sendBookingDetail() {
               location.href = "/Html/Booking/bookingThankYou.html";
               sendDataBtn.disabled = false;
             });
-          })
-          .catch(function (error) {});
+          });
       }
     });
   }
 }
+sendDataBtn.addEventListener("click", sendBookingDetail);
 
 // Google Map
 function initMap() {
   // close information on the map
-  let infowindows = [];
+  let infoWindows = [];
   let markers = [];
-  let position = [
+  let locations = [
     {
       label: "華山狗公園",
       lat: 25.050904854011506,
@@ -209,62 +208,18 @@ function initMap() {
     styles: labelStyle,
   });
 
-  // for (let l = 0; l < position.length; l++) {
-  //   addMarker(l);
-  //   addinfowindow(l);
-  //   if (l === 2) {
-  //     infowindows[l].open(map, markers[l]);
-  //     infowindows[l].setContent(
-  //       `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
-  //         `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
-  //         `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
-  //     );
-  //   }
-
-  //   // Click markers popup infowindow
-  //   google.maps.event.addListener(markers[l], "click", function () {
-  //     for (let a = 0; a < position.length; a++) {
-  //       infowindows[a].close();
-  //     }
-  //     infowindows[l].close();
-  //     infowindows[l].setContent(
-  //       `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
-  //         `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
-  //         `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
-  //     );
-  //     walkingLocation.value = position[l].label;
-  //     infowindows[l].open(map, markers[l]);
-  //   });
-
-  //   // Selector value change map ,infowindow change
-  //   walkingLocation.addEventListener("change", function () {
-  //     if (walkingLocation.value === position[l].label) {
-  //       for (let a = 0; a < position.length; a++) {
-  //         infowindows[a].close();
-  //       }
-  //       infowindows[l].close();
-  //       infowindows[l].setContent(
-  //         `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
-  //           `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
-  //           `至<a  href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
-  //       );
-  //       infowindows[l].open(map, markers[l]);
-  //     }
-  //   });
-  // }
-
-  position.forEach((e, i) => {
-    function addMarker(n) {
-      markers[n] = new google.maps.Marker({
+  locations.forEach((location, i) => {
+    function addMarker(i) {
+      markers[i] = new google.maps.Marker({
         map: map,
 
         position: {
-          lat: position[n].lat,
-          lng: position[n].lng,
+          lat: location.lat,
+          lng: location.lng,
         },
 
         label: {
-          text: position[n].label,
+          text: location.label,
           fontSize: "14px",
           fontWeight: "450",
         },
@@ -278,50 +233,53 @@ function initMap() {
         },
       });
     }
-    function addinfowindow(i) {
-      infowindows[i] = new google.maps.InfoWindow({
-        position: {
-          lat: position[i].lat,
-          lng: position[i].lng,
+    function addInfoWindow(i) {
+      infoWindows[i] = new google.maps.InfoWindow({
+        location: {
+          lat: location.lat,
+          lng: location.lng,
         },
 
         maxWidth: 450,
         pixelOffset: new google.maps.Size(0, 3),
       });
     }
-    const w = infowindows[i];
+
+    function infoWindowsState(i) {
+      infoWindows[i].close();
+      infoWindows[i].setContent(content);
+      infoWindows[i].open(map, markers[i]);
+    }
 
     const content =
-      `<h1 id="infowindowsTitle">${e.label}</h1>` +
-      `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
-      `至<a href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`;
+      `<h1 id="infowindowsTitle">${location.label}</h1>` +
+      `<img id="windowPic" src="${location.image}" alt="${location.label}街景">` +
+      `至<a href="${location.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`;
 
     addMarker(i);
-    addinfowindow(i);
+    addInfoWindow(i);
 
     if (i === 2) {
-      infowindows[i].open(map, markers[i]);
-      infowindows[i].setContent(content);
+      infoWindows[i].open(map, markers[i]);
+      infoWindows[i].setContent(content);
     }
+
     // Click markers popup infowindow
     google.maps.event.addListener(markers[i], "click", function () {
-      infowindows.forEach((a) => {
-        a.close();
+      infoWindows.forEach((infoWindow) => {
+        infoWindow.close();
       });
-      infowindows[i].close();
-      infowindows[i].setContent(content);
-      walkingLocation.value = e.label;
-      infowindows[i].open(map, markers[i]);
+      infoWindowsState(i);
+      walkingLocation.value = location.label;
     });
+
     // Selector value change map ,infowindow change
     walkingLocation.addEventListener("change", function () {
-      if (walkingLocation.value === e.label) {
-        infowindows.forEach((a) => {
-          a.close();
+      if (walkingLocation.value === location.label) {
+        infoWindows.forEach((infoWindow) => {
+          infoWindow.close();
         });
-        infowindows[i].close();
-        infowindows[i].setContent(content);
-        infowindows[i].open(map, markers[i]);
+        infoWindowsState(i);
       }
     });
   });
