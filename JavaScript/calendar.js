@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const weekViewDescription = document.querySelector(
     ".bookingDescriptionWeekViewWrapper"
   );
-
   const calendar = new FullCalendar.Calendar(calendarEl, {
     headerToolbar: {
       left: "prev,next today",
@@ -97,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     height: "auto",
   });
-
   calendar.render();
 
   //  Change View to Month (click right-top month Button)
@@ -123,29 +121,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Set Selected Time
-for (let i = 0; i < timeBtn.length; i++) {
-  timeBtn[i].addEventListener("click", function setTime() {
-    bookingTimeData.time = timeBtn[i].innerText;
-    for (let z = 0; z < timeBtn.length; z++) {
-      timeBtn[z].style.boxShadow = "";
-    }
-    timeBtn[i].style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
+timeBtn.forEach((e) => {
+  e.addEventListener("click", () => {
+    bookingTimeData.time = e.innerText;
+
+    timeBtn.forEach((a) => {
+      a.style.boxShadow = "";
+    });
+
+    e.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
   });
-}
-
-// timeBtn.forEach((e, i) => {
-//   e.addEventListener("click", () => {
-//     bookingTimeData.time = timeBtn[i].innerText;
-//     console.log(e, i);
-
-//     timeBtn.forEach((a, i) => {
-//       console.log(i);
-//       a.style.shadow = "";
-//     });
-
-//     timeBtn[i].style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
-//   });
-// });
+});
 
 // Send Booking Date Button Event
 function sendBookingDatatoBookingform() {
@@ -162,5 +148,4 @@ function sendBookingDatatoBookingform() {
   // 將資料存到sessionStorage
   sessionStorage.setItem("bookingTimeData", JSON.stringify(bookingTimeData));
 }
-
 sendDataBtn.addEventListener("click", sendBookingDatatoBookingform);

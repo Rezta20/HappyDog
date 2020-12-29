@@ -254,15 +254,54 @@ function initMap() {
   // }
 
   position.forEach((e, i) => {
+    function addMarker(n) {
+      markers[n] = new google.maps.Marker({
+        map: map,
+
+        position: {
+          lat: position[n].lat,
+          lng: position[n].lng,
+        },
+
+        label: {
+          text: position[n].label,
+          fontSize: "14px",
+          fontWeight: "450",
+        },
+
+        icon: {
+          labelOrigin: { x: 15, y: -14 },
+          url: "/img/pawlabel.png",
+          scaledSize: new google.maps.Size(30, 30),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(0, 0),
+        },
+      });
+    }
+    function addinfowindow(i) {
+      infowindows[i] = new google.maps.InfoWindow({
+        position: {
+          lat: position[i].lat,
+          lng: position[i].lng,
+        },
+
+        maxWidth: 450,
+        pixelOffset: new google.maps.Size(0, 3),
+      });
+    }
+    const w = infowindows[i];
+
+    const content =
+      `<h1 id="infowindowsTitle">${e.label}</h1>` +
+      `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
+      `至<a href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`;
+
     addMarker(i);
     addinfowindow(i);
+
     if (i === 2) {
       infowindows[i].open(map, markers[i]);
-      infowindows[i].setContent(
-        `<h1 id="infowindowsTitle">${e.label}</h1>` +
-          `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
-          `至<a href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
-      );
+      infowindows[i].setContent(content);
     }
     // Click markers popup infowindow
     google.maps.event.addListener(markers[i], "click", function () {
@@ -270,11 +309,7 @@ function initMap() {
         a.close();
       });
       infowindows[i].close();
-      infowindows[i].setContent(
-        `<h1 id="infowindowsTitle">${e.label}</h1>` +
-          `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
-          `至<a href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
-      );
+      infowindows[i].setContent(content);
       walkingLocation.value = e.label;
       infowindows[i].open(map, markers[i]);
     });
@@ -285,52 +320,11 @@ function initMap() {
           a.close();
         });
         infowindows[i].close();
-        infowindows[i].setContent(
-          `<h1 id="infowindowsTitle">${e.label}</h1>` +
-            `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
-            `至<a  href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
-        );
+        infowindows[i].setContent(content);
         infowindows[i].open(map, markers[i]);
       }
     });
   });
-
-  function addinfowindow(i) {
-    infowindows[i] = new google.maps.InfoWindow({
-      position: {
-        lat: position[i].lat,
-        lng: position[i].lng,
-      },
-
-      maxWidth: 450,
-      pixelOffset: new google.maps.Size(0, 3),
-    });
-  }
-
-  function addMarker(n) {
-    markers[n] = new google.maps.Marker({
-      map: map,
-
-      position: {
-        lat: position[n].lat,
-        lng: position[n].lng,
-      },
-
-      label: {
-        text: position[n].label,
-        fontSize: "14px",
-        fontWeight: "450",
-      },
-
-      icon: {
-        labelOrigin: { x: 15, y: -14 },
-        url: "/img/pawlabel.png",
-        scaledSize: new google.maps.Size(30, 30),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 0),
-      },
-    });
-  }
 }
 
 initMap();
