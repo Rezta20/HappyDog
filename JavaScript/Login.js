@@ -1,38 +1,28 @@
 const signUpBtn = document.querySelector(".signinCard-loginButton");
 const signUpEmail = document.querySelector("#signUpemail");
 const signUpPwd = document.querySelector("#signUppwd");
-
 const logInBtn = document.querySelector(".loginCard-loginButton");
 const logInEmail = document.querySelector("#loginEmail");
 const logInPwd = document.querySelector("#loginPwd");
-
 const checkSignInPwdInput = document.querySelector(".checkSignInPwd");
-
-// Change the Card Movement
 const logInCard = document.querySelector("#logInCard-Mobile");
 const signInCard = document.querySelector("#signInCard-Mobile");
 
 function changeToSignin() {
   logInCard.style.left = "-100%";
-  signInCard.style.left = "0";
   logInCard.style.opacity = "0";
+  signInCard.style.left = "0";
   signInCard.style.opacity = "1";
 }
 
 function changeToLogin() {
   logInCard.style.left = "0";
+  logInCard.style.opacity = "1";
   signInCard.style.left = "100%";
   signInCard.style.opacity = "0";
-  logInCard.style.opacity = "1";
 }
 
-// 綁定註冊按鈕的點擊事件
-signUpBtn.addEventListener("click", () => {
-  let user = {
-    email: signUpEmail.value,
-    pwd: signUpPwd.value,
-  };
-
+function checkSignUpData(user) {
   if (checkSignInPwdInput.value === user.pwd) {
     // Through auth().createUserWithEmailAndPassword build user
     firebase
@@ -83,7 +73,6 @@ signUpBtn.addEventListener("click", () => {
             confirmButtonText: "確定",
           });
         }
-        console.log(err.message);
       });
   } else if (checkSignInPwdInput.value !== user.pwd) {
     Swal.fire({
@@ -93,12 +82,9 @@ signUpBtn.addEventListener("click", () => {
     });
     checkSignInPwdInput.value = "";
   }
-});
+}
 
-// Firebase Log In
-logInBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-
+function checkLogInData() {
   firebase
     .auth()
     .signInWithEmailAndPassword(logInEmail.value, logInPwd.value)
@@ -113,7 +99,6 @@ logInBtn.addEventListener("click", (event) => {
       }
     })
     .catch((err) => {
-      console.log(err.message);
       if (
         err.message == "The email address is already in use by another account."
       ) {
@@ -159,43 +144,52 @@ logInBtn.addEventListener("click", (event) => {
         logInPwd.value = "";
       }
     });
+}
+
+// Click sign up button event
+signUpBtn.addEventListener("click", () => {
+  let user = {
+    email: signUpEmail.value,
+    pwd: signUpPwd.value,
+  };
+  checkSignUpData(user);
+});
+
+// Firebase log In
+logInBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  checkLogInData();
 });
 
 // FB Login In
-document.querySelector(".facebookLogin").addEventListener("click", fbLogin);
-
 function fbLogin() {
   const provider = new firebase.auth.FacebookAuthProvider();
-  // provider.setCustomParameters({
-  //   display: "popup",
-  // });
 
   firebase
     .auth()
     .signInWithPopup(provider)
     .then(function (result) {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
+      const token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
+      const user = result.user;
       location.href = "/Html/homepage.html";
       // ...
     })
     .catch(function (error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       // The email of the user's account used.
-      var email = error.email;
+      const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
+      const credential = error.credential;
       // ...
     });
 }
+document.querySelector(".facebookLogin").addEventListener("click", fbLogin);
 
 // Google Log in
-document.querySelector(".googleLogin").addEventListener("click", googleLogin);
-
 function googleLogin() {
   var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -204,20 +198,21 @@ function googleLogin() {
     .signInWithPopup(provider)
     .then(function (result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
+      const token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
+      const user = result.user;
       location.href = "/Html/homepage.html";
       // ...
     })
     .catch(function (error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       // The email of the user's account used.
-      var email = error.email;
+      const email = error.email;
       // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
+      const credential = error.credential;
       // ...
     });
 }
+document.querySelector(".googleLogin").addEventListener("click", googleLogin);

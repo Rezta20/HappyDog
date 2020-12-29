@@ -3,15 +3,10 @@ const userImg = document.querySelector(".userImg");
 const email = document.querySelector(".email");
 const userNativePhotoUrl =
   "https://firebasestorage.googleapis.com/v0/b/happydog-82c2f.appspot.com/o/logo%2FlogoNative1.png?alt=media&token=682b9c60-f667-471c-9169-fd69f36a9f21";
-
 const alertCheckBtn = document.querySelector(".swal2-confirm");
-
-// content.innerHTML =
-// Firebase Log out
 const logoutBtn = document.querySelector("#logoutBtn");
-logoutBtn.addEventListener("click", function (e) {
-  e.preventDefault();
 
+function firebaseSignOut() {
   firebase
     .auth()
     .signOut()
@@ -28,22 +23,18 @@ logoutBtn.addEventListener("click", function (e) {
     })
     .catch(function (error) {
       // An error happened.
-      console.log("Signed out! Error");
       Swal.fire({
         title: "登出錯誤",
         icon: "warning",
         confirmButtonText: "確定",
       });
     });
-});
+}
 
-// Firebase 監聽
-window.addEventListener("load", function () {
+function firebaseUserState() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const providerData = user.providerData[0];
-      console.log(providerData);
-
       if (
         providerData.providerId === "google.com" ||
         providerData.providerId === "facebook.com"
@@ -59,4 +50,15 @@ window.addEventListener("load", function () {
     } else {
     }
   });
+}
+
+// Firebase Log out
+logoutBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  firebaseSignOut();
+});
+
+// Firebase 監聽
+window.addEventListener("load", function () {
+  firebaseUserState();
 });

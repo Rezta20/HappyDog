@@ -11,13 +11,11 @@ const walkingLocation = document.querySelector(".locationSelect");
 const remind = document.querySelector(".remind");
 
 // FireStore Set up
-var db = firebase.firestore();
+const db = firebase.firestore();
 
 // 從sessionStorage取得之前存的資料
 const data = sessionStorage.getItem("bookingTimeData");
 const bookingTimeData = JSON.parse(data);
-console.log(data);
-console.log(bookingTimeData);
 
 // Render Time & date
 bookingDate.innerText = bookingTimeData.bookingDateStr;
@@ -28,7 +26,6 @@ sendDataBtn.addEventListener("click", sendBookingDetail);
 
 function sendBookingDetail() {
   // 判斷是否有填資料
-
   if (owner.value === "") {
     Swal.fire({
       title: "請輸入飼主姓名",
@@ -57,6 +54,7 @@ function sendBookingDetail() {
     sendDataBtn.disabled = true;
     sendDataBtn.innerText = "資料上傳中";
     sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
+
     firebase.auth().onAuthStateChanged((user) => {
       const providerData = user.providerData[0];
       if (user) {
@@ -110,18 +108,15 @@ function sendBookingDetail() {
               sendDataBtn.disabled = false;
             });
           })
-          .catch(function (error) {
-            console.error("Error writing document: ", error);
-          });
+          .catch(function (error) {});
       }
     });
   }
 }
-// Google Map
-// let map;
 
+// Google Map
 function initMap() {
-  // 把地圖上其他標籤都關閉
+  // close information on the map
   let infowindows = [];
   let markers = [];
   let position = [
@@ -214,49 +209,91 @@ function initMap() {
     styles: labelStyle,
   });
 
-  for (let l = 0; l < position.length; l++) {
-    addMarker(l);
-    addinfowindow(l);
-    if (l === 2) {
-      infowindows[l].open(map, markers[l]);
-      infowindows[l].setContent(
-        `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
-          `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
-          `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
+  // for (let l = 0; l < position.length; l++) {
+  //   addMarker(l);
+  //   addinfowindow(l);
+  //   if (l === 2) {
+  //     infowindows[l].open(map, markers[l]);
+  //     infowindows[l].setContent(
+  //       `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
+  //         `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
+  //         `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
+  //     );
+  //   }
+
+  //   // Click markers popup infowindow
+  //   google.maps.event.addListener(markers[l], "click", function () {
+  //     for (let a = 0; a < position.length; a++) {
+  //       infowindows[a].close();
+  //     }
+  //     infowindows[l].close();
+  //     infowindows[l].setContent(
+  //       `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
+  //         `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
+  //         `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
+  //     );
+  //     walkingLocation.value = position[l].label;
+  //     infowindows[l].open(map, markers[l]);
+  //   });
+
+  //   // Selector value change map ,infowindow change
+  //   walkingLocation.addEventListener("change", function () {
+  //     if (walkingLocation.value === position[l].label) {
+  //       for (let a = 0; a < position.length; a++) {
+  //         infowindows[a].close();
+  //       }
+  //       infowindows[l].close();
+  //       infowindows[l].setContent(
+  //         `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
+  //           `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
+  //           `至<a  href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
+  //       );
+  //       infowindows[l].open(map, markers[l]);
+  //     }
+  //   });
+  // }
+
+  position.forEach((e, i) => {
+    addMarker(i);
+    addinfowindow(i);
+    if (i === 2) {
+      infowindows[i].open(map, markers[i]);
+      infowindows[i].setContent(
+        `<h1 id="infowindowsTitle">${e.label}</h1>` +
+          `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
+          `至<a href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
       );
     }
-
     // Click markers popup infowindow
-    google.maps.event.addListener(markers[l], "click", function () {
-      for (let a = 0; a < position.length; a++) {
-        infowindows[a].close();
-      }
-      infowindows[l].close();
-      infowindows[l].setContent(
-        `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
-          `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
-          `至<a href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
+    google.maps.event.addListener(markers[i], "click", function () {
+      infowindows.forEach((a) => {
+        a.close();
+      });
+      infowindows[i].close();
+      infowindows[i].setContent(
+        `<h1 id="infowindowsTitle">${e.label}</h1>` +
+          `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
+          `至<a href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
       );
-      walkingLocation.value = position[l].label;
-      infowindows[l].open(map, markers[l]);
+      walkingLocation.value = e.label;
+      infowindows[i].open(map, markers[i]);
     });
-
     // Selector value change map ,infowindow change
     walkingLocation.addEventListener("change", function () {
-      if (walkingLocation.value === position[l].label) {
-        for (let a = 0; a < position.length; a++) {
-          infowindows[a].close();
-        }
-        infowindows[l].close();
-        infowindows[l].setContent(
-          `<h1 id="infowindowsTitle">${position[l].label}</h1>` +
-            `<img id="windowPic" src="${position[l].image}" alt="${position[l].label}街景">` +
-            `至<a  href="${position[l].googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
+      if (walkingLocation.value === e.label) {
+        infowindows.forEach((a) => {
+          a.close();
+        });
+        infowindows[i].close();
+        infowindows[i].setContent(
+          `<h1 id="infowindowsTitle">${e.label}</h1>` +
+            `<img id="windowPic" src="${e.image}" alt="${e.label}街景">` +
+            `至<a  href="${e.googleMapUrl}" target='_blank'>Google Map</a>上查看更多`
         );
-        infowindows[l].open(map, markers[l]);
+        infowindows[i].open(map, markers[i]);
       }
     });
-  }
+  });
 
   function addinfowindow(i) {
     infowindows[i] = new google.maps.InfoWindow({

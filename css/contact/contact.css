@@ -1,3 +1,6 @@
+@import url("../navbar.css");
+@import url("../loading.css");
+
 .contactIcon {
   background-image: url("../../img/navbar/contact-hover.png");
 }

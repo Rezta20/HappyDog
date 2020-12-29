@@ -9,8 +9,6 @@ const remind = document.querySelector(".remind");
 const db = firebase.firestore();
 
 // Set Data To Firestore
-sendDataBtn.addEventListener("click", sendBookingDetail);
-
 function sendBookingDetail() {
   // 判斷是否有填資料
   if (owner.value === "") {
@@ -52,8 +50,7 @@ function sendBookingDetail() {
         location.href = "/Html/Contact/contactThankyou.html";
         sendDataBtn.disabled = false;
       })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
-      });
+      .catch(function (error) {});
   }
 }
+sendDataBtn.addEventListener("click", sendBookingDetail);

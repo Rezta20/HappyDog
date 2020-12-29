@@ -52,6 +52,7 @@ for (let i = 0; i < frontPhone.length; i++) {
   //   }
 }
 
+// Log in first, then could use the booking system
 bookingCalendarBtn.addEventListener("click", defaultLogin);
 
 function defaultLogin() {
