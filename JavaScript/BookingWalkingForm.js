@@ -11,7 +11,7 @@ const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
 const walkingLocation = document.querySelector(".locationSelect");
 
 // FireStore Set up
-const db = firebase.firestore();
+const bookingDayCollection = firebase.firestore().collection("bookingDay");
 
 // Get Session Storage Data
 const data = sessionStorage.getItem("bookingTimeData");
@@ -57,7 +57,7 @@ function sendBookingDetail() {
     firebase.auth().onAuthStateChanged((user) => {
       const providerData = user.providerData[0];
       if (user) {
-        db.collection("bookingDay")
+        bookingDayCollection
           .add({
             uid: providerData.uid,
             owner: owner.value,
@@ -78,7 +78,7 @@ function sendBookingDetail() {
             document.querySelector(".contentWrapper").style.display = "none";
 
             // Add id
-            db.collection("bookingDay")
+            bookingDayCollection
               .doc(docRef.id)
               .set({ orderId: `#${docRef.id} ` }, { merge: true });
 

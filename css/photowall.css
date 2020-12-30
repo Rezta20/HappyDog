@@ -9,6 +9,17 @@ body {
   min-height: 100vh;
 }
 
+.rootWrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .toTop {
   position: fixed;
   bottom: 65px;
@@ -31,6 +42,19 @@ body {
 
 .rootWrapper {
   padding-bottom: 90px;
+}
+
+/* Edit Delete  */
+.editCoverWrapper {
+  width: 100%;
+  background-color: rgb(239, 239, 239, 0.5);
+  padding: 6px 0;
+}
+
+.editDeleteCoverWrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 /* Upload Button  */
@@ -146,6 +170,7 @@ body {
   top: 15%;
   margin-bottom: 15%;
   border: solid 3px #063f6f;
+  border-radius: 10px;
   background-color: #fff;
   height: auto;
   width: 425px;
@@ -194,6 +219,7 @@ body {
   align-items: center;
   justify-content: center;
   border: dashed 3px #063f6f;
+  border-radius: 10px;
   background-color: rgb(68, 68, 68, 0.1);
   height: 400px;
   width: 75%;
@@ -267,15 +293,14 @@ body {
 }
 
 /* Cards  */
-.rootWrapper {
+.cardWrapper {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 30px;
   display: flex;
-  justify-content: space-around;
-}
-
-.cardsWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 24%;
 }
 
 .cardUserTitle {
@@ -298,14 +323,8 @@ body {
   font-size: 16px;
 }
 
-.cardWrapper {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  width: 24%;
+.fa-ellipsis-h {
+  font-size: 16px;
 }
 
 .photoImg {

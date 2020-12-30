@@ -175,22 +175,112 @@
     </script>
 
     <script type="text/babel">
-      function Card(props) {
-        return (
-          <div className="cardWrapper">
-            <div className="cardUserTitle">
-              <img className="userImg" src={props.userImg} />
-              <div className="userName">{props.userName}</div>
-            </div>
-            <img className="photoImg" src={props.photoImgUrl} />
+      function EditDeleteCover(props) {
+        const photoWallCollection = firebase
+          .firestore()
+          .collection("photoWall");
+        const [showDialogue, setShowDialogue] = React.useState(false);
 
-            <div className="tags">
-              {props.hashTags?.map((data) => (
-                <span> #{data.value} </span>
-              ))}
+        function clickShowDialogue() {
+          // setShowDialogue(true);
+          Swal.fire({
+            title: "刪除這張照片嗎？",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "確定刪除",
+            cancelButtonText: "取消",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire("已刪除", "", "success");
+              console.log(props.photoId);
+              // Firestore Remove Data
+              photoWallCollection
+                .doc(props.photoId)
+                .delete()
+                .then(function () {
+                  console.log("Document successfully deleted!");
+                })
+                .catch(function (error) {
+                  console.error("Error removing document: ", error);
+                });
+            }
+          });
+        }
+
+        return (
+          <>
+            <div className="editDeleteCoverWrapper">
+              <div className="edit" onClick={props.setShowUpload}>
+                編輯
+              </div>
+              <div className="delete" onClick={clickShowDialogue}>
+                刪除
+              </div>
             </div>
-            <div className="cardDate">{props.cardDate}</div>
-          </div>
+            <div
+              className="deleteDialogueWrapper"
+              style={{ display: showDialogue ? "block" : "none" }}
+            >
+              <div className="deleteDialoguecover"></div>
+              <div className="deleteDialogueBox">
+                <i className="fas fa-times"></i>
+
+                <button className="deleteSure">確定刪除</button>
+                <button className="canceled">取消</button>
+              </div>
+            </div>
+          </>
+        );
+      }
+
+      function Card(props) {
+        const [showEdit, setShowEdit] = React.useState(0);
+
+        function mouseOver() {
+          const user = firebase.auth().currentUser;
+
+          if (user) {
+            const currentUserUid = user.providerData[0].uid;
+            if (props.uid === currentUserUid) {
+              setShowEdit(1);
+            }
+          }
+        }
+
+        function mouseOut() {
+          setShowEdit(0);
+        }
+
+        return (
+          <>
+            <div
+              className="cardWrapper"
+              onMouseOver={mouseOver}
+              onMouseOut={mouseOut}
+            >
+              <div className="cardUserTitle">
+                <img className="userImg" src={props.userImg} />
+                <div className="userName">{props.userName}</div>
+              </div>
+              <img className="photoImg" src={props.photoImgUrl} />
+
+              <div className="tags">
+                {props.hashTags?.map((data) => (
+                  <span> #{data.value} </span>
+                ))}
+              </div>
+              <div className="cardDate">{props.cardDate}</div>
+              <div
+                className="editCoverWrapper"
+                style={{ opacity: showEdit ? "1" : "0" }}
+              >
+                <EditDeleteCover
+                  setShowUpload={props.setShowUpload}
+                  photoId={props.photoId}
+                />
+              </div>
+            </div>
+          </>
         );
       }
 
@@ -284,7 +374,9 @@
         function sendData() {
           // Get a reference to the storage service, which is used to create references in your storage bucket
           const ref = firebase.storage().ref();
-          const db = firebase.firestore();
+          const photoWallCollection = firebase
+            .firestore()
+            .collection("photoWall");
           const picture = document.querySelector("#upload").files[0];
           let deleteIsNewTag;
           console.log(saveTag);
@@ -297,13 +389,7 @@
 
           // Cut is New element
           saveTag.forEach((item) => {
-            console.log(item);
-            console.log(item.__isNew__);
-            console.log(item.label);
             deleteIsNewTag = delete item.__isNew__;
-            console.log(deleteIsNewTag);
-            console.log(saveTag);
-            console.log("hello");
           });
 
           if (previewFile === "") {
@@ -333,7 +419,7 @@
                         userData.displayName === null ||
                         userData.photoURL === null
                       ) {
-                        db.collection("photoWall")
+                        photoWallCollection
                           .add({
                             photo: url,
                             hashTags: saveTag,
@@ -347,6 +433,14 @@
                           })
                           .then(function (docRef) {
                             console.log("Document successfully written!");
+                            console.log(docRef.id);
+                            // Add id
+                            photoWallCollection
+                              .doc(docRef.id)
+                              .set(
+                                { photoId: `${docRef.id} ` },
+                                { merge: true }
+                              );
                             props.setShowUpload(false);
                             setAlreadyUpload(true);
                           })
@@ -354,7 +448,7 @@
                             console.error("Error writing document: ", error);
                           });
                       } else {
-                        db.collection("photoWall")
+                        photoWallCollection
                           .add({
                             photo: url,
                             hashTags: saveTag,
@@ -369,6 +463,12 @@
                           .then(function (docRef) {
                             // clicked = false;
                             console.log("Document successfully written!");
+                            photoWallCollection
+                              .doc(docRef.id)
+                              .set(
+                                { photoId: `${docRef.id} ` },
+                                { merge: true }
+                              );
                             props.setShowUpload(false);
                             setAlreadyUpload(true);
                           })
@@ -443,10 +543,11 @@
         // 從Firebase上 抓資料
         React.useEffect(() => {
           // Firebase firestore initializ
-          const db = firebase.firestore();
-          const firestoreCollection = db.collection("photoWall");
+          const photoWallCollection = firebase
+            .firestore()
+            .collection("photoWall");
 
-          firestoreCollection
+          photoWallCollection
             .orderBy("rank", "desc")
             .onSnapshot(function (doc) {
               const dataArray = [];
@@ -482,8 +583,11 @@
                 photoImgUrl={data[i].photo}
                 hashTags={data[i].hashTags}
                 cardDate={data[i].time}
+                photoId={data[i].photoId}
+                uid={data[i].uid}
                 setShow={setShow}
                 setIndex={setIndex}
+                setShowUpload={setShowUpload}
               />
             );
           }
