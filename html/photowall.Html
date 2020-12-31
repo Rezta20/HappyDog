@@ -207,10 +207,14 @@
           });
         }
 
+        function editCardData() {
+          props.editUploadPhoto(props.photoId);
+        }
+
         return (
           <>
             <div className="editDeleteCoverWrapper">
-              <div className="edit" onClick={props.setShowUpload}>
+              <div className="edit" onClick={editCardData}>
                 編輯
               </div>
               <div className="delete" onClick={clickShowDialogue}>
@@ -272,11 +276,12 @@
               <div className="cardDate">{props.cardDate}</div>
               <div
                 className="editCoverWrapper"
-                style={{ opacity: props.uid === currentUserUid ? "1" : "0" }}
+                style={{ opacity: showEdit ? "1" : "0" }}
               >
                 <EditDeleteCover
                   setShowUpload={props.setShowUpload}
                   photoId={props.photoId}
+                  editUploadPhoto={props.editUploadPhoto}
                 />
               </div>
             </div>
@@ -369,6 +374,28 @@
             );
           const picture = URL.createObjectURL(event.target.files[0]);
           setPreviewFile(picture);
+        }
+
+        function dataSource() {
+          if (previewFile) {
+            console.log("3");
+            return previewFile;
+          } else if (
+            previewFile === "undified" &&
+            props.cardDataForEdit.photo === "undified"
+          ) {
+            console.log("yo");
+            return undified;
+          } else if (
+            previewFile === "undified" &&
+            props.cardDataForEdit.photo
+          ) {
+            console.log("2");
+            return props.cardDataForEdit.photo;
+          } else if (previewFile && props.cardDataForEdit.photo) {
+            console.log("1");
+            return previewFile;
+          }
         }
 
         function sendData() {
@@ -505,7 +532,7 @@
               <div className="uploadContentWrapper">
                 <div className="uploadArea">
                   <p className="previewText">預覽圖片</p>
-                  <img className="previewPicture" src={previewFile} alt="" />
+                  <img className="previewPicture" src={dataSource()} alt="" />
                 </div>
                 <div className="uploadIconWrapper">
                   <label htmlFor="upload" className="uploadIcon">
@@ -538,9 +565,23 @@
         const [index, setIndex] = React.useState(0);
         const [data, setData] = React.useState([]);
         const [showUpload, setShowUpload] = React.useState(false);
-        // const [showEdit]
+        const [uploadPhotoId, setUploadPhotoId] = React.useState();
         const [tagView, setTagView] = React.useState("全部");
 
+        function editUploadPhoto(photoId) {
+          setShowUpload(true);
+          setUploadPhotoId(photoId);
+        }
+
+        //
+        console.log(data);
+        console.log("hi");
+
+        const cardDataForEdit = data.find(
+          (card) => card.photoId === uploadPhotoId
+        );
+
+        console.log(cardDataForEdit);
         // 從Firebase上 抓資料
         React.useEffect(() => {
           // Firebase firestore initializ
@@ -589,6 +630,7 @@
                 setShow={setShow}
                 setIndex={setIndex}
                 setShowUpload={setShowUpload}
+                editUploadPhoto={editUploadPhoto}
               />
             );
           }
@@ -693,7 +735,12 @@
               </div>
             </div>
 
-            {showUpload && <UploadCard setShowUpload={setShowUpload} />}
+            {showUpload && (
+              <UploadCard
+                setShowUpload={setShowUpload}
+                cardDataForEdit={cardDataForEdit}
+              />
+            )}
             <div className="cardsWrapper">{cards}</div>
             <button className="toTop" onClick={toTop}>
               <i className="fas fa-chevron-up"></i>
