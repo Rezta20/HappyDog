@@ -15,9 +15,9 @@ body {
 }
 
 .cardsWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  column-count: 4;
+  column-gap: 15px;
+  column-fill: auto;
 }
 
 .toTop {
@@ -293,7 +293,7 @@ body {
 }
 
 /* Cards  */
-.cardWrapper {
+/* .cardWrapper {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 30px;
   display: flex;
@@ -301,6 +301,19 @@ body {
   align-items: center;
   background-color: #fff;
   width: 24%;
+} */
+
+.cardWrapper {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  word-wrap: break-word;
+  margin-bottom: 20px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
 }
 
 .cardUserTitle {

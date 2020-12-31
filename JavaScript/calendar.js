@@ -5,7 +5,6 @@ const monthViewDescription = document.querySelector(
   ".bookingDescriptionMonthViewWrapper"
 );
 const morningBtnWrapper = document.querySelector(".timeBtnMorningWrapper");
-const selectedDateColor = document.querySelector(".fc-daygrid-day-events");
 const sendDataBtn = document.querySelector(".sendBookingDatedataBtn");
 const timeBtns = document.querySelectorAll(".timeBtn");
 const timeTitleWrapper = document.querySelector(".timeTitleWrapper");

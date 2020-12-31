@@ -42,7 +42,7 @@ function sendBookingDetail() {
         Line: lineId.value,
         remind: remind.value,
       })
-      .then(function (docRef) {
+      .then(function () {
         console.log("Document successfully written!");
         document.querySelector(".loadingWrapper").style.display = "block";
         document.querySelector(".contentWrapper").style.display = "none";

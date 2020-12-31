@@ -272,7 +272,7 @@
               <div className="cardDate">{props.cardDate}</div>
               <div
                 className="editCoverWrapper"
-                style={{ opacity: showEdit ? "1" : "0" }}
+                style={{ opacity: props.uid === currentUserUid ? "1" : "0" }}
               >
                 <EditDeleteCover
                   setShowUpload={props.setShowUpload}
@@ -438,7 +438,7 @@
                             photoWallCollection
                               .doc(docRef.id)
                               .set(
-                                { photoId: `${docRef.id} ` },
+                                { photoId: `${docRef.id}` },
                                 { merge: true }
                               );
                             props.setShowUpload(false);
@@ -466,7 +466,7 @@
                             photoWallCollection
                               .doc(docRef.id)
                               .set(
-                                { photoId: `${docRef.id} ` },
+                                { photoId: `${docRef.id}` },
                                 { merge: true }
                               );
                             props.setShowUpload(false);
@@ -538,6 +538,7 @@
         const [index, setIndex] = React.useState(0);
         const [data, setData] = React.useState([]);
         const [showUpload, setShowUpload] = React.useState(false);
+        // const [showEdit]
         const [tagView, setTagView] = React.useState("全部");
 
         // 從Firebase上 抓資料

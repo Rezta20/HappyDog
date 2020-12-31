@@ -1,4 +1,3 @@
-const alertCheckBtn = document.querySelector(".swal2-confirm");
 const email = document.querySelector(".email");
 const logoutBtn = document.querySelector("#logoutBtn");
 const userId = document.querySelector(".userId");
