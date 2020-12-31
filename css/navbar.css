@@ -38,6 +38,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  margin: 0 auto;
 }
 
 .navbar-text {
@@ -51,7 +52,7 @@ body::-webkit-scrollbar-thumb {
 
 /* Logo */
 .navbar-logoWrapper {
-  margin: 10px 0px 0px 10px;
+  margin: 10px 0px 0px 15px;
 }
 
 .logo {
@@ -219,25 +220,16 @@ body::-webkit-scrollbar-thumb {
 
 /* RWD  */
 @media screen and (max-width: 768px) {
-  .navbar-languageToggleWrapper {
-    position: absolute;
-    right: 100px;
-    top: 23px;
+  .navbar-logoLoginWrapper {
+    width: 95%;
+  }
+  .navbar-iconWrapper {
+    width: 83%;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .navbar-languageToggleWrapper {
-    position: absolute;
-    right: 90px;
-    top: 23px;
-  }
 }
 
 @media screen and (max-width: 320px) {
-  .navbar-languageToggleWrapper {
-    display: flex;
-    flex-direction: column;
-    top: 0px;
-  }
 }

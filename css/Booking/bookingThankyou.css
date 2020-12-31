@@ -48,6 +48,7 @@ body {
   margin: 10px;
   background-color: #fc9f35;
   outline: none;
+  cursor: pointer;
 }
 
 .homeBtn {

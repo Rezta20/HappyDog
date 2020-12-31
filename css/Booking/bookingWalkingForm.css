@@ -100,6 +100,7 @@ input:focus {
   width: 155px;
   border-radius: 5px;
   border: solid 1px #063f6f;
+  cursor: pointer;
 }
 
 .locationSelect:focus {

@@ -5,6 +5,10 @@
   background-image: url("../img/navbar/photo-hover.png");
 }
 
+.footer-background {
+  bottom: -10px;
+}
+
 body {
   min-height: 100vh;
 }
@@ -15,6 +19,7 @@ body {
 }
 
 .cardsWrapper {
+  height: 100%;
   column-count: 4;
   column-gap: 15px;
   column-fill: auto;
@@ -48,13 +53,26 @@ body {
 .editCoverWrapper {
   width: 100%;
   background-color: rgb(239, 239, 239, 0.5);
-  padding: 6px 0;
 }
 
 .editDeleteCoverWrapper {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  height: 100%;
+}
+
+.editText {
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  padding: 6px 0;
+  font-size: 16px;
+}
+
+.editText:hover {
+  background-color: #063f6f;
+  color: #fff;
 }
 
 /* Upload Button  */
@@ -63,8 +81,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 15px;
-  cursor: pointer;
+  margin: 15px auto 10px;
 }
 
 .uploadPictureDescriptionWrapper {
@@ -162,6 +179,7 @@ body {
   width: 100%;
   background-color: rgb(68, 68, 68, 0.8);
   min-height: 100%;
+  z-index: 1;
 }
 
 .uploadCardWrapper {
@@ -233,6 +251,7 @@ body {
 
 .fa-times {
   font-size: 20px;
+  cursor: pointer;
 }
 
 .uploadIconWrapper {
@@ -267,6 +286,11 @@ body {
   margin: 8px auto;
 }
 
+.select__value-container,
+.select__indicators {
+  cursor: pointer;
+}
+
 .sendPhotoBtnWrapper {
   display: flex;
   justify-content: center;
@@ -283,6 +307,7 @@ body {
   outline: none;
   color: #fff;
   margin: 3px 0;
+  cursor: pointer;
 }
 
 .sendPhotoBtn:hover {
@@ -293,15 +318,6 @@ body {
 }
 
 /* Cards  */
-/* .cardWrapper {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  width: 24%;
-} */
 
 .cardWrapper {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -354,11 +370,25 @@ body {
 
 .cardDate {
   width: 80%;
-  margin: 5px 0;
+  margin: 5px 0 7px;
   font-size: 14px;
 }
 
 .cardContent {
   width: 78%;
   margin: 5px auto;
+}
+
+/* RWD  */
+@media screen and (max-width: 768px) {
+  .cardsWrapper {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 375px) {
+}
+
+@media screen and (max-width: 320px) {
 }

@@ -214,10 +214,10 @@
         return (
           <>
             <div className="editDeleteCoverWrapper">
-              <div className="edit" onClick={editCardData}>
+              <div className="editText edit" onClick={editCardData}>
                 編輯
               </div>
-              <div className="delete" onClick={clickShowDialogue}>
+              <div className="editText delete" onClick={clickShowDialogue}>
                 刪除
               </div>
             </div>
@@ -238,30 +238,20 @@
       }
 
       function Card(props) {
-        const [showEdit, setShowEdit] = React.useState(0);
-
-        function mouseOver() {
+        function showWhoCanEdit() {
           const user = firebase.auth().currentUser;
 
           if (user) {
             const currentUserUid = user.providerData[0].uid;
             if (props.uid === currentUserUid) {
-              setShowEdit(1);
+              return true;
             }
           }
         }
 
-        function mouseOut() {
-          setShowEdit(0);
-        }
-
         return (
           <>
-            <div
-              className="cardWrapper"
-              onMouseOver={mouseOver}
-              onMouseOut={mouseOut}
-            >
+            <div className="cardWrapper">
               <div className="cardUserTitle">
                 <img className="userImg" src={props.userImg} />
                 <div className="userName">{props.userName}</div>
@@ -276,7 +266,7 @@
               <div className="cardDate">{props.cardDate}</div>
               <div
                 className="editCoverWrapper"
-                style={{ opacity: showEdit ? "1" : "0" }}
+                style={{ display: showWhoCanEdit() ? "block" : "none" }}
               >
                 <EditDeleteCover
                   setShowUpload={props.setShowUpload}
@@ -365,36 +355,18 @@
         const [alreadyUpload, setAlreadyUpload] = React.useState(true);
 
         function previewPicture() {
-          document.querySelector(".previewText").style.display = "none";
-          document
-            .querySelector(".previewPicture")
-            .setAttribute(
-              "style",
-              "width:320px; height: 401px; object-fit:contain"
-            );
           const picture = URL.createObjectURL(event.target.files[0]);
           setPreviewFile(picture);
         }
 
         function dataSource() {
+          console.log(props.cardDataForEdit);
           if (previewFile) {
-            console.log("3");
-            return previewFile;
-          } else if (
-            previewFile === "undified" &&
-            props.cardDataForEdit.photo === "undified"
-          ) {
-            console.log("yo");
-            return undified;
-          } else if (
-            previewFile === "undified" &&
-            props.cardDataForEdit.photo
-          ) {
             console.log("2");
-            return props.cardDataForEdit.photo;
-          } else if (previewFile && props.cardDataForEdit.photo) {
-            console.log("1");
             return previewFile;
+          } else if (props.cardDataForEdit) {
+            console.log("1");
+            return props.cardDataForEdit.photo;
           }
         }
 
@@ -531,8 +503,22 @@
               </div>
               <div className="uploadContentWrapper">
                 <div className="uploadArea">
-                  <p className="previewText">預覽圖片</p>
-                  <img className="previewPicture" src={dataSource()} alt="" />
+                  <p
+                    className="previewText"
+                    style={{ display: dataSource() ? "none" : "block" }}
+                  >
+                    預覽圖片
+                  </p>
+                  <img
+                    className="previewPicture"
+                    src={dataSource()}
+                    alt=""
+                    style={{
+                      width: dataSource() ? 320 : "auto",
+                      height: dataSource() ? 401 : "auto",
+                      "object-fit": dataSource() ? "contain" : "",
+                    }}
+                  />
                 </div>
                 <div className="uploadIconWrapper">
                   <label htmlFor="upload" className="uploadIcon">

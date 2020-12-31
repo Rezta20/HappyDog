@@ -32,6 +32,7 @@ body {
   color: #fff;
   background-color: #2d3e4f;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .monthBtn:hover {
@@ -41,6 +42,10 @@ body {
 #calendar {
   max-width: 1100px;
   margin: 40px auto;
+}
+
+.fc-daygrid-day {
+  cursor: pointer;
 }
 
 /* Description  */
