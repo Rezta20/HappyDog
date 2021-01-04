@@ -384,11 +384,70 @@ body {
   .cardsWrapper {
     width: 95%;
     margin: 0 auto;
+    column-count: 3;
+    column-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .uploadBtn {
+    padding: 5px;
+    width: 65px;
+    font-size: 12px;
+  }
+  .uploadPictureDescription {
+    font-size: 12px;
+    padding-left: 20px;
+  }
+  .titleTagsWrapper {
+    justify-content: space-around;
+  }
+  .titleTags {
+    margin: 3px 25px;
+  }
+  .cardsWrapper {
+    width: 95%;
+    margin: 0 auto;
+    column-count: 2;
+    column-gap: 16px;
+  }
+  .footer-background {
+    bottom: -60px;
   }
 }
 
 @media screen and (max-width: 375px) {
+  .uploadBtn {
+    padding: 2px;
+    width: 42px;
+  }
+  .uploadPictureDescription {
+    padding-left: 0;
+    width: 305px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .uploadPictureDescriptionTriangle {
+    border-style: none;
+    border-width: 0px;
+  }
+  .cardsWrapper {
+    width: 85%;
+    column-count: 1;
+  }
 }
 
 @media screen and (max-width: 320px) {
+  .titleTags {
+    margin: 3px 16px;
+  }
+  .uploadPictureDescription {
+    width: 100%;
+  }
+  .uploadBtnWrapper {
+    margin: 4px auto 0;
+  }
+  .uploadBtn {
+    margin: 0 0 0 2px;
+  }
 }

@@ -228,6 +228,19 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+@media screen and (max-width: 425px) {
+  .navbar-iconWrapper {
+    width: 100%;
+  }
+  .navbarIcon {
+    height: 40px;
+    width: 40px;
+  }
+  .navbar-text {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 375px) {
 }
 

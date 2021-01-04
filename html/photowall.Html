@@ -281,6 +281,8 @@
 
       function Tags(props) {
         const [options, setOptions] = React.useState([]);
+        console.log("he");
+        console.log(props.cardDataForEdit);
 
         React.useEffect(() => {
           // Firebase firestore initializ
@@ -334,9 +336,17 @@
           }
         }
 
+        function hashTagsSource() {
+          if (props.cardDataForEdit === undefined) {
+            return null;
+          } else {
+            return props.cardDataForEdit.hashTags;
+          }
+        }
+
         return (
           <Select.Creatable
-            defaultValue={[options[0], options[1]]}
+            defaultValue={hashTagsSource()}
             options={options}
             isMulti
             name="tags"
@@ -352,7 +362,7 @@
       function UploadCard(props) {
         const [previewFile, setPreviewFile] = React.useState("");
         const [saveTag, setSaveTag] = React.useState([]);
-        const [alreadyUpload, setAlreadyUpload] = React.useState(true);
+        const [alreadyUpload, setAlreadyUpload] = React.useState(false);
 
         function previewPicture() {
           const picture = URL.createObjectURL(event.target.files[0]);
@@ -391,95 +401,157 @@
             deleteIsNewTag = delete item.__isNew__;
           });
 
-          if (previewFile === "") {
+          if (!dataSource()) {
             Swal.fire({
               title: "請上傳圖片唷",
               icon: "warning",
               confirmButtonText: "確定",
             });
           } else {
-            if (alreadyUpload) {
-              setAlreadyUpload(false);
-              ref
-                .child(pictureName)
-                .put(picture)
-                .then(function (snapshot) {
-                  console.log("Uploaded a blob or file!");
-
+            if (!alreadyUpload) {
+              setAlreadyUpload(true);
+              if (dataSource() === previewFile) {
+                console.log("test here");
+                console.log(props.cardDataForEdit);
+                console.log("321");
+                if (props.cardDataForEdit) {
                   ref
                     .child(pictureName)
-                    .getDownloadURL()
-                    .then(function (url) {
-                      // `url` is the download URL for 'images/stars.jpg'
-                      const user = firebase.auth().currentUser;
-                      const userData = user.providerData[0];
+                    .put(picture)
+                    .then(function (snapshot) {
+                      console.log("Uploaded a blob or file!");
 
-                      if (
-                        userData.displayName === null ||
-                        userData.photoURL === null
-                      ) {
-                        photoWallCollection
-                          .add({
-                            photo: url,
-                            hashTags: saveTag,
-                            rank: firebase.firestore.FieldValue.serverTimestamp(),
-                            time: `${new Date().getFullYear()}.${
-                              new Date().getMonth() + 1
-                            }.${new Date().getDate()}`,
-                            user: "Happy Dog",
-                            userPhoto: nativeImg,
-                            uid: userData.uid,
-                          })
-                          .then(function (docRef) {
-                            console.log("Document successfully written!");
-                            console.log(docRef.id);
-                            // Add id
-                            photoWallCollection
-                              .doc(docRef.id)
-                              .set(
-                                { photoId: `${docRef.id}` },
-                                { merge: true }
-                              );
-                            props.setShowUpload(false);
-                            setAlreadyUpload(true);
-                          })
-                          .catch(function (error) {
-                            console.error("Error writing document: ", error);
-                          });
-                      } else {
-                        photoWallCollection
-                          .add({
-                            photo: url,
-                            hashTags: saveTag,
-                            rank: firebase.firestore.FieldValue.serverTimestamp(),
-                            time: `${new Date().getFullYear()}.${
-                              new Date().getMonth() + 1
-                            }.${new Date().getDate()}`,
-                            user: userData.displayName,
-                            userPhoto: userData.photoURL,
-                            uid: userData.uid,
-                          })
-                          .then(function (docRef) {
-                            // clicked = false;
-                            console.log("Document successfully written!");
-                            photoWallCollection
-                              .doc(docRef.id)
-                              .set(
-                                { photoId: `${docRef.id}` },
-                                { merge: true }
-                              );
-                            props.setShowUpload(false);
-                            setAlreadyUpload(true);
-                          })
-                          .catch(function (error) {
-                            console.error("Error writing document: ", error);
-                          });
-                      }
+                      ref
+                        .child(pictureName)
+                        .getDownloadURL()
+                        .then(function (url) {
+                          photoWallCollection
+                            .doc(props.cardDataForEdit.photoId)
+                            .set(
+                              {
+                                photo: url,
+                                hashTags: saveTag,
+                              },
+                              { merge: true }
+                            )
+                            .then(function (docRef) {
+                              console.log("Document successfully written!");
+                              props.setShowUpload(false);
+                              setAlreadyUpload(false);
+                            })
+                            .catch(function (error) {
+                              console.error("Error writing document: ", error);
+                            });
+                        });
                     });
-                })
-                .catch(function (error) {
-                  console.log("Image Error");
-                });
+                } else {
+                  ref
+                    .child(pictureName)
+                    .put(picture)
+                    .then(function (snapshot) {
+                      console.log("Uploaded a blob or file!");
+
+                      ref
+                        .child(pictureName)
+                        .getDownloadURL()
+                        .then(function (url) {
+                          // `url` is the download URL for 'images/stars.jpg'
+                          const user = firebase.auth().currentUser;
+                          const userData = user.providerData[0];
+
+                          if (
+                            userData.displayName === null ||
+                            userData.photoURL === null
+                          ) {
+                            photoWallCollection
+                              .add({
+                                photo: url,
+                                hashTags: saveTag,
+                                rank: firebase.firestore.FieldValue.serverTimestamp(),
+                                time: `${new Date().getFullYear()}.${
+                                  new Date().getMonth() + 1
+                                }.${new Date().getDate()}`,
+                                user: "Happy Dog",
+                                userPhoto: nativeImg,
+                                uid: userData.uid,
+                              })
+                              .then(function (docRef) {
+                                console.log("Document successfully written!");
+                                console.log(docRef.id);
+                                // Add id
+                                photoWallCollection
+                                  .doc(docRef.id)
+                                  .set(
+                                    { photoId: `${docRef.id}` },
+                                    { merge: true }
+                                  );
+                                props.setShowUpload(false);
+                                setAlreadyUpload(false);
+                              })
+                              .catch(function (error) {
+                                console.error(
+                                  "Error writing document: ",
+                                  error
+                                );
+                              });
+                          } else {
+                            photoWallCollection
+                              .add({
+                                photo: url,
+                                hashTags: saveTag,
+                                rank: firebase.firestore.FieldValue.serverTimestamp(),
+                                time: `${new Date().getFullYear()}.${
+                                  new Date().getMonth() + 1
+                                }.${new Date().getDate()}`,
+                                user: userData.displayName,
+                                userPhoto: userData.photoURL,
+                                uid: userData.uid,
+                              })
+                              .then(function (docRef) {
+                                // clicked = false;
+                                console.log("Document successfully written!");
+                                photoWallCollection
+                                  .doc(docRef.id)
+                                  .set(
+                                    { photoId: `${docRef.id}` },
+                                    { merge: true }
+                                  );
+                                props.setShowUpload(false);
+                                setAlreadyUpload(false);
+                              })
+                              .catch(function (error) {
+                                console.error(
+                                  "Error writing document: ",
+                                  error
+                                );
+                              });
+                          }
+                        });
+                    })
+                    .catch(function (error) {
+                      console.log("Image Error");
+                    });
+                }
+              } else if (dataSource() === props.cardDataForEdit.photo) {
+                console.log("123");
+                photoWallCollection
+                  .doc(props.cardDataForEdit.photoId)
+                  .set(
+                    {
+                      photo: props.cardDataForEdit.photo,
+                      hashTags: saveTag,
+                    },
+                    { merge: true }
+                  )
+                  .then(function (docRef) {
+                    console.log("Document successfully written!");
+                    props.setShowUpload(false);
+                    setAlreadyUpload(false);
+                  })
+                  .catch(function (error) {
+                    console.error("Error writing document: ", error);
+                  });
+              }
             }
           }
         }
@@ -516,7 +588,7 @@
                     style={{
                       width: dataSource() ? 320 : "auto",
                       height: dataSource() ? 401 : "auto",
-                      "object-fit": dataSource() ? "contain" : "",
+                      objectFit: dataSource() ? "contain" : "",
                     }}
                   />
                 </div>
@@ -533,7 +605,10 @@
                     onChange={previewPicture}
                   />
                 </div>
-                <Tags setSaveTag={setSaveTag} />
+                <Tags
+                  setSaveTag={setSaveTag}
+                  cardDataForEdit={props.cardDataForEdit}
+                />
               </div>
 
               <div className="sendPhotoBtnWrapper">
@@ -568,6 +643,7 @@
         );
 
         console.log(cardDataForEdit);
+        console.log("yo");
         // 從Firebase上 抓資料
         React.useEffect(() => {
           // Firebase firestore initializ
@@ -631,7 +707,7 @@
             <div className="uploadBtnWrapper">
               <div className="uploadPictureDescriptionWrapper">
                 <div className="uploadPictureDescription">
-                  趕快上傳照片，和我們分享你家寶貝最可愛的一面吧！
+                  和我們分享你家寶貝最可愛的一面吧！
                 </div>
                 <div className="uploadPictureDescriptionTriangle"></div>
               </div>
