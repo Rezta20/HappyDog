@@ -40,4 +40,8 @@ It also have a photo wall page to show the picture which takes during the walk t
   - Es Lint
   - Prettier
 
+##  :meat_on_bone: Origin Structure (2020.11)
+![HappyDog Site Map   Xmind_工作區域 1](https://user-images.githubusercontent.com/63142258/104093480-beea6780-52c5-11eb-8437-92ab4d5b29ac.jpg)
+
+![HappyDogJsFlow](https://user-images.githubusercontent.com/63142258/104093560-286a7600-52c6-11eb-8d5e-abe43f0635b1.jpg)
 
