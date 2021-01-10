@@ -13,7 +13,7 @@ It also have a photo wall page to show the picture which takes during the walk t
 - [Contact](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-contact)
 
 
-##  :meat_on_bone: Demo 
+##  :meat_on_bone: Demo
 [Go to see Happy Dog](https://happydog-82c2f.web.app/Html/homepage.html "Happy Dog")  :eyes: 
 | Test Account | Test Password | Login Page
 --- | :---: | :---:
@@ -53,7 +53,7 @@ It also have a photo wall page to show the picture which takes during the walk t
 
 ![HappyDogJsFlow](https://user-images.githubusercontent.com/63142258/104093560-286a7600-52c6-11eb-8d5e-abe43f0635b1.jpg)
 
-##  :meat_on_bone: Functions Demo
+##  :meat_on_bone: Functions Demo 
 ### Upload The Post 
 Uploaded the post data to Cloud Firestore and retrived the real-time data
 ![upload](https://user-images.githubusercontent.com/63142258/104119009-b5b1d700-5367-11eb-8a26-e200bd97a132.gif)
