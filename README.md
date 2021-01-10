@@ -67,6 +67,15 @@ Sent the reservation notification e-mail to user through Firebase Cloud Function
 Provided calendar to select the date by Full Calendar Kit when the users booking the service
 ![calendar](https://user-images.githubusercontent.com/63142258/104119295-5654c680-5369-11eb-8ed4-509469f6b457.gif)
 
-### Enhanced User Experience
+##  :meat_on_bone: Plan for Next Version
+- Refactor to React Components
+- Photo wall becoming the blog diary photo wall
+- Add sharing pet foodie page
+- Add weather API
+- Chat Box
+
+## :meat_on_bone: Contact
+Email: mariafu0801@gmail.com
+
 
 
