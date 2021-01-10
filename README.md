@@ -1,5 +1,6 @@
 # :paw_prints: HappyDog
 Happy Dog provides dog walking services, especially for people who have little time to walk their dogs.
+
 It also features a photo gallery wall showing pictures taken during the walking, so clients are willing to trust our excellent services.
 
 ![HappyDog Home](https://user-images.githubusercontent.com/63142258/104092118-cd805100-52bc-11eb-922d-68bb7843c875.png)
