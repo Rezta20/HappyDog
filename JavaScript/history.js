@@ -9,7 +9,6 @@ const customerWrapper = document.querySelector(".customerWrapper");
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     const providerData = user.providerData[0];
-    console.log(providerData.uid);
     firestoreCollection
       .where("uid", "==", providerData.uid)
       .orderBy("bookingDayStr", "asc")

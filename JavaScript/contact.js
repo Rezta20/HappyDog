@@ -43,7 +43,6 @@ function sendBookingDetail() {
         remind: remind.value,
       })
       .then(function () {
-        console.log("Document successfully written!");
         document.querySelector(".loadingWrapper").style.display = "block";
         document.querySelector(".contentWrapper").style.display = "none";
         // Jump to Thankyou page

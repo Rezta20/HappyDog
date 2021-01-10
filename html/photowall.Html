@@ -192,17 +192,12 @@
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire("已刪除", "", "success");
-              console.log(props.photoId);
+
               // Firestore Remove Data
               photoWallCollection
                 .doc(props.photoId)
                 .delete()
-                .then(function () {
-                  console.log("Document successfully deleted!");
-                })
-                .catch(function (error) {
-                  console.error("Error removing document: ", error);
-                });
+                .then(function () {});
             }
           });
         }
@@ -281,8 +276,6 @@
 
       function Tags(props) {
         const [options, setOptions] = React.useState([]);
-        console.log("he");
-        console.log(props.cardDataForEdit);
 
         React.useEffect(() => {
           // Firebase firestore initializ
@@ -322,16 +315,8 @@
                     .add({
                       tag: newValue[newValue.length - 1].label,
                     })
-                    .then(function (docRef) {
-                      console.log("upload success");
-                    })
-                    .catch(function (error) {
-                      console.error("Error writing document: ", error);
-                    });
+                    .then(function (docRef) {});
                 }
-              })
-              .catch(function (error) {
-                console.log("Error getting documents: ", error);
               });
           }
         }
@@ -370,12 +355,9 @@
         }
 
         function dataSource() {
-          console.log(props.cardDataForEdit);
           if (previewFile) {
-            console.log("2");
             return previewFile;
           } else if (props.cardDataForEdit) {
-            console.log("1");
             return props.cardDataForEdit.photo;
           }
         }
@@ -388,7 +370,7 @@
             .collection("photoWall");
           const picture = document.querySelector("#upload").files[0];
           let deleteIsNewTag;
-          console.log(saveTag);
+
           //  unique id
           let randomNumber = Math.floor(Math.random() * 1000);
           let time = Date.now();
@@ -411,16 +393,11 @@
             if (!alreadyUpload) {
               setAlreadyUpload(true);
               if (dataSource() === previewFile) {
-                console.log("test here");
-                console.log(props.cardDataForEdit);
-                console.log("321");
                 if (props.cardDataForEdit) {
                   ref
                     .child(pictureName)
                     .put(picture)
                     .then(function (snapshot) {
-                      console.log("Uploaded a blob or file!");
-
                       ref
                         .child(pictureName)
                         .getDownloadURL()
@@ -435,12 +412,8 @@
                               { merge: true }
                             )
                             .then(function (docRef) {
-                              console.log("Document successfully written!");
                               props.setShowUpload(false);
                               setAlreadyUpload(false);
-                            })
-                            .catch(function (error) {
-                              console.error("Error writing document: ", error);
                             });
                         });
                     });
@@ -449,8 +422,6 @@
                     .child(pictureName)
                     .put(picture)
                     .then(function (snapshot) {
-                      console.log("Uploaded a blob or file!");
-
                       ref
                         .child(pictureName)
                         .getDownloadURL()
@@ -476,8 +447,6 @@
                                 uid: userData.uid,
                               })
                               .then(function (docRef) {
-                                console.log("Document successfully written!");
-                                console.log(docRef.id);
                                 // Add id
                                 photoWallCollection
                                   .doc(docRef.id)
@@ -509,7 +478,7 @@
                               })
                               .then(function (docRef) {
                                 // clicked = false;
-                                console.log("Document successfully written!");
+
                                 photoWallCollection
                                   .doc(docRef.id)
                                   .set(
@@ -518,22 +487,12 @@
                                   );
                                 props.setShowUpload(false);
                                 setAlreadyUpload(false);
-                              })
-                              .catch(function (error) {
-                                console.error(
-                                  "Error writing document: ",
-                                  error
-                                );
                               });
                           }
                         });
-                    })
-                    .catch(function (error) {
-                      console.log("Image Error");
                     });
                 }
               } else if (dataSource() === props.cardDataForEdit.photo) {
-                console.log("123");
                 photoWallCollection
                   .doc(props.cardDataForEdit.photoId)
                   .set(
@@ -544,12 +503,8 @@
                     { merge: true }
                   )
                   .then(function (docRef) {
-                    console.log("Document successfully written!");
                     props.setShowUpload(false);
                     setAlreadyUpload(false);
-                  })
-                  .catch(function (error) {
-                    console.error("Error writing document: ", error);
                   });
               }
             }
@@ -634,16 +589,10 @@
           setUploadPhotoId(photoId);
         }
 
-        //
-        console.log(data);
-        console.log("hi");
-
         const cardDataForEdit = data.find(
           (card) => card.photoId === uploadPhotoId
         );
 
-        console.log(cardDataForEdit);
-        console.log("yo");
         // 從Firebase上 抓資料
         React.useEffect(() => {
           // Firebase firestore initializ

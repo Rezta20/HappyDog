@@ -87,7 +87,7 @@ function sendBookingDetail() {
             console.log(queryStringParams);
             queryStringParams.set("orderId", docRef.id);
             queryStringParams.toString();
-            console.log(queryStringParams.toString());
+
             // Send Mail API
             fetch(
               `https://us-central1-happydog-82c2f.cloudfunctions.net/emailSender?${queryStringParams.toString()}`

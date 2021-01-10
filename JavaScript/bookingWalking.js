@@ -59,7 +59,7 @@ function defaultLogin() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const providerData = user.providerData[0];
-      console.log(providerData);
+
       location.href = "../Booking/calendar.html";
     } else {
       Swal.fire({

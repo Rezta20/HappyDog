@@ -21,7 +21,6 @@ function checkLogInData() {
         // 抓資料
         location.href = "/Html/homepage.html";
       } else {
-        console.log("no user is signed in");
       }
     })
     .catch((err) => {
