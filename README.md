@@ -5,6 +5,13 @@ It also have a photo wall page to show the picture which takes during the walk t
 ![HappyDog Home](https://user-images.githubusercontent.com/63142258/104092118-cd805100-52bc-11eb-922d-68bb7843c875.png)
 
 ## :meat_on_bone: Agenda
+- [Demo](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-demo)
+- [Technologies](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-technologies)
+- [Origin Structure](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-origin-structure)
+- [Functions Demo](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-functions-demo)
+- [Plan for Next Version](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-plan-for-next-version)
+- [Contact](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-contact)
+
 
 ##  :meat_on_bone: Demo 
 [Go to see Happy Dog](https://happydog-82c2f.web.app/Html/homepage.html "Happy Dog")  :eyes: 
@@ -52,7 +59,6 @@ Uploaded the post data to Cloud Firestore and retrived the real-time data
 ![upload](https://user-images.githubusercontent.com/63142258/104119009-b5b1d700-5367-11eb-8a26-e200bd97a132.gif)
 
 ### Edit The Post 
-
 Utilized the React Selector Kit to make the user create thier own unique tags for their photo
 ![edit](https://user-images.githubusercontent.com/63142258/104119011-b77b9a80-5367-11eb-818d-10df8b283f10.gif)
 
