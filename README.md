@@ -3,6 +3,7 @@ Happy Dog is for the people who don't have enough time to walk their dog that p
 It also have a photo wall page to show the picture which takes during the walk time let other users could reliance on the service.
 
 ![HappyDog Home](https://user-images.githubusercontent.com/63142258/104092118-cd805100-52bc-11eb-922d-68bb7843c875.png)
+
 ## :meat_on_bone: Agenda
 
 ##  :meat_on_bone: Demo 
