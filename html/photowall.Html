@@ -337,7 +337,9 @@
             name="tags"
             className="select-container"
             classNamePrefix="select"
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+            }}
             menuPlacement="top"
             placeholder="請選喜歡的標籤"
           />
