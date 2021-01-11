@@ -1,6 +1,7 @@
 # :paw_prints: HappyDog
-Happy Dog is for the people who don't have enough time to walk their dog that provided the service of walking dog. 
-It also have a photo wall page to show the picture which takes during the walk time let other users could reliance on the service.
+Happy Dog provides dog walking services, especially for people who have little time to walk their dogs.
+
+It also features a photo gallery wall showing pictures taken during the walking, so clients are willing to trust our excellent services.
 
 ![HappyDog Home](https://user-images.githubusercontent.com/63142258/104092118-cd805100-52bc-11eb-922d-68bb7843c875.png)
 
@@ -55,23 +56,23 @@ It also have a photo wall page to show the picture which takes during the walk t
 
 ##  :meat_on_bone: Functions Demo 
 ### Upload The Post 
-Uploaded the post data to Cloud Firestore and retrived the real-time data
+Upload the post data to Cloud Firestore and retrived the real-time data
 ![upload](https://user-images.githubusercontent.com/63142258/104119009-b5b1d700-5367-11eb-8a26-e200bd97a132.gif)
 
 ### Edit The Post 
-Utilized the React Selector Kit to make the user create thier own unique tags for their photo
+Utilize the React Selector Kit to make the user create thier own unique tags for their photo
 ![edit](https://user-images.githubusercontent.com/63142258/104119011-b77b9a80-5367-11eb-818d-10df8b283f10.gif)
 
 ### Customized Google Maps API
-Connected to Google Maps API, customized info-windows & marks on the map
+Connect to Google Maps API, customized info-windows & marks on the map
 ![google maps](https://user-images.githubusercontent.com/63142258/104119190-cc0c6280-5368-11eb-9069-4cc36acf365e.gif)
 
 ### Sent The Reservation Notification E-mail
-Sent the reservation notification e-mail to user through Firebase Cloud Functions
+Send the reservation notification e-mail to user through Firebase Cloud Functions
 ![mail](https://user-images.githubusercontent.com/63142258/104119261-2f969000-5369-11eb-9f02-4a795bf34340.gif)
 
 ### Full Calendar Kit
-Provided calendar to select the date by Full Calendar Kit when the users booking the service
+Provide calendar to select the date by Full Calendar Kit when the users booking the service
 ![calendar](https://user-images.githubusercontent.com/63142258/104119295-5654c680-5369-11eb-8ed4-509469f6b457.gif)
 
 ##  :meat_on_bone: Plan for Next Version
