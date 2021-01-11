@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Firebase firestore initializ
 const db = firebase.firestore();
 const firestoreCollection = db.collection("bookingDay");

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const email = document.querySelector(".email");
 const lineId = document.querySelector(".lineId");
 const owner = document.querySelector(".ownerName");

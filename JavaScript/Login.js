@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const checkSignInPwdInput = document.querySelector(".checkSignInPwd");
 const facebookLoginBtn = document.querySelector(".facebookLogin");
 const googleLoginBtn = document.querySelector(".googleLogin");
@@ -20,7 +21,6 @@ function checkLogInData() {
       if (user) {
         // 抓資料
         location.href = "/Html/homepage.html";
-      } else {
       }
     })
     .catch((err) => {
@@ -77,7 +77,7 @@ function checkSignUpData(user) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(user.email, user.pwd)
-      .then((u) => {
+      .then(() => {
         Swal.fire({
           title: "已登入",
           icon: "success",
@@ -133,6 +133,7 @@ function checkSignUpData(user) {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function changeToLogin() {
   logInCard.style.left = "0";
   logInCard.style.opacity = "1";

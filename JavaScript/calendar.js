@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const afternoonBtnWrapper = document.querySelector(".timeBtnAfternoonWrapper");
 const eveningBtnWrapper = document.querySelector(".timeBtnEveningWrapper");
 const monthBtn = document.querySelector(".monthBtn");

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Set to FireStore Variable
 const bookingDate = document.querySelector(".bookingDate");
 const bookingTime = document.querySelector(".bookingTime");
@@ -82,7 +83,6 @@ function sendBookingDetail() {
 
             // Get location URL
             const queryStringParams = new URLSearchParams(location.search);
-            console.log(queryStringParams);
             queryStringParams.set("orderId", docRef.id);
             queryStringParams.toString();
 

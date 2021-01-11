@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const notLoginState = document.querySelector(".notLoginState");
 const loginState = document.querySelector(".loginState");
 const userIcon = document.querySelector(".fa-user-circle");

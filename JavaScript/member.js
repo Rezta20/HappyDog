@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const email = document.querySelector(".email");
 const logoutBtn = document.querySelector("#logoutBtn");
 const userId = document.querySelector(".userId");
@@ -20,7 +21,7 @@ function firebaseSignOut() {
         location.href = "../../Html/homepage.html";
       });
     })
-    .catch(function (error) {
+    .catch(function () {
       // An error happened.
       Swal.fire({
         title: "登出錯誤",

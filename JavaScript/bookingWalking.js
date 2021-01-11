@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const backPhone = document.querySelectorAll(".back-phone");
 const body = document.querySelector("body");
 const bookingCalendarBtn = document.querySelector(".toBookingCalendarBtn");
