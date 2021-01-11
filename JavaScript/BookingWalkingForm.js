@@ -72,8 +72,6 @@ function sendBookingDetail() {
           })
           .then(function (docRef) {
             // clicked = false;
-            console.log("Document successfully written!");
-            console.log(docRef.id);
             document.querySelector(".loadingWrapper").style.display = "block";
             document.querySelector(".contentWrapper").style.display = "none";
 
