@@ -207,7 +207,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   height: 700px;
   width: calc(100% - 550px);
 }
@@ -260,4 +259,95 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+/* RWD */
+@media screen and (max-width: 768px) {
+  /* cover  */
+  .coverDogWrapper {
+    width: 85%;
+  }
+  /* photoWall  */
+  .photoWallWrapper {
+    justify-content: center;
+    height: 550px;
+    width: 100%;
+  }
+  .photoWrapper {
+    width: 59%;
+    height: 550px;
+  }
+  .dogImg {
+    width: 450px;
+  }
+  .photoWallTextWrapper {
+    height: 650px;
+    width: calc(100% - 450px);
+  }
+  .photoWallTitle {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+  .photoWallText {
+    line-height: 1.5;
+  }
+}
+@media screen and (max-width: 425px) {
+  /* cover  */
+  .messageImg {
+    width: 94%;
+  }
+  .coverText {
+    margin-left: 11px;
+    font-size: 38px;
+  }
+  .coverDogWrapper {
+    width: 100%;
+    height: 148px;
+    margin-top: 0px;
+  }
+
+  /* service  */
+  .serviceContentWrapper {
+    flex-direction: column;
+    margin-top: 25px;
+  }
+
+  .serviceContentTitle {
+    margin-top: -16px;
+  }
+  .serviceElement {
+    width: 125px;
+  }
+  .iconBackground {
+    height: 150px;
+  }
+  .fa-arrow-right {
+    padding: 20px 0;
+    transform: rotate(90deg);
+  }
+
+  /* photowall  */
+  .photoWallWrapper {
+    flex-direction: column;
+    margin-top: 60px;
+    padding-bottom: 160px;
+  }
+  .dogImg {
+    width: 415px;
+  }
+  .photoWallTextWrapper {
+    height: 280px;
+    width: 100%;
+  }
+  .toPhotoWallBtn {
+    margin: 20px auto;
+  }
+}
+@media screen and (max-width: 375px) {
+  /* photoWall */
+  .dogImg {
+    width: 362px;
+    height: 500px;
+  }
 }
