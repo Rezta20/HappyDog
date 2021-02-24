@@ -12,6 +12,7 @@ body {
 #map {
   height: 700px;
   width: 100%;
+  display: flex;
 }
 
 .contentWrapper {
@@ -154,6 +155,14 @@ input:focus {
 }
 
 #windowPic {
-  width: 420px;
-  height: 250px;
+  width: 100%;
+  height: auto;
+}
+
+/* RWD  */
+
+@media only screen and (max-width: 768px) {
+  .outsideFormWrapperFlex {
+    flex-wrap: wrap;
+  }
 }

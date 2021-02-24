@@ -124,6 +124,9 @@ document.addEventListener("DOMContentLoaded", function () {
   monthBtn.addEventListener("click", () => {
     calendar.changeView("dayGridMonth");
     hiddenTimeBtn();
+    timeBtns.forEach((timeBtn) => {
+      timeBtn.style.boxShadow = "";
+    });
   });
 });
 

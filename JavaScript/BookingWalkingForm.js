@@ -18,9 +18,38 @@ const bookingDayCollection = firebase.firestore().collection("bookingDay");
 const data = sessionStorage.getItem("bookingTimeData");
 const bookingTimeData = JSON.parse(data);
 
+// If the user bake to map interface without session storage data, jump to calendar page
+if (bookingTimeData === null) {
+  window.location.href = "./calendar.html";
+}
 // Render Time & date
 bookingDate.innerText = bookingTimeData.bookingDateStr;
 bookingTime.innerText = bookingTimeData.time;
+
+// Check Email Format
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+//Check Phone Format
+function validPhoneNumber(phoneInnerText) {
+  if (phoneInnerText.length === 10) {
+    for (let i = 0; i < phoneInnerText.length; i++) {
+      if (isNaN(parseInt(phoneInnerText[i]))) {
+        Swal.fire({
+          title: "請檢查手機號碼，並輸入格式09xxxxxxxx",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+      }
+    }
+
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // Set Data To Firestore
 
@@ -44,9 +73,21 @@ function sendBookingDetail() {
       icon: "warning",
       confirmButtonText: "確定",
     });
+  } else if (!validPhoneNumber(phone.value.trim())) {
+    Swal.fire({
+      title: "請填寫手機格式09xxxxxxxx",
+      icon: "warning",
+      confirmButtonText: "確定",
+    });
   } else if (email.value === "") {
     Swal.fire({
       title: "請填寫Email",
+      icon: "warning",
+      confirmButtonText: "確定",
+    });
+  } else if (!validateEmail(email.value)) {
+    Swal.fire({
+      title: "請填寫正確的Email格式XXX@xxxxx.xxx",
       icon: "warning",
       confirmButtonText: "確定",
     });
@@ -54,7 +95,6 @@ function sendBookingDetail() {
     sendDataBtn.disabled = true;
     sendDataBtn.innerText = "資料上傳中";
     sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
-
     firebase.auth().onAuthStateChanged((user) => {
       const providerData = user.providerData[0];
       if (user) {
@@ -75,17 +115,14 @@ function sendBookingDetail() {
             // clicked = false;
             document.querySelector(".loadingWrapper").style.display = "block";
             document.querySelector(".contentWrapper").style.display = "none";
-
             // Add id
             bookingDayCollection
               .doc(docRef.id)
               .set({ orderId: `#${docRef.id} ` }, { merge: true });
-
             // Get location URL
             const queryStringParams = new URLSearchParams(location.search);
             queryStringParams.set("orderId", docRef.id);
             queryStringParams.toString();
-
             // Send Mail API
             fetch(
               `https://us-central1-happydog-82c2f.cloudfunctions.net/emailSender?${queryStringParams.toString()}`
@@ -99,7 +136,6 @@ function sendBookingDetail() {
               remind.value = "";
               bookingTimeData.bookingDateStr = "";
               bookingTimeData.time = "";
-
               // Jump to Thankyou page
               location.href = "/Html/Booking/bookingThankYou.html";
               sendDataBtn.disabled = false;
