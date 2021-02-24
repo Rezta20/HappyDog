@@ -22,13 +22,12 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  
 }
 
 .whoTextTitle {
   width: 100%;
-  font-size: 28px;
-  margin: 35px 0;
+  font-size: 36px;
+  margin-top: 35px;
   text-align: center;
   text-shadow: -4px 3px #ffbe78;
   font-weight: 600;
@@ -41,7 +40,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   width: 80%;
-  margin: 25px 0;
+  margin: 35px 0;
 }
 
 .linkToBookingWalkingCalendarWrapper img {
@@ -72,12 +71,12 @@ body {
 }
 
 .calendarTextTitle {
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 8px;
 }
 
 .calendarText p {
-  font-size: 18px;
+  font-size: 20px;
   margin: 4px 0;
 }
 
@@ -118,63 +117,68 @@ body {
 }
 
 /* Description Card */
-.descriptionWrapper {
+.contentWrapperInside {
+  margin: 0px;
+}
+
+/* descriptionCard */
+.descriptionCardWrapper-phone {
+  display: none;
+}
+
+.descriptionCardWrapper-desk {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 800px;
-  margin: 35px 60px 0 0;
 }
 
-.card {
+.card-desk {
+  cursor: pointer;
+  display: flex;
   background-color: transparent;
-  width: 300px;
-  height: 200px;
-  perspective: 1000px;
+  height: 240px;
+  width: 450px;
+  perspective: 500px;
 }
 
-.inner {
+.cardInner-desk {
+  margin: 20px;
   position: relative;
-  width: 120%;
+  width: 100%;
   height: 100%;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.card:hover .inner {
+.card-desk:hover .cardInner-desk {
   transform: rotateY(180deg);
 }
 
-.front,
-.back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.cardFront-desk,
+.cardBack-desk {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backface-visibility: hidden;
-}
-
-.descriptionTitle {
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  /* for safari  */
+  backface-visibility: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-.back {
-  line-height: 1.8;
+.cardFront-desk {
+  font-size: 18px;
+}
+
+.cardBack-desk {
   transform: rotateY(180deg);
-}
-
-.back-phone {
-  display: none;
+  line-height: 1.8;
+  font-size: 18px;
 }
 
 /* Footer */
@@ -201,93 +205,108 @@ body {
     border-bottom-right-radius: 20px;
     width: 565px;
   }
-
-  .descriptionWrapper {
-    width: 80%;
-    height: 560px;
-    margin: 0 auto;
-    justify-content: center;
-  }
-
-  .card {
-    width: 65%;
-  }
-
-  .inner {
-    margin: 0 auto;
-    width: 100%;
-  }
 }
 
-/* iPad  */
-@media only screen and (max-width: 1024px) {
-  .front {
+/* phone */
+@media only screen and (max-width: 768px) {
+  /* Description Card  */
+  .descriptionCardWrapper-desk {
     display: none;
   }
+
+  .descriptionCardWrapper-phone {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .card:hover .inner {
-    transform: none;
-  }
-  .whoTextTitle {
+  .card-phone {
+    cursor: pointer;
+    display: flex;
+    background-color: transparent;
+    height: 200px;
+    width: 400px;
+    perspective: 500px;
     margin: 20px auto;
   }
 
-  .back {
-    display: none;
+  .cardInner-phone {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
   }
 
-  .back-phone {
-    display: none;
+  .cardFront-phone,
+  .cardBack-phone {
+    display: flex;
     flex-direction: column;
-    align-content: center;
-    padding-top: 15px;
-    font-size: 18px;
-    line-height: 1.6;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* for safari  */
+    backface-visibility: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
 
-  .back-phone-under {
-    padding-top: 25px;
-  }
-}
-
-/* iphone  */
-@media only screen and (max-width: 960px) {
-  .card {
-    font-size: 16px;
-    height: 200px;
-  }
-
-  .descriptionTitle {
-    font-size: 20px;
-  }
-
-  .back-phone {
-    padding-top: 20px;
-    line-height: 1.6;
-  }
-
-  .back-phone-under {
-    padding-top: 30px;
+  .cardBack-phone {
+    transform: rotateY(180deg);
+    line-height: 1.8;
   }
 }
 
-@media only screen and (max-width: 520px) {
-  .card {
-    width: 120%;
+@media only screen and (max-width: 425px) {
+  .userLoginName {
+    visibility: hidden;
+  }
+
+  .loginStatus {
+    visibility: hidden;
   }
 
   .whoTextTitle {
+    font-size: 26px;
+  }
+
+  .calendarTextTitle {
+    font-size: 22px;
+  }
+
+  .calendarText p {
+    font-size: 18px;
+  }
+
+  /* Description Card  */
+
+  .card-phone {
+    width: 340px;
+  }
+
+  .descriptionCardTitle-phone {
     font-size: 22px;
   }
 }
 
-@media only screen and (max-width: 420px) {
-  .whoTextTitle {
-    width: 100%;
+@media only screen and (max-width: 375px) {
+  .calendarTextTitle {
     font-size: 20px;
   }
 
+  .card-phone {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .whoTextTitle {
+    font-size: 22px;
+  }
   .calendarTextTitle {
     font-size: 18px;
   }
@@ -297,41 +316,10 @@ body {
   }
 
   .toBookingCalendarBtn {
-    font-size: 18px;
-    width: 150px;
+    font-size: 20px;
   }
 
-  .descriptionWrapper {
-    width: 300px;
-    margin: 0 auto;
-  }
-
-  .inner {
-    margin: 0 auto;
-    width: 90%;
-  }
-}
-@media only screen and (max-width: 350px) {
-  .calendarTextTitle {
-    font-size: 16px;
-  }
-
-  .descriptionWrapper {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .inner {
-    width: 100%;
-    height: 100%;
-  }
-
-  .back-phone {
-    line-height: 1.6;
-    font-size: 16px;
-  }
-
-  .back-phone-under {
-    padding-top: 35px;
+  .card-phone {
+    width: 255px;
   }
 }
