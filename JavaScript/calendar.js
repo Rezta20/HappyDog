@@ -55,14 +55,37 @@ function showTimeBtn() {
 // Full Calendar
 document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("calendar");
+  const initialLocaleCode = "zh-tw";
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     headerToolbar: {
-      left: "prev,next today",
+      left: "prev,next",
       center: "title",
       right: "  ",
     },
-    titleFormat: { year: "numeric", month: "long" },
+
+    views: {
+      dayGridMonth: {
+        dayHeaderFormat: {
+          // month: "short",
+          // day: "2-digit",
+          weekday: "short",
+        },
+      },
+      dayGridWeek: {
+        titleFormat: {
+          year: "numeric",
+          month: "narrow",
+        },
+        dayHeaderFormat: {
+          // month: "short",
+          day: "2-digit",
+          weekday: "narrow",
+        },
+      },
+    },
+
+    locale: initialLocaleCode,
 
     unselectAuto: false,
 
