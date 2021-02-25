@@ -136,3 +136,41 @@ summary::after {
 summary::-webkit-details-marker {
   display: none;
 }
+
+@media only screen and (max-width: 425px) {
+  .customerWrapper {
+    width: 100%;
+  }
+
+  .orderContent {
+    margin: 3px 0;
+  }
+  .remindContent {
+    padding-left: 34px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .orderTitle {
+    margin: 0 0 0 20px;
+  }
+
+  .remindContent {
+    padding-left: 22px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .orderTitle {
+    margin: 0px;
+  }
+
+  .remindContent {
+    padding-left: 0px;
+  }
+
+  details {
+    margin: 15px;
+    padding: 6px;
+  }
+}
