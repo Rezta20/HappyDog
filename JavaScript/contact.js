@@ -6,6 +6,31 @@ const phone = document.querySelector(".contactPhone");
 const remind = document.querySelector(".remind");
 const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
 
+//Check Phone Format
+function validPhoneNumber(phoneInnerText) {
+  if (phoneInnerText.length === 10) {
+    for (let i = 0; i < phoneInnerText.length; i++) {
+      if (isNaN(parseInt(phoneInnerText[i]))) {
+        Swal.fire({
+          title: "請檢查手機號碼，並輸入格式09xxxxxxxx",
+          icon: "warning",
+          confirmButtonText: "確定",
+        });
+      }
+    }
+
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Check Email Format
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 // FireStore Set up
 const db = firebase.firestore();
 
@@ -20,13 +45,25 @@ function sendBookingDetail() {
     });
   } else if (phone.value === "") {
     Swal.fire({
-      title: "請填寫電話",
+      title: "請填寫手機號碼",
+      icon: "warning",
+      confirmButtonText: "確定",
+    });
+  } else if (!validPhoneNumber(phone.value.trim())) {
+    Swal.fire({
+      title: "請填寫手機格式09xxxxxxxx",
       icon: "warning",
       confirmButtonText: "確定",
     });
   } else if (email.value === "") {
     Swal.fire({
       title: "請填寫Email",
+      icon: "warning",
+      confirmButtonText: "確定",
+    });
+  } else if (!validateEmail(email.value)) {
+    Swal.fire({
+      title: "請填寫正確的Email格式XXX@xxxxx.xxx",
       icon: "warning",
       confirmButtonText: "確定",
     });

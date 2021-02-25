@@ -39,7 +39,7 @@ body {
 .userImg {
   height: 100px;
   width: 100px;
-  border-radius: 50px;
+  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -71,4 +71,27 @@ body {
 .btn:hover {
   background-color: #d2e8fd;
   color: #063f6f;
+}
+
+@media only screen and (max-width: 425px) {
+  .wrapper {
+    padding: 10px;
+  }
+
+  .content {
+    padding-left: 15px;
+  }
+
+  .userImg {
+    height: 95px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .wrapper {
+    width: 283px;
+  }
+  .userImg {
+    height: 85px;
+  }
 }
