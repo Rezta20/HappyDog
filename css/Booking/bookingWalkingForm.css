@@ -161,8 +161,52 @@ input:focus {
 
 /* RWD  */
 
+@media only screen and (max-width: 1024px) {
+  .inputWrapper {
+    width: 70%;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .outsideFormWrapperFlex {
     flex-wrap: wrap;
+  }
+
+  .outsideFormWrapper {
+    width: 100%;
+    margin: 25px 0px;
+    padding: 30px 30px 30px 60px;
+  }
+
+  .remindWrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .inputWrapper {
+    width: 95%;
+  }
+
+  .outsideFormWrapper {
+    padding: 30px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .inputWrapper {
+    width: 110%;
+  }
+
+  .inputWrapper p {
+    font-size: 15px;
+  }
+
+  .remindWrapper {
+    width: 106%;
+  }
+
+  .remind {
+    font-size: 15px;
   }
 }

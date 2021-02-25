@@ -219,6 +219,14 @@ body {
 }
 
 @media screen and (max-width: 425px) {
+  .userLoginName {
+    visibility: hidden;
+  }
+
+  .loginStatus {
+    visibility: hidden;
+  }
+
   .navbar-iconWrapper {
     width: 100%;
   }

@@ -262,14 +262,6 @@ body {
 }
 
 @media only screen and (max-width: 425px) {
-  .userLoginName {
-    visibility: hidden;
-  }
-
-  .loginStatus {
-    visibility: hidden;
-  }
-
   .whoTextTitle {
     font-size: 26px;
   }

@@ -170,8 +170,32 @@ body {
 
 /* RWD  */
 
-@media only screen and (max-height: 375px) {
+@media only screen and (max-width: 375px) {
   .navbar-logo {
     width: 10px;
+  }
+
+  .viewDescription {
+    font-size: 16px;
+  }
+
+  .timeTitle {
+    font-size: 18px;
+  }
+
+  .timeBtn {
+    font-size: 16px;
+    width: 108px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .viewDescription {
+    font-size: 15px;
+  }
+
+  .timeBtn {
+    width: 98px;
+    font-size: 14px;
   }
 }
