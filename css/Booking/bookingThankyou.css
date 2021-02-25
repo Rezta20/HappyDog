@@ -61,3 +61,16 @@ body {
   background-color: #d2e8fd;
   color: #063f6f;
 }
+
+@media only screen and (max-width: 425px) {
+  .wrapper {
+    width: 335px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .wrapper {
+    width: 275px;
+    padding: 10px;
+  }
+}
