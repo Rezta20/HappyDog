@@ -67,8 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
     views: {
       dayGridMonth: {
         dayHeaderFormat: {
-          // month: "short",
-          // day: "2-digit",
           weekday: "short",
         },
       },
@@ -78,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
           month: "narrow",
         },
         dayHeaderFormat: {
-          // month: "short",
           day: "2-digit",
           weekday: "narrow",
         },
@@ -152,6 +149,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Get data from firebase
+// firebase
+//   .firestore()
+//   .collection("bookingDay")
+//   .where("bookingDayStr", "==", bookingTimeDate.bookingDateStr)
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       console.log(doc.id, "=>", doc.data());
+//     });
+//   })
+//   .catch((error) => {
+//     console.log("Error getting documents: ", error);
+//   });
 
 // Set Selected Time
 timeBtns.forEach((timeBtn) => {

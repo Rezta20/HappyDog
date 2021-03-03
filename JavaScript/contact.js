@@ -9,18 +9,25 @@ const sendDataBtn = document.querySelector(".sendBookingDetailBtn");
 //Check Phone Format
 function validPhoneNumber(phoneInnerText) {
   if (phoneInnerText.length === 10) {
+    console.log("10");
+
     for (let i = 0; i < phoneInnerText.length; i++) {
       if (isNaN(parseInt(phoneInnerText[i]))) {
+        console.log("there's isNaN");
         Swal.fire({
           title: "請檢查手機號碼，並輸入格式09xxxxxxxx",
           icon: "warning",
           confirmButtonText: "確定",
         });
+        console.log("false");
+        return false;
+      } else {
+        console.log("fit 10 and there's all number");
+        return true;
       }
     }
-
-    return true;
   } else {
+    console.log("not 10 false");
     return false;
   }
 }
@@ -49,7 +56,8 @@ function sendBookingDetail() {
       icon: "warning",
       confirmButtonText: "確定",
     });
-  } else if (!validPhoneNumber(phone.value.trim())) {
+  } else if (validPhoneNumber(phone.value.trim())) {
+    console.log("here");
     Swal.fire({
       title: "請填寫手機格式09xxxxxxxx",
       icon: "warning",
@@ -68,25 +76,24 @@ function sendBookingDetail() {
       confirmButtonText: "確定",
     });
   } else {
-    sendDataBtn.disabled = true;
-    sendDataBtn.innerText = "資料上傳中";
-    sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
-
-    db.collection("contactForm")
-      .add({
-        name: owner.value,
-        phone: phone.value,
-        email: email.value,
-        Line: lineId.value,
-        remind: remind.value,
-      })
-      .then(function () {
-        document.querySelector(".loadingWrapper").style.display = "block";
-        document.querySelector(".contentWrapper").style.display = "none";
-        // Jump to Thankyou page
-        location.href = "/Html/Contact/contactThankyou.html";
-        sendDataBtn.disabled = false;
-      });
+    // sendDataBtn.disabled = true;
+    // sendDataBtn.innerText = "資料上傳中";
+    // sendDataBtn.style.boxShadow = "2px 2px rgb(63,58,58,0.3) inset";
+    // db.collection("contactForm")
+    //   .add({
+    //     name: owner.value,
+    //     phone: phone.value,
+    //     email: email.value,
+    //     Line: lineId.value,
+    //     remind: remind.value,
+    //   })
+    //   .then(function () {
+    //     document.querySelector(".loadingWrapper").style.display = "block";
+    //     document.querySelector(".contentWrapper").style.display = "none";
+    //     // Jump to Thankyou page
+    //     location.href = "/Html/Contact/contactThankyou.html";
+    //     sendDataBtn.disabled = false;
+    //   });
   }
 }
 sendDataBtn.addEventListener("click", sendBookingDetail);
