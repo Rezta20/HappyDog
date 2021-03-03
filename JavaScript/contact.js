@@ -45,7 +45,6 @@ function sendBookingDetail() {
       confirmButtonText: "確定",
     });
   } else if (!validPhoneNumber(phone.value.trim())) {
-    console.log("here");
     Swal.fire({
       title: "請填寫手機格式09xxxxxxxx",
       icon: "warning",
