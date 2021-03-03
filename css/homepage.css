@@ -20,25 +20,29 @@ body {
   height: 100%;
 }
 
-.messageImg {
+.messageWrapper {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  width: 80%;
+  width: 680px;
   margin-top: 20px;
 }
 
+.messageImg {
+  position: relative;
+  width: 100%;
+}
+
 .coverText {
+  position: absolute;
+  top: 210px;
+  left: 41%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-bottom: 90px;
-  margin-left: 30px;
-  font-size: 50px;
-  height: 320px;
-  width: 100%;
+  width: 350px;
   text-shadow: -4px 3px #ffbe78;
   font-weight: 600;
+  font-size: 50px;
 }
 
 .coverDogWrapper {
@@ -261,11 +265,34 @@ body {
 }
 
 /* RWD */
+
+@media screen and (max-width: 1440px) {
+  .messageWrapper {
+    width: 620px;
+  }
+
+  .coverText {
+    top: 195px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .coverText {
+    top: 205px;
+    left: 36%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   /* cover  */
+  .coverText {
+    left: 32%;
+  }
+
   .coverDogWrapper {
     width: 85%;
   }
+
   /* photoWall  */
   .photoWallWrapper {
     justify-content: center;
@@ -291,14 +318,21 @@ body {
     line-height: 1.5;
   }
 }
+
 @media screen and (max-width: 425px) {
   /* cover  */
+  .messageWrapper {
+    width: 400px;
+  }
+
   .messageImg {
     width: 94%;
+    margin-bottom: 27px;
   }
   .coverText {
-    margin-left: 11px;
     font-size: 38px;
+    top: 130px;
+    left: 12%;
   }
   .coverDogWrapper {
     width: 100%;
@@ -344,6 +378,15 @@ body {
   }
 }
 @media screen and (max-width: 375px) {
+  .messageWrapper {
+    width: 380px;
+  }
+
+  .coverText {
+    top: 120px;
+    left: 7%;
+  }
+
   /* photoWall */
   .dogImg {
     width: 362px;
