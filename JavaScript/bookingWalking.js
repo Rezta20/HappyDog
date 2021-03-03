@@ -21,14 +21,14 @@ function defaultLogin() {
     if (user) {
       const providerData = user.providerData[0];
 
-      location.href = "../Booking/calendar.html";
+      location.href = "../booking/Calendar.html";
     } else {
       Swal.fire({
         title: "請先登入帳號",
         icon: "warning",
         confirmButtonText: "確定",
       }).then(function () {
-        location.href = "../Login/login.html";
+        location.href = "../login/Login.html";
       });
     }
   });
