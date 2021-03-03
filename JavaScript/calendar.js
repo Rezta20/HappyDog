@@ -150,21 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Get data from firebase
-// firebase
-//   .firestore()
-//   .collection("bookingDay")
-//   .where("bookingDayStr", "==", bookingTimeDate.bookingDateStr)
-//   .get()
-//   .then(function (querySnapshot) {
-//     querySnapshot.forEach((doc) => {
-//       console.log(doc.id, "=>", doc.data());
-//     });
-//   })
-//   .catch((error) => {
-//     console.log("Error getting documents: ", error);
-//   });
-
 // Set Selected Time
 timeBtns.forEach((timeBtn) => {
   timeBtn.addEventListener("click", () => {
@@ -186,7 +171,7 @@ function sendBookingDatatoBookingform() {
       confirmButtonText: "確定",
     });
   } else if (bookingTimeData.time !== undefined) {
-    location.href = "/Html/Booking/bookingWalkingForm.html";
+    location.href = "/html/booking/BookingWalkingForm.html";
   }
 
   // 將資料存到sessionStorage

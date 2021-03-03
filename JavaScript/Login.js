@@ -20,7 +20,7 @@ function checkLogInData() {
 
       if (user) {
         // 抓資料
-        location.href = "/Html/homepage.html";
+        location.href = "/html/homepage.html";
       }
     })
     .catch((err) => {
@@ -175,7 +175,7 @@ function fbLogin() {
       const token = result.credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      location.href = "/Html/homepage.html";
+      location.href = "/html/homepage.html";
       // ...
     })
     .catch(function (error) {
@@ -203,7 +203,7 @@ function googleLogin() {
       const token = result.credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      location.href = "/Html/homepage.html";
+      location.href = "/html/homepage.html";
       // ...
     })
     .catch(function (error) {

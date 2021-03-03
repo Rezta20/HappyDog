@@ -20,7 +20,7 @@ const bookingTimeData = JSON.parse(data);
 
 // If the user bake to map interface without session storage data, jump to calendar page
 if (bookingTimeData === null) {
-  window.location.href = "./calendar.html";
+  window.location.href = "./Calendar.html";
 }
 // Render Time & date
 bookingDate.innerText = bookingTimeData.bookingDateStr;
@@ -137,7 +137,7 @@ function sendBookingDetail() {
               bookingTimeData.bookingDateStr = "";
               bookingTimeData.time = "";
               // Jump to Thankyou page
-              location.href = "/Html/Booking/bookingThankYou.html";
+              location.href = "/html/booking/BookingThankYou.html";
               sendDataBtn.disabled = false;
             });
           });

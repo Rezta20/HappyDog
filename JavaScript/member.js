@@ -18,7 +18,7 @@ function firebaseSignOut() {
         icon: "success",
         confirmButtonText: "確定",
       }).then(function () {
-        location.href = "../../Html/homepage.html";
+        location.href = "../../html/homepage.html";
       });
     })
     .catch(function () {
