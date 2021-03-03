@@ -37,14 +37,9 @@ function validPhoneNumber(phoneInnerText) {
   if (phoneInnerText.length === 10) {
     for (let i = 0; i < phoneInnerText.length; i++) {
       if (isNaN(parseInt(phoneInnerText[i]))) {
-        Swal.fire({
-          title: "請檢查手機號碼，並輸入格式09xxxxxxxx",
-          icon: "warning",
-          confirmButtonText: "確定",
-        });
+        return false;
       }
     }
-
     return true;
   } else {
     return false;
