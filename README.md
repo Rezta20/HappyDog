@@ -14,8 +14,8 @@ It also features a photo gallery wall showing pictures taken during the walking,
 - [Contact](https://github.com/Rezta20/HappyDog/blob/master/README.md#meat_on_bone-contact)
 
 
-##  :meat_on_bone: Demo
-<!-- [Go to see Happy Dog](https://happydog-82c2f.web.app/html/homepage.html "Happy Dog")  :eyes: -->
+##  :meat_on_bone: Demo (Deploy Expired)
+ [Go to see Happy Dog](https://happydog-82c2f.web.app/html/homepage.html "Happy Dog")  :eyes: 
 | Test Account | Test Password | Login Page
 --- | :---: | :---:
 |qwe123@gmail.com| qwe123 | [Go to Login](https://happydog-82c2f.web.app/Html/Login/login.html) 
